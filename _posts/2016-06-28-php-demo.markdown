@@ -1,0 +1,134 @@
+---
+layout:     post
+title:      " 一起来花5分钟写一个PHP入门Demo "
+subtitle:   " When you really want to know a thing, You will see is really very simple. "
+date:       2016-06-28
+author:     "Shock"
+header-img: "/desk.fd.zol-img.com.cn/t_s1680x1050c5/g5/M00/0B/0D/ChMkJ1e9kSWIALKRAAUgtG0nlF0AAUseQFDlXQABSDM178.jpg"
+catalog: true
+tags:
+    - PHP
+
+---
+
+> 你以为很难，只是因为你没有去行动。
+
+最近公司招了几个应届毕业生，他们对前端的了解还挺多，但是对后端的技术一无所知，我觉得，作为一个前端攻城狮，如果你有远大的抱负，就应该雨露均沾...
+
+今天我就跟大家讲一讲PHP最基本的入门，至少别人问起你来，不会一点都不懂。
+
+大家知道PHP搭建环境蛮麻烦的，咱们前端攻城狮就没必要去钻研环境的搭建了，网上已经有集成好的PHP环境可以直接下载，`wamp`和`phpstudy`，安装只需下一步就行。
+
+因为我一直是使用wamp，一下就以wamp为例来讲解。
+
+安装好wamp后，屏幕右下角会出现这个图标。
+
+![](http://images2015.cnblogs.com/blog/929120/201606/929120-20160628093309312-1402371585.png)
+
+如果你英语不是很好的话，可以右击图标，选择中文。
+
+wamp打开后会默认开启所有服务，你也可以左击图标，选择启动所有服务，并且切换到在线状态。
+
+到此，PHP运行的环境就准备好了。
+
+下面开始写demo了。
+
+点击右下角小图标，有个www目录，进入后创建一个叫php的项目文件夹：
+
+![](http://images2015.cnblogs.com/blog/929120/201606/929120-20160628111027265-2145567082.png)
+
+在文件夹中新建这几个文件：
+
+![](http://images2015.cnblogs.com/blog/929120/201606/929120-20160628111159343-1711797668.png)
+
+我们先打开`login.html`，写入一个简单的表单：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <form action="success.php" method="post">
+        用户名：<input type="text" name="username"><br/><br/>
+        密码：<input type="password" name="pwd"><br/><br/>
+        <input type="submit" name="submit" value="提交">
+    </form>
+</body>
+</html>
+```
+
+效果如下：
+
+![](http://images2015.cnblogs.com/blog/929120/201606/929120-20160628111413999-225059502.png)
+
+我们需要实现用户点击提交时，把用户输入的用户名和密码保存在本地的`data.txt`文件里，并且在`success.php`页面提示用户登录成功。
+
+下面我们开始关键的php代码，打开`success.php`文件，敲入以下代码：
+
+```php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <?php
+        $name = $_POST["username"];
+        $pwd = $_POST["pwd"];
+        $fp = fopen("./data.txt", "a");
+        $str = "user:".$name."&password:".$pwd."\r\n";
+        fwrite($fp,$str);
+        fclose($fp);
+        echo "<h1>欢迎回来,".$name."！</h1>";
+    ?>
+</body>
+</html>
+```
+
+大家要注意，PHP代码可以和HTML代码混合使用，包裹在`<?php doSomething ?>`标签内的代码，服务器就会用PHP的解析器去解析，我们来分析一下上面的代码。
+
+因为表单使用post方式提交的，所以我们需要用POST方式去接收，PHP接收POST发送过来的数据使用`$_POST[""]`;语句，get用法一样，把POST改成GET，在中括号内填写你需要获取表单项的name名。
+
+接下来我们要把所得到的数据写入到`data.txt`文件内，实际项目开发中，这些数据都是写入到数据库中。
+
+我们用`fopen`命令打开一个文件，`fopen`接收两个参数，第一个是要打开文件的路径；第二个是打开的方式，这里使用`a`写入方式打开，将文件指针指向文件末尾，如果文件不存在，则会尝试创建这个文件。（其他参数详情请到W3school查看）
+
+还需要注意的是，PHP中的变量声明并不是用`var`，而是`$`+变量名。
+
+接下来把用户名和密码拼接成字符串，PHP中的字符串拼接和JavaScript也有差异，PHP使用`.`来做拼接符。
+
+我们用`fwrite`命令来写入文件，它接收两个参数，第一个是要打开的文件，也就是我们前面定义的`$fp`；第二个是要写入的内容，把之前拼接好的字符串放入。
+
+最后还需要关闭文件，使用`fclose`命令，传入需要关闭的文件。如果不关闭文件的话，这个文件就会一直被占用，别人就不能读写这个文件了，所以这一步千万不能忘记。
+
+最后，我么在`success.php`页面输出一条消息，`JavaScript`中可以用`document.write`来输出内容，PHP使用`echo`语句来输出内容，支持输入HTML标签。
+
+到此，一个简单的PHP_Demo就写好了，我们来测试一下吧。
+
+在浏览器输入`http://localhost/php/login.html`进入页面，我们随便输入一些信息：
+
+![](http://images2015.cnblogs.com/blog/929120/201606/929120-20160628125812593-1050524524.png)
+
+提交后，页面跳转到`success.php`，我们看到如下内容：
+
+![](http://images2015.cnblogs.com/blog/929120/201606/929120-20160628125841234-1957108871.png)
+
+我们打开`data.txt`文件，看看数据是否被写入了。
+
+![](http://images2015.cnblogs.com/blog/929120/201606/929120-20160628125956468-852736423.png)
+
+的确按照我们规定的格式写入了数据，我来多登录几次试试：
+
+![](http://images2015.cnblogs.com/blog/929120/201606/929120-20160628130121765-751187831.png)
+
+测试成功！
+
+希望大家跟着上面的代码敲一遍，你会发现挺有成就感的，至少我最初学习PHP完成这个Demo时，兴奋坏了我。
+
+当然，这只是PHP最简单的一些实例，过段时间再写篇如何用PHP操作MySQL读写数据的文章，希望大家对技术保持一颗好奇心，这样才能真正成长！
+
+最后附上项目源码:[EasyPHP](https://github.com/rockjins/firstPython/tree/gh-pages/test/easyPHP)(还是希望大家能敲一下)

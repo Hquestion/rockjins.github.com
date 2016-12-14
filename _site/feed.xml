@@ -5,9 +5,587 @@
     <description> 周神的个人博客，和你一起进步，一起探索更奥妙的知识，更新奇的技术。 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 14 Dec 2016 17:33:35 +0800</pubDate>
-    <lastBuildDate>Wed, 14 Dec 2016 17:33:35 +0800</lastBuildDate>
+    <pubDate>Wed, 14 Dec 2016 19:39:46 +0800</pubDate>
+    <lastBuildDate>Wed, 14 Dec 2016 19:39:46 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title> 恶魔的呢喃 </title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;惰性就是你内心的恶魔，它在你耳边呢喃，放弃吧，你会过的很快乐。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;恶魔&quot;&gt;恶魔&lt;/h2&gt;
+
+&lt;p&gt;大概两年前，就有了想搭建个人博客的想法，当时想用&lt;code class=&quot;highlighter-rouge&quot;&gt;HEXO&lt;/code&gt;+&lt;code class=&quot;highlighter-rouge&quot;&gt;GitHub&lt;/code&gt;来做，可以想到，实践中会碰到很多问题，我前前后后花了一周时间，最后还是没有搭建出来。一直到两年后的今天，我才又着手去搭建博客。&lt;/p&gt;
+
+&lt;p&gt;我知道，不只是我，很多朋友都会有这种体验，学习一门新知识，然后碰到问题，去寻找答案，发现解决这个问题还要涉及到其他的知识。&lt;/p&gt;
+
+&lt;p&gt;这个时候你心里的那个恶魔就会出现，它会对你说：休息一会吧，你已经很努力了，就算学不会这些，你也一样可以过得很好。&lt;/p&gt;
+
+&lt;p&gt;其实想想，成功和失败，有时候就是因为自己一时的懒惰，在西方人看来，这就是被恶魔所打败。&lt;/p&gt;
+
+&lt;h2 id=&quot;讲个故事&quot;&gt;讲个故事&lt;/h2&gt;
+
+&lt;p&gt;前段时间看了电影《云图》，讲的其实就是汤姆·汉克斯和内心恶魔斗争的故事，最后一个高潮，在攀登山峰时，先知女掉了下去，汉克斯手里握着绳子，这时，恶魔出现了。&lt;/p&gt;
+
+&lt;p&gt;恶魔在他耳边说，放手吧，让她掉下去吧，不然你也会用尽力气，两个人都会摔死。&lt;/p&gt;
+
+&lt;p&gt;故事的结尾是汉克斯和先知女结婚了，生了很多宝宝，如果当时他向恶魔屈服，我相信他的后半生会在忏悔和折磨中度过。&lt;/p&gt;
+
+&lt;h2 id=&quot;回到现实&quot;&gt;回到现实&lt;/h2&gt;
+
+&lt;p&gt;没有人愿意去改变现状，改变意味着思考，思考就会发现问题，有问题就需要去解决，你会很烦恼。&lt;/p&gt;
+
+&lt;p&gt;少年，这也就是别人为什么比你成功的原因，你真的很勤奋努力吗？只有你自己知道。&lt;/p&gt;
+</description>
+        <pubDate>Mon, 12 Dec 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/12/12/evil/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/12/evil/</guid>
+        
+        <category>生活</category>
+        
+        <category>心情</category>
+        
+        
+      </item>
+    
+      <item>
+        <title> Vue数据绑定隐藏的神坑.... </title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;出现问题是好的，那说明你在行动。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;今天被Vue的一个坑给折磨了一天，终于发现是什么问题，我们先来模拟一个场景：
+代码如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;vue&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;app&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;v-model=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'sendJson.name'&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;click=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'showName'&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;打印输入框的值&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'./vue.min.js'&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#app'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;sendJson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{}&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;showName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sendJson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;我们进页面就点按钮，你猜会输出什么？&lt;/p&gt;
+
+&lt;p&gt;是undefined，不算奇怪，你什么都没输入，当然是undefined了。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201612/929120-20161201171421084-1001813606.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;OK，接下来刷新页面，进去多一步操作，先点击一下input输入框，在点击按钮，只是多做这一步操作：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201612/929120-20161201171437131-570191932.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;输出的是空白，在chrome中空白就代表空字符串，可以修改一下打印结果：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;console.log(this.sendJson.name === &quot;&quot;)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201612/929120-20161201171456443-1782238340.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;其实这看起来不是个大问题，但是在我的场景里问题就大了。&lt;/p&gt;
+
+&lt;p&gt;我要把输入框内的值作为一个对象的属性，问题就来了，看图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201612/929120-20161201171507646-1556743229.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这个坑牛逼不，我真是个奇葩。&lt;/p&gt;
+</description>
+        <pubDate>Thu, 01 Dec 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/12/01/vue-problem/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/01/vue-problem/</guid>
+        
+        <category>Vue</category>
+        
+        <category>JavaScript</category>
+        
+        
+      </item>
+    
+      <item>
+        <title> 由Vue引发的getter和setter思考 </title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;接触新事物总会让人很难受，但也会让人成长。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;公司的新项目决定使用Vue.js来做，当我打印出Vue实例下的data对象里的属性时，发现了一个有趣的事情：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201610/929120-20161025151218546-1679290074.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;它的每个属性都有两个相对应的get和set方法，我觉的这是多此一举的，于是去网上查了查Vue双向绑定的实现原理，才发现它和Angular.js双向绑定的实现原理完全不同，Angular是用的数据脏检测，当Model发生变化，会检测所有视图是否绑定了相关数据，再更改视图。而Vue使用的发布订阅模式，是点对点的绑定数据。&lt;/p&gt;
+
+&lt;p&gt;Vue的数据绑定只有两个步骤，compile=&amp;gt;link。&lt;/p&gt;
+
+&lt;p&gt;我一直在想，vue是通过什么去监听用户对Model的修改，直到我发现Vue的data里，每个属性都有set和get属性，我才明白过来。&lt;/p&gt;
+
+&lt;p&gt;在平时，我们创建一个对象，并修改它的属性，是这样的：&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;99&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//100&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;没有任何问题，但是如果要你去监测，当我修改了这个对象的属性时，要去做一些事，你会怎么做？&lt;/p&gt;
+
+&lt;p&gt;这就要用到getter和setter了。&lt;/p&gt;
+
+&lt;p&gt;假设我现在要给一个码农对象添加一个name属性，而且每次更新name属性时，我要去完成一些事，我们可以这样做：&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Coder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;that&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;that&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;that&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'你还没有取名'&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'你把名字修成了'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;that&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isMe&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Coder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isMe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;isMe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'周神'&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isMe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isMe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;输出：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201610/929120-20161025173135343-1508869676.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;你会发现这个对象和最上面的Vue中的data对象，打印出来的效果是一样的，都拥有get和set属性。&lt;/p&gt;
+
+&lt;p&gt;我们来一步步分析下上面的代码,很有趣。&lt;/p&gt;
+
+&lt;p&gt;我们先创建一个对象字面量：&lt;/p&gt;
+
+&lt;p&gt;var Coder = function() {…}&lt;/p&gt;
+
+&lt;p&gt;再把this缓存一下：&lt;/p&gt;
+
+&lt;p&gt;var that = this;&lt;/p&gt;
+
+&lt;p&gt;接下来是最重要的，我们return了一个对象回去：&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;&lt;span class=&quot;cm&quot;&gt;/*do something*/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;&lt;span class=&quot;cm&quot;&gt;/*do something*/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;顾名思义，get为取值，set为赋值，正常情况下，我们取值和赋值是用obj.prop的方式，但是这样做有一个问题，我如何知道对象的值改变了？所以就轮到set登场了。&lt;/p&gt;
+
+&lt;p&gt;你可以把get和set理解为function，当然，只是可以这么理解，这是完全不一样的两个东西。&lt;/p&gt;
+
+&lt;p&gt;接下来创建一个码农的实例，isMe；此时，isMe是没有name属性的，当我们调用isMe.name时，我们会进入到get name(){…}中，先判断isMe是否有name属性，答案是否定的，那麽就添加一个name属性，并给它赋值：”你还没有取名”；如果有name属性，那就返回name属性。&lt;/p&gt;
+
+&lt;p&gt;看到这里你一定知道get怎么使用了，对，你可以把get看成一个取值的函数，函数的返回值就是它拿到的值。&lt;/p&gt;
+
+&lt;p&gt;我感觉比较重要的是set属性，当我给实例赋值：&lt;/p&gt;
+
+&lt;p&gt;isMe.name=”周神”&lt;/p&gt;
+
+&lt;p&gt;此时，会进入set name(val){…}；形参val就是我赋给name属性的值，在这个函数里，我就可以做很多事了，比如双向绑定！因为这个值的每次改变都必须经过set，其他方式是改变不了它的，相当于一个万能的监听器。&lt;/p&gt;
+
+&lt;p&gt;还有另一种方法可以实现这个功能。&lt;/p&gt;
+
+&lt;p&gt;ES5的对象原型有两个新的属性__defineGetter__和__defineSetter__，专门用来给对象绑定get和set。可以这样书写：&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Coder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;Coder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__defineGetter__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'你还没有取名'&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;Coder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__defineSetter__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isMe&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Coder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isMe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;isMe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'周神'&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isMe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isMe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;效果是一样的，建议使用下面这种方式，因为是在原型上书写，所以可以继承和重用，最近想写点小框架，才发现知识不够用，大家一起加油吧！&lt;/p&gt;
+</description>
+        <pubDate>Tue, 25 Oct 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/10/25/vue-getter-setter/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/10/25/vue-getter-setter/</guid>
+        
+        <category>Vue</category>
+        
+        <category>JavaScript</category>
+        
+        
+      </item>
+    
+      <item>
+        <title> parseInt第二个参数详解 </title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;不常用不代表你不用去理解它，或许哪次装逼就用上了。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;前阵子在stackOverflow上看到两个这样的问题：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/39147108/why-is-it-that-parseint8-3-nan-and-parseint16-3-1&quot;&gt;为什么parseInt(8,3) == NaN，parseInt(16,3) == 1？&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/26017371/why-does-parseintdsff66-16-return-13?rq=1&quot;&gt;为什么parseInt(‘dsff66’,16) == 13？&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;parseInt大家应该都很熟悉了，我们一般用他来把一个小数或字符串转换为整数，正常情况下我们都是这样做的:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;11.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//返回11&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;13&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//返回Number类型的13&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;函数会尝试逐个解析字符串中的字符，直到遇上一个无法被解析成数字的字符，然后返回该字符前所有数字字符组成的数字。&lt;/p&gt;
+
+&lt;p&gt;但是parseInt的第二个参数很多朋友就不太清楚了，因为本身就很少使用第二个参数，我们看看MDN上对第二个参数的解释：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;一个2到36之间的整数值，用于指定转换中采用的基数。比如参数”10”表示使用我们通常使用的十进制数值系统。总是指定该参数可以消除阅读该代码时的困惑并且保证转换结果可预测。当忽略该参数时，不同的实现环境可能产生不同的结果。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;最后说到如果忽略的话，不同环境会有不同结果，大家不用担心，ES5已经规定了如果省略就代表用十进制解析。&lt;/p&gt;
+
+&lt;p&gt;第二个参数是2~36之间的整数值，这个值其实就是我们说的进制，比如，我们用二进制去解析第一个参数，那么就这么做：&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;101&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//返回5&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;下面我们来分析一下上面的两个问题，相信大家对这第二个参数就能有个透彻的认识了。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;为什么parseInt(8,3) == NaN，parseInt(16,3) == 1？&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;先来看第一个parseInt(8,3) ，这里的意思就是用,三进制去解析8，我们知道二进制是遇2进1，三进制同样，遇3进1，比如我要用三进表示十进制中的5，那么就是12，也就是(2&lt;em&gt;(3^0))+(1&lt;/em&gt;(3^1))=5；&lt;/p&gt;
+
+&lt;p&gt;所以在三进制中，出现的最大的数字也就是2，8这个数字不可能出现在三进制中，所以返回NaN。&lt;/p&gt;
+
+&lt;p&gt;parseInt(16,3)同样，出现最大的数字是2，那么6就是被自动忽略掉，所以parseInt是直接用三进制去解析1，得到的当然是1了。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;为什么parseInt(‘dsff66’，16) == 13？&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;我们知道，平时使用parseInt，它会忽略到除数字之外的字符，但是这里不一样，因为十进制最大的数字是9，但是到了十一进制往上，最大的数字是两位数了，这当然不行，所以从10开始往上，就用字母代替，a==10,b==11……z==35；所以你知道为什么parseInt的第二个参数要规定在2~36了吗？&lt;/p&gt;
+
+&lt;p&gt;再看看上面这道问题，在16进制中，最大的数字是15，对应字母也就是f，超过f的字母也就超出了16进制的解析范围。&lt;/p&gt;
+
+&lt;p&gt;‘dsff66’的第一个字符是d，也就是十进制中的13，第二个字符s，代表十进制中的28，这显然超出了16进制的解析范围，所以s和它之后的字符都会被parseInt自动忽略，所以我们得到13。&lt;/p&gt;
+
+&lt;p&gt;相信看到这里，你对parseInt的第二个参数已经完全了解了，如果你对进制之间的转换不太了解的话，可以多去网上学习学习进制之间的转换，就算平时用不着，还是可能拿来装X嘛。&lt;/p&gt;
+
+&lt;p&gt;另外补充一下，另一个函数parseFloat只接受一个参数，只能使用十进制去解析。&lt;/p&gt;
+</description>
+        <pubDate>Sat, 03 Sep 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/09/03/parseint/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/09/03/parseint/</guid>
+        
+        <category>JavaScript</category>
+        
+        
+      </item>
+    
+      <item>
+        <title> 教你把百度的关键字搜索偷过来用用 </title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;你真以为我偷东西啊！对啊，我就是偷东西。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;话不多说，先上效果图。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201607/929120-20160701151650890-1741841284.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;怎么样，是不是和在用百度一下时，关键字搜索补全一样一样的。&lt;/p&gt;
+
+&lt;p&gt;今天下午没什么事，打开百度首页的Newwork看了一下，发现我每次输入内容后，它都会把我们输入的内容发送到后台，后台返回这些关键字的联想条目，我们只需要把这些条目放到页面中，就可以实现上图所示的demo了。&lt;/p&gt;
+
+&lt;p&gt;下面我们就来看看怎么获取这些内容。&lt;/p&gt;
+
+&lt;p&gt;先打开百度首页，我是用的chrome浏览器，F12，选到Network（你可能发现Network中是空的，刷新一下页面就好了）：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201607/929120-20160701154248640-1892689881.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;看到一大堆请求过来的文件，下面我们要找到关键的文件，也就是我们输入时，百度返回的文件，最快速的方法就是输入一大堆的字母，这样可以很方便的找到,我输入了一大堆的ssssss…..：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201607/929120-20160701154606359-1163344681.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;看到这些返回的文件吗，wd=ssssssssssss….，我们随便双击一条，把弹出窗口中的Request URL里的网址复制下来，这个就是我们完成关键字搜索的请求路径。&lt;/p&gt;
+
+&lt;p&gt;我们可以把网址直接复制到浏览器地址栏，看看得到的是个什么东西:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;jQuery110204129574971066774_1467359127325&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;q&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;哈哈是什么yisi&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;p&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;bs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;csor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;9&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;g&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;q&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;哈哈是什么意思&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;t&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;n&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;st&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;q&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;哈哈是什么意思&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;new&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;q&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;哈哈哈哈是什么意思&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;t&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;n&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;st&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;q&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;哈哈哈哈是什么意思&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;new&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;哈哈是什么意思&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;哈哈哈哈是什么意思&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;得到的数据是一个对象，不过对象被包裹在一个函数内，这个格式是不是很熟悉啊，对，就是jsonp！分析完这个数据格式，发现我们需要的是这个对象下的s数组里的数据，那我们就把s里的数据拿出来插入到页面中就行了，开始吧！&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;js/jquery-2.1.0.js&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;onkeyup=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;require()&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;search&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;show&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+                        &lt;span class=&quot;c1&quot;&gt;//do something......&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这段html代码很简单，引入了jQuery，一个输入框，一个承载返回内容的div，我么直接把script写在body的最下面，当我么输入时手指抬起，就去调用require函数，这个函数里就是我们的关键代码。（大家可以想想为什么要用onkeyup，这是个坑）&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;search&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#search&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;search&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&amp;amp;json=1&amp;amp;p=3&amp;amp;sid=20144_1467_19033_20515_18240_17949_20388_20456_18133_17001_15202_11615&amp;amp;req=2&amp;amp;csor=2&amp;amp;pwd=s&amp;amp;cb=jQuery110207612423721154653_1467355506619&amp;amp;_=1467355506623'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ajax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;get&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;async&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;dataType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'jsonp'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;jsonpCallback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'jQuery110207612423721154653_1467355506619'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&amp;lt;p&amp;gt;'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&amp;lt;/p&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#show&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;当require函数被触发时，执行以上代码，我们来分析一下上面的代码。&lt;/p&gt;
+
+&lt;p&gt;先获取到输入框的内容，再定义一个_url，把我们之前得到的url地址附给这个变量，但是注意要把关键字的值改成输入框内的值，这样才能动态获取，不然你一直都在请求一个固定的关键字（上面把_url中的search标红加粗了）。&lt;/p&gt;
+
+&lt;p&gt;准备工作做好，可以发起ajax请求了，因为是jsonp的格式，所以要设置dataType:’jsonp’，并告诉jQuery回调函数的名称，这个名称可以在浏览器中得到（之前在浏览器地址栏输入url，得到的数据被包含在一个函数里，这里的jsonpCallback就写那个函数的名称，每个人的都不一样）。&lt;/p&gt;
+
+&lt;p&gt;现在我们只需要把数据console.log出来，并解析到页面上，就可以实现文章开头的效果了，简单吧！(记得放在服务器环境运行哦！)&lt;/p&gt;
+</description>
+        <pubDate>Fri, 01 Jul 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/07/01/baidu-keywords/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/07/01/baidu-keywords/</guid>
+        
+        <category>JSONP</category>
+        
+        <category>JavaScript</category>
+        
+        
+      </item>
+    
+      <item>
+        <title> 一起来花5分钟写一个PHP入门Demo </title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;你以为很难，只是因为你没有去行动。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;最近公司招了几个应届毕业生，他们对前端的了解还挺多，但是对后端的技术一无所知，我觉得，作为一个前端攻城狮，如果你有远大的抱负，就应该雨露均沾…&lt;/p&gt;
+
+&lt;p&gt;今天我就跟大家讲一讲PHP最基本的入门，至少别人问起你来，不会一点都不懂。&lt;/p&gt;
+
+&lt;p&gt;大家知道PHP搭建环境蛮麻烦的，咱们前端攻城狮就没必要去钻研环境的搭建了，网上已经有集成好的PHP环境可以直接下载，&lt;code class=&quot;highlighter-rouge&quot;&gt;wamp&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;phpstudy&lt;/code&gt;，安装只需下一步就行。&lt;/p&gt;
+
+&lt;p&gt;因为我一直是使用wamp，一下就以wamp为例来讲解。&lt;/p&gt;
+
+&lt;p&gt;安装好wamp后，屏幕右下角会出现这个图标。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201606/929120-20160628093309312-1402371585.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如果你英语不是很好的话，可以右击图标，选择中文。&lt;/p&gt;
+
+&lt;p&gt;wamp打开后会默认开启所有服务，你也可以左击图标，选择启动所有服务，并且切换到在线状态。&lt;/p&gt;
+
+&lt;p&gt;到此，PHP运行的环境就准备好了。&lt;/p&gt;
+
+&lt;p&gt;下面开始写demo了。&lt;/p&gt;
+
+&lt;p&gt;点击右下角小图标，有个www目录，进入后创建一个叫php的项目文件夹：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201606/929120-20160628111027265-2145567082.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在文件夹中新建这几个文件：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201606/929120-20160628111159343-1711797668.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;我们先打开&lt;code class=&quot;highlighter-rouge&quot;&gt;login.html&lt;/code&gt;，写入一个简单的表单：&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Document&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;form&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;action=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;success.php&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;method=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        用户名：&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;username&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;&lt;/span&gt;
+        密码：&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;password&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pwd&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;submit&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;submit&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;提交&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;效果如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201606/929120-20160628111413999-225059502.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;我们需要实现用户点击提交时，把用户输入的用户名和密码保存在本地的&lt;code class=&quot;highlighter-rouge&quot;&gt;data.txt&lt;/code&gt;文件里，并且在&lt;code class=&quot;highlighter-rouge&quot;&gt;success.php&lt;/code&gt;页面提示用户登录成功。&lt;/p&gt;
+
+&lt;p&gt;下面我们开始关键的php代码，打开&lt;code class=&quot;highlighter-rouge&quot;&gt;success.php&lt;/code&gt;文件，敲入以下代码：&lt;/p&gt;
+
+&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Document&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+        &lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$_POST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;username&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+        &lt;span class=&quot;nv&quot;&gt;$pwd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$_POST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;pwd&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+        &lt;span class=&quot;nv&quot;&gt;$fp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;fopen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./data.txt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nv&quot;&gt;$str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;user:&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;amp;password:&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$pwd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;fwrite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$fp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;fclose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$fp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;h1&amp;gt;欢迎回来,&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;！&amp;lt;/h1&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;大家要注意，PHP代码可以和HTML代码混合使用，包裹在&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;?php doSomething ?&amp;gt;&lt;/code&gt;标签内的代码，服务器就会用PHP的解析器去解析，我们来分析一下上面的代码。&lt;/p&gt;
+
+&lt;p&gt;因为表单使用post方式提交的，所以我们需要用POST方式去接收，PHP接收POST发送过来的数据使用&lt;code class=&quot;highlighter-rouge&quot;&gt;$_POST[&quot;&quot;]&lt;/code&gt;;语句，get用法一样，把POST改成GET，在中括号内填写你需要获取表单项的name名。&lt;/p&gt;
+
+&lt;p&gt;接下来我们要把所得到的数据写入到&lt;code class=&quot;highlighter-rouge&quot;&gt;data.txt&lt;/code&gt;文件内，实际项目开发中，这些数据都是写入到数据库中。&lt;/p&gt;
+
+&lt;p&gt;我们用&lt;code class=&quot;highlighter-rouge&quot;&gt;fopen&lt;/code&gt;命令打开一个文件，&lt;code class=&quot;highlighter-rouge&quot;&gt;fopen&lt;/code&gt;接收两个参数，第一个是要打开文件的路径；第二个是打开的方式，这里使用&lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt;写入方式打开，将文件指针指向文件末尾，如果文件不存在，则会尝试创建这个文件。（其他参数详情请到W3school查看）&lt;/p&gt;
+
+&lt;p&gt;还需要注意的是，PHP中的变量声明并不是用&lt;code class=&quot;highlighter-rouge&quot;&gt;var&lt;/code&gt;，而是&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt;+变量名。&lt;/p&gt;
+
+&lt;p&gt;接下来把用户名和密码拼接成字符串，PHP中的字符串拼接和JavaScript也有差异，PHP使用&lt;code class=&quot;highlighter-rouge&quot;&gt;.&lt;/code&gt;来做拼接符。&lt;/p&gt;
+
+&lt;p&gt;我们用&lt;code class=&quot;highlighter-rouge&quot;&gt;fwrite&lt;/code&gt;命令来写入文件，它接收两个参数，第一个是要打开的文件，也就是我们前面定义的&lt;code class=&quot;highlighter-rouge&quot;&gt;$fp&lt;/code&gt;；第二个是要写入的内容，把之前拼接好的字符串放入。&lt;/p&gt;
+
+&lt;p&gt;最后还需要关闭文件，使用&lt;code class=&quot;highlighter-rouge&quot;&gt;fclose&lt;/code&gt;命令，传入需要关闭的文件。如果不关闭文件的话，这个文件就会一直被占用，别人就不能读写这个文件了，所以这一步千万不能忘记。&lt;/p&gt;
+
+&lt;p&gt;最后，我么在&lt;code class=&quot;highlighter-rouge&quot;&gt;success.php&lt;/code&gt;页面输出一条消息，&lt;code class=&quot;highlighter-rouge&quot;&gt;JavaScript&lt;/code&gt;中可以用&lt;code class=&quot;highlighter-rouge&quot;&gt;document.write&lt;/code&gt;来输出内容，PHP使用&lt;code class=&quot;highlighter-rouge&quot;&gt;echo&lt;/code&gt;语句来输出内容，支持输入HTML标签。&lt;/p&gt;
+
+&lt;p&gt;到此，一个简单的PHP_Demo就写好了，我们来测试一下吧。&lt;/p&gt;
+
+&lt;p&gt;在浏览器输入&lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost/php/login.html&lt;/code&gt;进入页面，我们随便输入一些信息：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201606/929120-20160628125812593-1050524524.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;提交后，页面跳转到&lt;code class=&quot;highlighter-rouge&quot;&gt;success.php&lt;/code&gt;，我们看到如下内容：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201606/929120-20160628125841234-1957108871.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;我们打开&lt;code class=&quot;highlighter-rouge&quot;&gt;data.txt&lt;/code&gt;文件，看看数据是否被写入了。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201606/929120-20160628125956468-852736423.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;的确按照我们规定的格式写入了数据，我来多登录几次试试：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201606/929120-20160628130121765-751187831.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;测试成功！&lt;/p&gt;
+
+&lt;p&gt;希望大家跟着上面的代码敲一遍，你会发现挺有成就感的，至少我最初学习PHP完成这个Demo时，兴奋坏了我。&lt;/p&gt;
+
+&lt;p&gt;当然，这只是PHP最简单的一些实例，过段时间再写篇如何用PHP操作MySQL读写数据的文章，希望大家对技术保持一颗好奇心，这样才能真正成长！&lt;/p&gt;
+
+&lt;p&gt;最后附上项目源码:&lt;a href=&quot;https://github.com/rockjins/firstPython/tree/gh-pages/test/easyPHP&quot;&gt;EasyPHP&lt;/a&gt;(还是希望大家能敲一下)&lt;/p&gt;
+</description>
+        <pubDate>Tue, 28 Jun 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/06/28/php-demo/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/06/28/php-demo/</guid>
+        
+        <category>PHP</category>
+        
+        
+      </item>
     
       <item>
         <title> 来自网易云的黑科技，带尖角的div...... </title>
@@ -50,52 +628,11 @@ border-left: 400px solid transparent;
 
 &lt;p&gt;我们只需给父元素position:relative;把这两个小方块定位到相应的地方就OK啦，感觉能想到这种方法的人也挺牛的，啊哈。&lt;/p&gt;
 </description>
-        <pubDate>Wed, 14 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/14/music-cloud/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/14/music-cloud/</guid>
+        <pubDate>Wed, 22 Jun 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/06/22/music-cloud/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/06/22/music-cloud/</guid>
         
         <category>CSS</category>
-        
-        
-      </item>
-    
-      <item>
-        <title> 恶魔的呢喃 </title>
-        <description>&lt;blockquote&gt;
-  &lt;p&gt;惰性就是你内心的恶魔，它在你耳边呢喃，放弃吧，你会过的很快乐。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;恶魔&quot;&gt;恶魔&lt;/h2&gt;
-
-&lt;p&gt;大概两年前，就有了想搭建个人博客的想法，当时想用&lt;code class=&quot;highlighter-rouge&quot;&gt;HEXO&lt;/code&gt;+&lt;code class=&quot;highlighter-rouge&quot;&gt;GitHub&lt;/code&gt;来做，可以想到，实践中会碰到很多问题，我前前后后花了一周时间，最后还是没有搭建出来。一直到两年后的今天，我才又着手去搭建博客。&lt;/p&gt;
-
-&lt;p&gt;我知道，不只是我，很多朋友都会有这种体验，学习一门新知识，然后碰到问题，去寻找答案，发现解决这个问题还要涉及到其他的知识。&lt;/p&gt;
-
-&lt;p&gt;这个时候你心里的那个恶魔就会出现，它会对你说：休息一会吧，你已经很努力了，就算学不会这些，你也一样可以过得很好。&lt;/p&gt;
-
-&lt;p&gt;其实想想，成功和失败，有时候就是因为自己一时的懒惰，在西方人看来，这就是被恶魔所打败。&lt;/p&gt;
-
-&lt;h2 id=&quot;讲个故事&quot;&gt;讲个故事&lt;/h2&gt;
-
-&lt;p&gt;前段时间看了电影《云图》，讲的其实就是汤姆·汉克斯和内心恶魔斗争的故事，最后一个高潮，在攀登山峰时，先知女掉了下去，汉克斯手里握着绳子，这时，恶魔出现了。&lt;/p&gt;
-
-&lt;p&gt;恶魔在他耳边说，放手吧，让她掉下去吧，不然你也会用尽力气，两个人都会摔死。&lt;/p&gt;
-
-&lt;p&gt;故事的结尾是汉克斯和先知女结婚了，生了很多宝宝，如果当时他向恶魔屈服，我相信他的后半生会在忏悔和折磨中度过。&lt;/p&gt;
-
-&lt;h2 id=&quot;回到现实&quot;&gt;回到现实&lt;/h2&gt;
-
-&lt;p&gt;没有人愿意去改变现状，改变意味着思考，思考就会发现问题，有问题就需要去解决，你会很烦恼。&lt;/p&gt;
-
-&lt;p&gt;少年，这也就是别人为什么比你成功的原因，你真的很勤奋努力吗？只有你自己知道。&lt;/p&gt;
-</description>
-        <pubDate>Mon, 12 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/12/evil/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/12/evil/</guid>
-        
-        <category>生活</category>
-        
-        <category>心情</category>
         
         
       </item>

@@ -79,15 +79,15 @@
                     <li>
                         <a href="/">Home</a>
                     </li>
-                    
+
                     <li>
                         <a href="/about/">About</a>
                     </li>
-                    
+
                     <li>
                         <a href="/tags/">Tags</a>
                     </li>
-                    
+
                 </ul>
             </div>
         </div>
@@ -133,11 +133,11 @@
     /**
      * Since Fastclick is used to delegate 'touchstart' globally
      * to hack 300ms delay in iOS by performing a fake 'click',
-     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * Using 'e.stopPropagation' to stop 'touchstart' event from
      * $toggle/$collapse will break global delegation.
-     * 
+     *
      * Instead, we use a 'e.target' filter to prevent handler
-     * added to document close HuxNav.  
+     * added to document close HuxNav.
      *
      * Also, we use 'click' instead of 'touchstart' as compromise
      */
@@ -150,7 +150,7 @@
 
 
     <!-- Page Header -->
-<header class="intro-header" style="background-image: url('//upload-images.jianshu.io/upload_images/2859850-d64c399e8e9861a8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')">
+<header class="intro-header" style="background-image: url('//desk.fd.zol-img.com.cn/t_s1920x1200c5/g5/M00/02/03/ChMkJlbKxsqITwdEAAkMndnl14YAALHqQMhYbEACQy1030.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
@@ -167,7 +167,7 @@
 <!-- Main Content -->
 <div class="container">
 	<div class="row">
-        
+
 
 <!-- USE SIDEBAR -->
     <!-- PostList Container -->
@@ -178,19 +178,201 @@
                 col-xs-12
                 postlist-container
             ">
-    			
+
 <div class="post-preview">
-    <a href="/2016/12/14/music-cloud/">
+    <a href="/2016/12/12/evil/">
         <h2 class="post-title">
-             来自网易云的黑科技，带尖角的div...... 
+             恶魔的呢喃
         </h2>
-        
+
         <h3 class="post-subtitle">
-             How amazing!The programmer is a genius! 
+             Some things very simple, you think of it is too difficult.
         </h3>
-        
+
         <div class="post-content-preview">
-            
+
+  惰性就是你内心的恶魔，它在你耳边呢喃，放弃吧，你会过的很快乐。
+
+
+恶魔
+
+大概两年前，就有了想搭建个人博客的想法，当时想用HEXO+GitHub来做，可以想到，实践中会碰到很多问题，我前前后后花了一周时间，最后还是没有搭建出来。一直到两年后的今天，我才又着手去搭建博客。
+
+我知道，不只是我，很多朋友都会有这种体验，学习一门新知识，然后碰到问题，去寻找答案，发现解决这个问题还要涉及到其...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Shock on December 12, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/12/01/vue-problem/">
+        <h2 class="post-title">
+             Vue数据绑定隐藏的神坑....
+        </h2>
+
+        <h3 class="post-subtitle">
+             Someone walk, will have a road.
+        </h3>
+
+        <div class="post-content-preview">
+
+  出现问题是好的，那说明你在行动。
+
+
+今天被Vue的一个坑给折磨了一天，终于发现是什么问题，我们先来模拟一个场景：
+代码如下：
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;vue&lt;/title&gt;
+&lt...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Shock on December 1, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/10/25/vue-getter-setter/">
+        <h2 class="post-title">
+             由Vue引发的getter和setter思考
+        </h2>
+
+        <h3 class="post-subtitle">
+             Thinking can make you stronger.
+        </h3>
+
+        <div class="post-content-preview">
+
+  接触新事物总会让人很难受，但也会让人成长。
+
+
+公司的新项目决定使用Vue.js来做，当我打印出Vue实例下的data对象里的属性时，发现了一个有趣的事情：
+
+
+
+它的每个属性都有两个相对应的get和set方法，我觉的这是多此一举的，于是去网上查了查Vue双向绑定的实现原理，才发现它和Angular.js双向绑定的实现原理完全不同，Angular是用的数据脏检测，当Model发生变化，...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Shock on October 25, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/09/03/parseint/">
+        <h2 class="post-title">
+             parseInt第二个参数详解
+        </h2>
+
+        <h3 class="post-subtitle">
+             The second no one will remember.
+        </h3>
+
+        <div class="post-content-preview">
+
+  不常用不代表你不用去理解它，或许哪次装逼就用上了。
+
+
+前阵子在stackOverflow上看到两个这样的问题：
+
+为什么parseInt(8,3) == NaN，parseInt(16,3) == 1？
+
+为什么parseInt(‘dsff66’,16) == 13？
+
+parseInt大家应该都很熟悉了，我们一般用他来把一个小数或字符串转换为整数，正常情况下我们都是这样做的:
+
+p...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Shock on September 3, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/07/01/baidu-keywords/">
+        <h2 class="post-title">
+             教你把百度的关键字搜索偷过来用用
+        </h2>
+
+        <h3 class="post-subtitle">
+             Stealing is a kind of virtue, right?
+        </h3>
+
+        <div class="post-content-preview">
+
+  你真以为我偷东西啊！对啊，我就是偷东西。
+
+
+话不多说，先上效果图。
+
+
+
+怎么样，是不是和在用百度一下时，关键字搜索补全一样一样的。
+
+今天下午没什么事，打开百度首页的Newwork看了一下，发现我每次输入内容后，它都会把我们输入的内容发送到后台，后台返回这些关键字的联想条目，我们只需要把这些条目放到页面中，就可以实现上图所示的demo了。
+
+下面我们就来看看怎么获取这些内容。
+
+先...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Shock on July 1, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/06/28/php-demo/">
+        <h2 class="post-title">
+             一起来花5分钟写一个PHP入门Demo
+        </h2>
+
+        <h3 class="post-subtitle">
+             When you really want to know a thing, You will see is really very simple.
+        </h3>
+
+        <div class="post-content-preview">
+
+  你以为很难，只是因为你没有去行动。
+
+
+最近公司招了几个应届毕业生，他们对前端的了解还挺多，但是对后端的技术一无所知，我觉得，作为一个前端攻城狮，如果你有远大的抱负，就应该雨露均沾…
+
+今天我就跟大家讲一讲PHP最基本的入门，至少别人问起你来，不会一点都不懂。
+
+大家知道PHP搭建环境蛮麻烦的，咱们前端攻城狮就没必要去钻研环境的搭建了，网上已经有集成好的PHP环境可以直接下载，wamp...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Shock on June 28, 2016
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/06/22/music-cloud/">
+        <h2 class="post-title">
+             来自网易云的黑科技，带尖角的div......
+        </h2>
+
+        <h3 class="post-subtitle">
+             How amazing!The programmer is a genius!
+        </h3>
+
+        <div class="post-content-preview">
+
   很多时候最不能相信的就是你的眼睛。
 
 
@@ -205,35 +387,7 @@ border-right:...
         </div>
     </a>
     <p class="post-meta">
-        Posted by Shock on December 14, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/12/12/evil/">
-        <h2 class="post-title">
-             恶魔的呢喃 
-        </h2>
-        
-        <h3 class="post-subtitle">
-             Some things very simple, you think of it is too difficult. 
-        </h3>
-        
-        <div class="post-content-preview">
-            
-  惰性就是你内心的恶魔，它在你耳边呢喃，放弃吧，你会过的很快乐。
-
-
-恶魔
-
-大概两年前，就有了想搭建个人博客的想法，当时想用HEXO+GitHub来做，可以想到，实践中会碰到很多问题，我前前后后花了一周时间，最后还是没有搭建出来。一直到两年后的今天，我才又着手去搭建博客。
-
-我知道，不只是我，很多朋友都会有这种体验，学习一门新知识，然后碰到问题，去寻找答案，发现解决这个问题还要涉及到其...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Shock on December 12, 2016
+        Posted by Shock on June 22, 2016
     </p>
 </div>
 <hr>
@@ -252,37 +406,53 @@ border-right:...
                 sidebar-container
             ">
                 <!-- Featured Tags -->
-                
+
                 <section>
                     <hr class="hidden-sm hidden-xs">
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
-                        
-                            
-                        
-                            
-                        
-                            
-                        
+
+
+
+
+
+
+
+
+                                <a href="/tags/#JavaScript" title="JavaScript" rel="4">
+                                    JavaScript
+                                </a>
+
+
+
+                                <a href="/tags/#Vue" title="Vue" rel="2">
+                                    Vue
+                                </a>
+
+
+
+
+
+
                     </div>
                 </section>
-                
+
 
                 <!-- Short About -->
                 <section class="visible-md visible-lg">
                     <hr><h5><a href="/about/">ABOUT ME</a></h5>
                     <div class="short-about">
-                        
+
                             <img src="//upload-images.jianshu.io/upload_images/2859850-18192c8208b7900d.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" />
-                        
-                        
+
+
                             <p>爱学习，爱摇滚，<br/>永葆那颗探索的心。</p>
-                        
+
                         <!-- SNS Link -->
                         <ul class="list-inline">
-                            
-                            
-                            
+
+
+
                             <li>
                                 <a target="_blank" href="https://www.zhihu.com/people/zhou-bao-bo-24">
                                     <span class="fa-stack fa-lg">
@@ -291,8 +461,8 @@ border-right:...
                                     </span>
                                 </a>
                             </li>
-                            
-                            
+
+
                             <li>
                                 <a target="_blank" href="http://weibo.com/u/3124654701">
                                     <span class="fa-stack fa-lg">
@@ -301,8 +471,8 @@ border-right:...
                                     </span>
                                 </a>
                             </li>
-                            
-                            
+
+
                             <li>
                                 <a target="_blank" href="https://www.facebook.com/jins.chow">
                                     <span class="fa-stack fa-lg">
@@ -311,8 +481,8 @@ border-right:...
                                     </span>
                                 </a>
                             </li>
-                            
-                            
+
+
                             <li>
                                 <a target="_blank" href="https://github.com/rockjins">
                                     <span class="fa-stack fa-lg">
@@ -321,15 +491,15 @@ border-right:...
                                     </span>
                                 </a>
                             </li>
-                            
-                            
+
+
                         </ul>
                     </div>
                 </section>
                 <!-- Friends Blog -->
-                
+
     		</div>
-        
+
 	</div>
 </div>
 
@@ -340,11 +510,11 @@ border-right:...
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <ul class="list-inline text-center">
-                    
-                    
+
+
 
                     <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
-                    
+
                     <li>
                         <a target="_blank" href="https://www.zhihu.com/people/zhou-bao-bo-24">
                             <span class="fa-stack fa-lg">
@@ -353,8 +523,8 @@ border-right:...
                             </span>
                         </a>
                     </li>
-                    
-                    
+
+
                     <li>
                         <a target="_blank" href="http://weibo.com/u/3124654701">
                             <span class="fa-stack fa-lg">
@@ -363,10 +533,10 @@ border-right:...
                             </span>
                         </a>
                     </li>
-                    
 
 
-                    
+
+
                     <li>
                         <a target="_blank" href="https://www.facebook.com/jins.chow">
                             <span class="fa-stack fa-lg">
@@ -375,8 +545,8 @@ border-right:...
                             </span>
                         </a>
                     </li>
-                    
-                    
+
+
                     <li>
                         <a target="_blank" href="https://github.com/rockjins">
                             <span class="fa-stack fa-lg">
@@ -385,8 +555,8 @@ border-right:...
                             </span>
                         </a>
                     </li>
-                    
-                    
+
+
                 </ul>
                 <p class="copyright text-muted">
                     Copyright &copy; Rockjins Blog 2016
@@ -504,7 +674,7 @@ border-right:...
 
 
 <!-- Image to hack wechat -->
-<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- <img src="/img/icon_wechat.png" width="0" height="0" /> -->
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>

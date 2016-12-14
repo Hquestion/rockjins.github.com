@@ -10,7 +10,7 @@
     <meta name="keywords"  content="周神, Shock, @rockjins, @chinajins, 周神的博客, Rockjins Blog, 博客, 个人网站, 互联网, 前端, 设计, 产品">
     <meta name="theme-color" content="#000000">
 
-    <title> 来自网易云的黑科技，带尖角的div......  - 周神的博客 | Rockjins Blog</title>
+    <title> parseInt第二个参数详解  - 周神的博客 | Rockjins Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2016/12/14/music-cloud/">
+    <link rel="canonical" href="http://localhost:4000/2016/09/03/parseint/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -151,13 +151,13 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="//upload-images.jianshu.io/upload_images/2859850-a995adb879946d2d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="0" height="0"> -->
+<!-- <img src="//desk.fd.zol-img.com.cn/t_s1920x1080c5/g5/M00/02/02/ChMkJlbKxhKIN4X3AAsbMPQjXk4AALHfwEE9TcACxtI965.jpg" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('//upload-images.jianshu.io/upload_images/2859850-a995adb879946d2d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')
+        background-image: url('//desk.fd.zol-img.com.cn/t_s1920x1080c5/g5/M00/02/02/ChMkJlbKxhKIN4X3AAsbMPQjXk4AALHfwEE9TcACxtI965.jpg')
     }
 
     
@@ -170,15 +170,15 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#CSS" title="CSS">CSS</a>
+                        <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
                         
                     </div>
-                    <h1> 来自网易云的黑科技，带尖角的div...... </h1>
+                    <h1> parseInt第二个参数详解 </h1>
                     
                     
-                    <h2 class="subheading"> How amazing!The programmer is a genius! </h2>
+                    <h2 class="subheading"> The second no one will remember. </h2>
                     
-                    <span class="meta">Posted by Shock on December 14, 2016</span>
+                    <span class="meta">Posted by Shock on September 3, 2016</span>
                 </div>
             </div>
         </div>
@@ -197,43 +197,64 @@
                 post-container">
 
 				<blockquote>
-  <p>很多时候最不能相信的就是你的眼睛。</p>
+  <p>不常用不代表你不用去理解它，或许哪次装逼就用上了。</p>
 </blockquote>
 
-<p>今天在网易云的网页版听歌，话说Steve Vai的曲子永远是这么让人揣摩不透，不过我还时更喜欢老Joe，咦，跑题了···</p>
+<p>前阵子在stackOverflow上看到两个这样的问题：</p>
 
-<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160622141525235-1632127211.png" alt="" /></p>
+<p><a href="http://stackoverflow.com/questions/39147108/why-is-it-that-parseint8-3-nan-and-parseint16-3-1">为什么parseInt(8,3) == NaN，parseInt(16,3) == 1？</a></p>
 
-<p>大家可以看到评论输入框和回复框，上面都有个小尖角，实现的方式有很多，我一般是用border来做，只要给一个元素加上这四条属性就行了：</p>
+<p><a href="http://stackoverflow.com/questions/26017371/why-does-parseintdsff66-16-return-13?rq=1">为什么parseInt(‘dsff66’,16) == 13？</a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>border-top: 400px solid red;
-border-right: 400px solid transparent;
-border-bottom: 400px solid transparent;
-border-left: 400px solid transparent;
+<p>parseInt大家应该都很熟悉了，我们一般用他来把一个小数或字符串转换为整数，正常情况下我们都是这样做的:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nb">parseInt</span><span class="p">(</span><span class="mf">11.2</span><span class="p">)</span><span class="c1">//返回11</span>
+
+<span class="nb">parseInt</span><span class="p">(</span><span class="s2">"13"</span><span class="p">)</span><span class="c1">//返回Number类型的13</span>
 </code></pre>
 </div>
 
-<p>下面要讲的是网易云上面的黑科技，我看完真的是服···</p>
+<p>函数会尝试逐个解析字符串中的字符，直到遇上一个无法被解析成数字的字符，然后返回该字符前所有数字字符组成的数字。</p>
 
-<p>作为一个程序猿，看网页总喜欢手贱的审查元素…</p>
+<p>但是parseInt的第二个参数很多朋友就不太清楚了，因为本身就很少使用第二个参数，我们看看MDN上对第二个参数的解释：</p>
 
-<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160622142259547-420713142.png" alt="" /></p>
+<blockquote>
+  <p>一个2到36之间的整数值，用于指定转换中采用的基数。比如参数”10”表示使用我们通常使用的十进制数值系统。总是指定该参数可以消除阅读该代码时的困惑并且保证转换结果可预测。当忽略该参数时，不同的实现环境可能产生不同的结果。</p>
+</blockquote>
 
-<p>咦？这两个小黑块是啥？稍微一想，原来是这样….</p>
+<p>最后说到如果忽略的话，不同环境会有不同结果，大家不用担心，ES5已经规定了如果省略就代表用十进制解析。</p>
 
-<p>顶层的小方块颜色是白色背景颜色，下面还层叠了一个背景颜色为边框颜色的小方块，还是上图比较直观：</p>
+<p>第二个参数是2~36之间的整数值，这个值其实就是我们说的进制，比如，我们用二进制去解析第一个参数，那么就这么做：</p>
 
-<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160622145114469-397586137.png" alt="" /></p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nb">parseInt</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="c1">//返回5</span>
+</code></pre>
+</div>
 
-<p>这里有两个小方块，我们两个小方块都position:absolute;把右边的小方块向左移，移到马上覆盖左边方块为止：</p>
+<p>下面我们来分析一下上面的两个问题，相信大家对这第二个参数就能有个透彻的认识了。</p>
 
-<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160622145402953-873575.png" alt="" /></p>
+<blockquote>
+  <p><em>为什么parseInt(8,3) == NaN，parseInt(16,3) == 1？</em></p>
+</blockquote>
 
-<p>OK，就像这个样子，聪明的你可能已经知道这个是什么了，假定背景颜色是白色的，边框是红色的，那我们只需要改变着两个元素的color属性即可：</p>
+<p>先来看第一个parseInt(8,3) ，这里的意思就是用,三进制去解析8，我们知道二进制是遇2进1，三进制同样，遇3进1，比如我要用三进表示十进制中的5，那么就是12，也就是(2<em>(3^0))+(1</em>(3^1))=5；</p>
 
-<p><img src="http://upload-images.jianshu.io/upload_images/2859850-aae2fc70b22d91c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+<p>所以在三进制中，出现的最大的数字也就是2，8这个数字不可能出现在三进制中，所以返回NaN。</p>
 
-<p>我们只需给父元素position:relative;把这两个小方块定位到相应的地方就OK啦，感觉能想到这种方法的人也挺牛的，啊哈。</p>
+<p>parseInt(16,3)同样，出现最大的数字是2，那么6就是被自动忽略掉，所以parseInt是直接用三进制去解析1，得到的当然是1了。</p>
+
+<blockquote>
+  <p><em>为什么parseInt(‘dsff66’，16) == 13？</em></p>
+</blockquote>
+
+<p>我们知道，平时使用parseInt，它会忽略到除数字之外的字符，但是这里不一样，因为十进制最大的数字是9，但是到了十一进制往上，最大的数字是两位数了，这当然不行，所以从10开始往上，就用字母代替，a==10,b==11……z==35；所以你知道为什么parseInt的第二个参数要规定在2~36了吗？</p>
+
+<p>再看看上面这道问题，在16进制中，最大的数字是15，对应字母也就是f，超过f的字母也就超出了16进制的解析范围。</p>
+
+<p>‘dsff66’的第一个字符是d，也就是十进制中的13，第二个字符s，代表十进制中的28，这显然超出了16进制的解析范围，所以s和它之后的字符都会被parseInt自动忽略，所以我们得到13。</p>
+
+<p>相信看到这里，你对parseInt的第二个参数已经完全了解了，如果你对进制之间的转换不太了解的话，可以多去网上学习学习进制之间的转换，就算平时用不着，还是可能拿来装X嘛。</p>
+
+<p>另外补充一下，另一个函数parseFloat只接受一个参数，只能使用十进制去解析。</p>
 
 
                 <hr style="visibility: hidden;">
@@ -242,15 +263,17 @@ border-left: 400px solid transparent;
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2016/12/14/music-cloud"
-                    data-title=" 来自网易云的黑科技，带尖角的div...... "
-                    data-url="http://localhost:4000/2016/12/14/music-cloud/"
-                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-a995adb879946d2d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+                    data-thread-key="/2016/09/03/parseint"
+                    data-title=" parseInt第二个参数详解 "
+                    data-url="http://localhost:4000/2016/09/03/parseint/"
+                    data-images="http://localhost:4000//desk.fd.zol-img.com.cn/t_s1920x1080c5/g5/M00/02/02/ChMkJlbKxhKIN4X3AAsbMPQjXk4AALHfwEE9TcACxtI965.jpg"
                     data-content="
-  很多时候最不能相信的就是你的眼睛。
+  不常用不代表你不用去理解它，或许哪次装逼就用上了。
 
 
-今天在网易云的网页版听歌，话说Steve Vai的曲子永远是这么让人揣摩不透，不过我还时更喜欢老Joe，咦，... | 周神的博客 | Rockjins Blog " >
+前阵子在stackOverflow上看到两个这样的问题：
+
+为什么parseInt(8,3)... | 周神的博客 | Rockjins Blog " >
                     <div class="ds-share-inline">
                       <style> 
                         .ds-share-icons-16 {display:none;} 
@@ -273,12 +296,19 @@ border-left: 400px solid transparent;
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2016/12/12/evil/" data-toggle="tooltip" data-placement="top" title=" 恶魔的呢喃 ">
+                        <a href="/2016/07/01/baidu-keywords/" data-toggle="tooltip" data-placement="top" title=" 教你把百度的关键字搜索偷过来用用 ">
                         Previous<br>
-                        <span> 恶魔的呢喃 </span>
+                        <span> 教你把百度的关键字搜索偷过来用用 </span>
                         </a>
                     </li>
                     
+                    
+                    <li class="next">
+                        <a href="/2016/10/25/vue-getter-setter/" data-toggle="tooltip" data-placement="top" title=" 由Vue引发的getter和setter思考 ">
+                        Next<br>
+                        <span> 由Vue引发的getter和setter思考 </span>
+                        </a>
+                    </li>
                     
                 </ul>
 
@@ -287,9 +317,9 @@ border-left: 400px solid transparent;
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2016/12/14/music-cloud"
-                        data-title=" 来自网易云的黑科技，带尖角的div...... "
-                        data-url="http://localhost:4000/2016/12/14/music-cloud/" >
+                        data-thread-key="/2016/09/03/parseint"
+                        data-title=" parseInt第二个参数详解 "
+                        data-url="http://localhost:4000/2016/09/03/parseint/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
@@ -329,6 +359,22 @@ border-left: 400px solid transparent;
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
         				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#JavaScript" title="JavaScript" rel="4">
+                                    JavaScript
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#Vue" title="Vue" rel="2">
+                                    Vue
+                                </a>
                             
         				
                             
@@ -621,7 +667,7 @@ border-left: 400px solid transparent;
 
 
 <!-- Image to hack wechat -->
-<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- <img src="/img/icon_wechat.png" width="0" height="0" /> -->
 <!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>

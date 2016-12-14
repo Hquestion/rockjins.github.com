@@ -5,19 +5,43 @@
     <description> 周神的个人博客，和你一起进步，一起探索更奥妙的知识，更新奇的技术。 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 14 Dec 2016 14:47:21 +0800</pubDate>
-    <lastBuildDate>Wed, 14 Dec 2016 14:47:21 +0800</lastBuildDate>
+    <pubDate>Wed, 14 Dec 2016 16:57:10 +0800</pubDate>
+    <lastBuildDate>Wed, 14 Dec 2016 16:57:10 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
-        <title> 惰性是与生俱来的 </title>
+        <title> 恶魔的呢喃 </title>
         <description>&lt;blockquote&gt;
-  &lt;p&gt;还没想好写什么&lt;/p&gt;
+  &lt;p&gt;惰性就是你内心的恶魔，它在你耳边呢喃，放弃吧，你会过的很快乐。&lt;/p&gt;
 &lt;/blockquote&gt;
+
+&lt;h2 id=&quot;恶魔&quot;&gt;恶魔&lt;/h2&gt;
+
+&lt;p&gt;大概两年前，就有了想搭建个人博客的想法，当时想用&lt;code class=&quot;highlighter-rouge&quot;&gt;HEXO&lt;/code&gt;+&lt;code class=&quot;highlighter-rouge&quot;&gt;GitHub&lt;/code&gt;来做，可以想到，实践中会碰到很多问题，我前前后后花了一周时间，最后还是没有搭建出来。一直到两年后的今天，我才又着手去搭建博客。&lt;/p&gt;
+
+&lt;p&gt;我知道，不只是我，很多朋友都会有这种体验，学习一门新知识，然后碰到问题，去寻找答案，发现解决这个问题还要涉及到其他的知识。&lt;/p&gt;
+
+&lt;p&gt;这个时候你心里的那个恶魔就会出现，它会对你说：休息一会吧，你已经很努力了，就算学不会这些，你也一样可以过得很好。&lt;/p&gt;
+
+&lt;p&gt;其实想想，成功和失败，有时候就是因为自己一时的懒惰，在西方人看来，这就是被恶魔所打败。&lt;/p&gt;
+
+&lt;h2 id=&quot;讲个故事&quot;&gt;讲个故事&lt;/h2&gt;
+
+&lt;p&gt;前段时间看了电影《云图》，讲的其实就是汤姆·汉克斯和内心恶魔斗争的故事，最后一个高潮，在攀登山峰时，先知女掉了下去，汉克斯手里握着绳子，这时，恶魔出现了。&lt;/p&gt;
+
+&lt;p&gt;恶魔在他耳边说，放手吧，让她掉下去吧，不然你也会用尽力气，两个人都会摔死。&lt;/p&gt;
+
+&lt;p&gt;故事的结尾是汉克斯和先知女结婚了，生了很多宝宝，如果当时他向恶魔屈服，我相信他的后半生会在忏悔和折磨中度过。&lt;/p&gt;
+
+&lt;h2 id=&quot;回到现实&quot;&gt;回到现实&lt;/h2&gt;
+
+&lt;p&gt;没有人愿意去改变现状，改变意味着思考，思考就会发现问题，有问题就需要去解决，你会很烦恼。&lt;/p&gt;
+
+&lt;p&gt;少年，这也就是别人为什么比你成功的原因，你真的很勤奋努力吗？只有你自己知道。&lt;/p&gt;
 </description>
         <pubDate>Wed, 14 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/14/open-blog/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/14/open-blog/</guid>
+        <link>http://localhost:4000/2016/12/14/evil/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/14/evil/</guid>
         
         <category>生活</category>
         

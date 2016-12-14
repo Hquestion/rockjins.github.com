@@ -4,7 +4,7 @@ title:      " Vue数据绑定隐藏的神坑.... "
 subtitle:   " Someone walk, will have a road. "
 date:       2016-12-01
 author:     "Shock"
-header-img: "/desk.fd.zol-img.com.cn/t_s1920x1080c5/g5/M00/0D/01/ChMkJlgq00OIL0EGABOuIQmyjjQAAXxJAC-UhkAE645592.jpg"
+header-img: "/upload-images.jianshu.io/upload_images/2859850-869affe7daaa25d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
 catalog: true
 tags:
     - Vue

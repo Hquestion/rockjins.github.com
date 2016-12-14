@@ -4,7 +4,7 @@ title:      " 教你把百度的关键字搜索偷过来用用 "
 subtitle:   " Stealing is a kind of virtue, right? "
 date:       2016-07-01
 author:     "Shock"
-header-img: "/img1.mydrivers.com/img/20150928/69b726c078c6434e97e03c5d438b7a20.jpg"
+header-img: "/upload-images.jianshu.io/upload_images/2859850-fb3408173cb6cdd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
 catalog: true
 tags:
     - JSONP

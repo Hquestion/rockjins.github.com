@@ -4,7 +4,7 @@ title:      " 由Vue引发的getter和setter思考 "
 subtitle:   " Thinking can make you stronger. "
 date:       2016-10-25
 author:     "Shock"
-header-img: "/desk.fd.zol-img.com.cn/t_s1920x1200c5/g5/M00/02/00/ChMkJlbKw-OId7ZmAASI8KqkbwcAALG-AK0gQUABIkI177.jpg"
+header-img: "/upload-images.jianshu.io/upload_images/2859850-6142a6b04f7319fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
 catalog: true
 tags:
     - Vue

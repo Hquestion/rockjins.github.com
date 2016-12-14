@@ -10,7 +10,7 @@
     <meta name="keywords"  content="周神, Shock, @rockjins, @chinajins, 周神的博客, Rockjins Blog, 博客, 个人网站, 互联网, 前端, 设计, 产品">
     <meta name="theme-color" content="#000000">
 
-    <title> 恶魔的呢喃  - 周神的博客 | Rockjins Blog</title>
+    <title> 来自网易云的黑科技，带尖角的div......  - 周神的博客 | Rockjins Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2016/12/14/evil/">
+    <link rel="canonical" href="http://localhost:4000/2016/12/14/music-cloud/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -151,13 +151,13 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="//upload-images.jianshu.io/upload_images/2859850-7fb42050988921ad.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="0" height="0"> -->
+<!-- <img src="//upload-images.jianshu.io/upload_images/2859850-a995adb879946d2d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('//upload-images.jianshu.io/upload_images/2859850-7fb42050988921ad.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')
+        background-image: url('//upload-images.jianshu.io/upload_images/2859850-a995adb879946d2d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')
     }
 
     
@@ -170,15 +170,13 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#生活" title="生活">生活</a>
-                        
-                        <a class="tag" href="/tags/#心情" title="心情">心情</a>
+                        <a class="tag" href="/tags/#CSS" title="CSS">CSS</a>
                         
                     </div>
-                    <h1> 恶魔的呢喃 </h1>
+                    <h1> 来自网易云的黑科技，带尖角的div...... </h1>
                     
                     
-                    <h2 class="subheading"> Some things very simple, you think of it is too difficult. </h2>
+                    <h2 class="subheading"> How amazing!The programmer is a genius! </h2>
                     
                     <span class="meta">Posted by Shock on December 14, 2016</span>
                 </div>
@@ -199,32 +197,43 @@
                 post-container">
 
 				<blockquote>
-  <p>惰性就是你内心的恶魔，它在你耳边呢喃，放弃吧，你会过的很快乐。</p>
+  <p>很多时候最不能相信的就是你的眼睛。</p>
 </blockquote>
 
-<h2 id="恶魔">恶魔</h2>
+<p>今天在网易云的网页版听歌，话说Steve Vai的曲子永远是这么让人揣摩不透，不过我还时更喜欢老Joe，咦，跑题了···</p>
 
-<p>大概两年前，就有了想搭建个人博客的想法，当时想用<code class="highlighter-rouge">HEXO</code>+<code class="highlighter-rouge">GitHub</code>来做，可以想到，实践中会碰到很多问题，我前前后后花了一周时间，最后还是没有搭建出来。一直到两年后的今天，我才又着手去搭建博客。</p>
+<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160622141525235-1632127211.png" alt="" /></p>
 
-<p>我知道，不只是我，很多朋友都会有这种体验，学习一门新知识，然后碰到问题，去寻找答案，发现解决这个问题还要涉及到其他的知识。</p>
+<p>大家可以看到评论输入框和回复框，上面都有个小尖角，实现的方式有很多，我一般是用border来做，只要给一个元素加上这四条属性就行了：</p>
 
-<p>这个时候你心里的那个恶魔就会出现，它会对你说：休息一会吧，你已经很努力了，就算学不会这些，你也一样可以过得很好。</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>border-top: 400px solid red;
+border-right: 400px solid transparent;
+border-bottom: 400px solid transparent;
+border-left: 400px solid transparent;
+</code></pre>
+</div>
 
-<p>其实想想，成功和失败，有时候就是因为自己一时的懒惰，在西方人看来，这就是被恶魔所打败。</p>
+<p>下面要讲的是网易云上面的黑科技，我看完真的是服···</p>
 
-<h2 id="讲个故事">讲个故事</h2>
+<p>作为一个程序猿，看网页总喜欢手贱的审查元素…</p>
 
-<p>前段时间看了电影《云图》，讲的其实就是汤姆·汉克斯和内心恶魔斗争的故事，最后一个高潮，在攀登山峰时，先知女掉了下去，汉克斯手里握着绳子，这时，恶魔出现了。</p>
+<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160622142259547-420713142.png" alt="" /></p>
 
-<p>恶魔在他耳边说，放手吧，让她掉下去吧，不然你也会用尽力气，两个人都会摔死。</p>
+<p>咦？这两个小黑块是啥？稍微一想，原来是这样….</p>
 
-<p>故事的结尾是汉克斯和先知女结婚了，生了很多宝宝，如果当时他向恶魔屈服，我相信他的后半生会在忏悔和折磨中度过。</p>
+<p>顶层的小方块颜色是白色背景颜色，下面还层叠了一个背景颜色为边框颜色的小方块，还是上图比较直观：</p>
 
-<h2 id="回到现实">回到现实</h2>
+<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160622145114469-397586137.png" alt="" /></p>
 
-<p>没有人愿意去改变现状，改变意味着思考，思考就会发现问题，有问题就需要去解决，你会很烦恼。</p>
+<p>这里有两个小方块，我们两个小方块都position:absolute;把右边的小方块向左移，移到马上覆盖左边方块为止：</p>
 
-<p>少年，这也就是别人为什么比你成功的原因，你真的很勤奋努力吗？只有你自己知道。</p>
+<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160622145402953-873575.png" alt="" /></p>
+
+<p>OK，就像这个样子，聪明的你可能已经知道这个是什么了，假定背景颜色是白色的，边框是红色的，那我们只需要改变着两个元素的color属性即可：</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/2859850-aae2fc70b22d91c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>我们只需给父元素position:relative;把这两个小方块定位到相应的地方就OK啦，感觉能想到这种方法的人也挺牛的，啊哈。</p>
 
 
                 <hr style="visibility: hidden;">
@@ -233,17 +242,15 @@
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2016/12/14/evil"
-                    data-title=" 恶魔的呢喃 "
-                    data-url="http://localhost:4000/2016/12/14/evil/"
-                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-7fb42050988921ad.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+                    data-thread-key="/2016/12/14/music-cloud"
+                    data-title=" 来自网易云的黑科技，带尖角的div...... "
+                    data-url="http://localhost:4000/2016/12/14/music-cloud/"
+                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-a995adb879946d2d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
                     data-content="
-  惰性就是你内心的恶魔，它在你耳边呢喃，放弃吧，你会过的很快乐。
+  很多时候最不能相信的就是你的眼睛。
 
 
-恶魔
-
-大概两年前，就有了想搭建个人博客的想法，当时想用HEXO+GitHub来... | 周神的博客 | Rockjins Blog " >
+今天在网易云的网页版听歌，话说Steve Vai的曲子永远是这么让人揣摩不透，不过我还时更喜欢老Joe，咦，... | 周神的博客 | Rockjins Blog " >
                     <div class="ds-share-inline">
                       <style> 
                         .ds-share-icons-16 {display:none;} 
@@ -265,6 +272,13 @@
 
                 <ul class="pager">
                     
+                    <li class="previous">
+                        <a href="/2016/12/12/evil/" data-toggle="tooltip" data-placement="top" title=" 恶魔的呢喃 ">
+                        Previous<br>
+                        <span> 恶魔的呢喃 </span>
+                        </a>
+                    </li>
+                    
                     
                 </ul>
 
@@ -273,9 +287,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2016/12/14/evil"
-                        data-title=" 恶魔的呢喃 "
-                        data-url="http://localhost:4000/2016/12/14/evil/" >
+                        data-thread-key="/2016/12/14/music-cloud"
+                        data-title=" 来自网易云的黑科技，带尖角的div...... "
+                        data-url="http://localhost:4000/2016/12/14/music-cloud/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
@@ -314,6 +328,8 @@
                     <hr class="hidden-sm hidden-xs">
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
+        				
+                            
         				
                             
         				

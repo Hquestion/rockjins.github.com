@@ -2,7 +2,7 @@
 layout:     post
 title:      " 恶魔的呢喃 "
 subtitle:   " Some things very simple, you think of it is too difficult. "
-date:       2016-12-14
+date:       2016-12-12
 author:     "Shock"
 header-img: "/upload-images.jianshu.io/upload_images/2859850-7fb42050988921ad.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
 catalog: true

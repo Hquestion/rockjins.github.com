@@ -71,7 +71,7 @@ ga_domain: huangxuan.me
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "爱学习，爱摇滚，<br/>永葆那颗探索的心。"
-sidebar-avatar: //upload-images.jianshu.io/upload_images/2859850-18192c8208b7900d.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: //upload-images.jianshu.io/upload_images/2859850-110ff7e48ea1d390.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 

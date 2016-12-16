@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      " 信仰有多重要？ "
-subtitle:   " God bless you. "
+subtitle:   " A person without faith is the most terrible. "
 date:       2016-12-17
 author:     "Shock"
 header-img: "/upload-images.jianshu.io/upload_images/2859850-9d991242e4dd238a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"

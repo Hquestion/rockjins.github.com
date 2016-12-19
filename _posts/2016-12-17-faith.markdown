@@ -4,11 +4,10 @@ title:      " 信仰有多重要？ "
 subtitle:   " A person without faith is the most terrible. "
 date:       2016-12-17
 author:     "Shock"
-header-img: "/upload-images.jianshu.io/upload_images/2859850-9d991242e4dd238a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+header-img: "/upload-images.jianshu.io/upload_images/2859850-88157d972cd4cb2f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
 catalog: true
 tags:
     - 信仰
-
 ---
 
 > 生命对每个人都是公平的，因为洪流的终点都是死亡。

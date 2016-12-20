@@ -199,8 +199,116 @@
                 post-container">
 
 				<blockquote>
-  <p>还在研究中</p>
+  <p>当你真正想要提高页面性能，你会发现你的代码和屎没两样。</p>
 </blockquote>
+
+<p>自记忆函数这个名字听起来有点奇怪，这只是人们给它取的一个名字罢了。</p>
+
+<p>在JavaScript中，函数是第一型对象，所以它可以拥有自己的属性，我们就可以利用这一点来进行数据的缓存。</p>
+
+<p>还是先看一个例子，<code class="highlighter-rouge">isPrime</code>函数用来判断参数是否是素数，和普通函数唯一的不同在于我们暗中创建了一个<code class="highlighter-rouge">answers</code>缓存：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">isPrime</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isPrime</span><span class="p">.</span><span class="nx">answers</span><span class="p">)</span> <span class="nx">isPrime</span><span class="p">.</span><span class="nx">answers</span> <span class="o">=</span> <span class="p">{};</span>                  
+  <span class="k">if</span> <span class="p">(</span><span class="nx">isPrime</span><span class="p">.</span><span class="nx">answers</span><span class="p">[</span><span class="nx">value</span><span class="p">]</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>                        
+    <span class="k">return</span> <span class="nx">isPrime</span><span class="p">.</span><span class="nx">answers</span><span class="p">[</span><span class="nx">value</span><span class="p">];</span>                             
+  <span class="p">}</span>                                                            
+  <span class="kd">var</span> <span class="nx">prime</span> <span class="o">=</span> <span class="nx">value</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 1永远都不会是素数</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">value</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">%</span> <span class="nx">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">prime</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">isPrime</span><span class="p">.</span><span class="nx">answers</span><span class="p">[</span><span class="nx">value</span><span class="p">]</span> <span class="o">=</span> <span class="nx">prime</span><span class="p">;</span>                       
+<span class="p">}</span>
+
+<span class="nx">isPrime</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="c1">//true                            </span>
+<span class="nx">isPrime</span><span class="p">.</span><span class="nx">answers</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="c1">//true</span>
+</code></pre>
+</div>
+
+<p>我们首先判断<code class="highlighter-rouge">isPrime</code>函数是否有<code class="highlighter-rouge">answers</code>属性，没有就创建一个。</p>
+
+<p>接下来我们检查<code class="highlighter-rouge">answers</code>是否存在参数值对应的结果，在该缓存里，我们用参数值作为属性的<code class="highlighter-rouge">key</code>，如果发现缓存结果，则直接返回它。</p>
+
+<p>如果在缓存中没有找到结果，就计算该参数判断是不是素数。</p>
+
+<p>最后返回判断结果，并赋值给<code class="highlighter-rouge">answers</code>属性的<code class="highlighter-rouge">[value]</code>。</p>
+
+<p>下面的测试证明，确实可以从<code class="highlighter-rouge">isPrime.answers</code>中取到之前计算过的结果。</p>
+
+<p>当有大量数据需要计算，并且数值很大的情况下，这种性能的优化可能会大到你无法想象。</p>
+
+<p>在我们实际工作中可能很少去计算素数，那再举一个大家常见的例子，缓存DOM元素。</p>
+
+<p>通过标签查询DOM元素是我们常常做的一件事，但频繁操作性能很糟糕，我们可以利用刚刚学会的缓存记忆创建一个缓存，保存已匹配到的元素集合：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">getElements</span><span class="p">(</span><span class="nx">name</span><span class="p">){</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">getElements</span><span class="p">.</span><span class="nx">cache</span><span class="p">)</span> <span class="nx">getElements</span><span class="p">.</span><span class="nx">cache</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="k">return</span> <span class="nx">getElements</span><span class="p">.</span><span class="nx">cache</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span> <span class="o">=</span>
+    <span class="nx">getElements</span><span class="p">.</span><span class="nx">cache</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span><span class="o">||</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>其实缓存代码非常简单，并不会给你的代码逻辑增加太多复杂性，但是，上面这几行简单的缓存代码，就产生了5倍的性能提升，如表：</p>
+
+<p><em>所有测试都在chrome53下进行了100000次迭代的毫秒数</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">代码版本</th>
+      <th style="text-align: center">平均时间</th>
+      <th style="text-align: center">最小时间</th>
+      <th style="text-align: center">最大时间</th>
+      <th style="text-align: center">运行次数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">非缓存版本</td>
+      <td style="text-align: center">16.7</td>
+      <td style="text-align: center">18</td>
+      <td style="text-align: center">19</td>
+      <td style="text-align: center">10</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">缓存版本</td>
+      <td style="text-align: center">3.2</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">10</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>使用自记忆函数技巧，不仅在代码组织上有好处，而且储存对象无需污染作用域，就可以获得性能提升。</p>
+
+<p>缓存记忆有两个主要优点：</p>
+
+<ul>
+  <li>最终用户享有绝对性能优势。</li>
+  <li>发生在幕后，完全无缝，最终用户和开发人员都无需任何特殊操作或为此做任何额外的初始化做工。</li>
+</ul>
+
+<p>相比优点，也要权衡一下缺点：</p>
+
+<ul>
+  <li>
+    <p>为提高性能，任何类型的缓存都会牺牲掉内存。</p>
+  </li>
+  <li>
+    <p>纯粹主义认为，储存不应该和业务逻辑放在一起，函数或方法只做一件事，并把它做好。</p>
+  </li>
+  <li>
+    <p>很难进行算法性能的测试</p>
+  </li>
+</ul>
+
+<p>所以，是否运动这种技巧在你项目中，得看你的实际情况了。</p>
 
 
                 <hr style="visibility: hidden;">
@@ -214,9 +322,12 @@
                     data-url="http://localhost:4000/2016/11/11/memoization/"
                     data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-3a1dd6060c390186.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
                     data-content="
-  还在研究中
+  当你真正想要提高页面性能，你会发现你的代码和屎没两样。
 
- | 周神的博客 | Rockjins Blog " >
+
+自记忆函数这个名字听起来有点奇怪，这只是人们给它取的一个名字罢了。
+
+在JavaScri... | 周神的博客 | Rockjins Blog " >
                     <div class="ds-share-inline">
                       <style> 
                         .ds-share-icons-16 {display:none;} 

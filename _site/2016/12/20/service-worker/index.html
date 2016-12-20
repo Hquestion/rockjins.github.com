@@ -10,7 +10,7 @@
     <meta name="keywords"  content="周神, Shock, @rockjins, @chinajins, 周神的博客, Rockjins Blog, 博客, 个人网站, 互联网, 前端, 设计, 产品">
     <meta name="theme-color" content="#000000">
 
-    <title> parseInt第二个参数详解  - 周神的博客 | Rockjins Blog</title>
+    <title> Service Worker实现实时通讯  - 周神的博客 | Rockjins Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2016/09/03/parseint/">
+    <link rel="canonical" href="http://localhost:4000/2016/12/20/service-worker/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -151,13 +151,13 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="//upload-images.jianshu.io/upload_images/2859850-26be885cdea0958c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="0" height="0"> -->
+<!-- <img src="//upload-images.jianshu.io/upload_images/2859850-fd0ad23db0a64a13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('//upload-images.jianshu.io/upload_images/2859850-26be885cdea0958c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')
+        background-image: url('//upload-images.jianshu.io/upload_images/2859850-fd0ad23db0a64a13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')
     }
 
     
@@ -170,15 +170,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
+                        <a class="tag" href="/tags/#ServiceWorker" title="ServiceWorker">ServiceWorker</a>
+                        
                         <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
                         
                     </div>
-                    <h1> parseInt第二个参数详解 </h1>
+                    <h1> Service Worker实现实时通讯 </h1>
                     
                     
-                    <h2 class="subheading"> The second no one will remember. </h2>
+                    <h2 class="subheading"> Keep learning new technology, it can make you stronger. </h2>
                     
-                    <span class="meta">Posted by Shock on September 3, 2016</span>
+                    <span class="meta">Posted by Shock on December 20, 2016</span>
                 </div>
             </div>
         </div>
@@ -196,65 +198,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<blockquote>
-  <p>不常用不代表你不用去理解它，或许哪次装逼就用上了。</p>
-</blockquote>
-
-<p>前阵子在stackOverflow上看到两个这样的问题：</p>
-
-<p><a href="http://stackoverflow.com/questions/39147108/why-is-it-that-parseint8-3-nan-and-parseint16-3-1">为什么parseInt(8,3) == NaN，parseInt(16,3) == 1？</a></p>
-
-<p><a href="http://stackoverflow.com/questions/26017371/why-does-parseintdsff66-16-return-13?rq=1">为什么parseInt(‘dsff66’,16) == 13？</a></p>
-
-<p>parseInt大家应该都很熟悉了，我们一般用他来把一个小数或字符串转换为整数，正常情况下我们都是这样做的:</p>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nb">parseInt</span><span class="p">(</span><span class="mf">11.2</span><span class="p">)</span><span class="c1">//返回11</span>
-
-<span class="nb">parseInt</span><span class="p">(</span><span class="s2">"13"</span><span class="p">)</span><span class="c1">//返回Number类型的13</span>
-</code></pre>
-</div>
-
-<p>函数会尝试逐个解析字符串中的字符，直到遇上一个无法被解析成数字的字符，然后返回该字符前所有数字字符组成的数字。</p>
-
-<p>但是parseInt的第二个参数很多朋友就不太清楚了，因为本身就很少使用第二个参数，我们看看MDN上对第二个参数的解释：</p>
-
-<blockquote>
-  <p>一个2到36之间的整数值，用于指定转换中采用的基数。比如参数”10”表示使用我们通常使用的十进制数值系统。总是指定该参数可以消除阅读该代码时的困惑并且保证转换结果可预测。当忽略该参数时，不同的实现环境可能产生不同的结果。</p>
-</blockquote>
-
-<p>最后说到如果忽略的话，不同环境会有不同结果，大家不用担心，ES5已经规定了如果省略就代表用十进制解析。</p>
-
-<p>第二个参数是2~36之间的整数值，这个值其实就是我们说的进制，比如，我们用二进制去解析第一个参数，那么就这么做：</p>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nb">parseInt</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="c1">//返回5</span>
-</code></pre>
-</div>
-
-<p>下面我们来分析一下上面的两个问题，相信大家对这第二个参数就能有个透彻的认识了。</p>
-
-<blockquote>
-  <p><em>为什么parseInt(8,3) == NaN，parseInt(16,3) == 1？</em></p>
-</blockquote>
-
-<p>先来看第一个parseInt(8,3) ，这里的意思就是用,三进制去解析8，我们知道二进制是遇2进1，三进制同样，遇3进1，比如我要用三进表示十进制中的5，那么就是12，也就是(2<em>(3^0))+(1</em>(3^1))=5；</p>
-
-<p>所以在三进制中，出现的最大的数字也就是2，8这个数字不可能出现在三进制中，所以返回NaN。</p>
-
-<p>parseInt(16,3)同样，出现最大的数字是2，那么6就是被自动忽略掉，所以parseInt是直接用三进制去解析1，得到的当然是1了。</p>
-
-<blockquote>
-  <p><em>为什么parseInt(‘dsff66’，16) == 13？</em></p>
-</blockquote>
-
-<p>我们知道，平时使用parseInt，它会忽略到除数字之外的字符，但是这里不一样，因为十进制最大的数字是9，但是到了十一进制往上，最大的数字是两位数了，这当然不行，所以从10开始往上，就用字母代替，a==10,b==11……z==35；所以你知道为什么parseInt的第二个参数要规定在2~36了吗？</p>
-
-<p>再看看上面这道问题，在16进制中，最大的数字是15，对应字母也就是f，超过f的字母也就超出了16进制的解析范围。</p>
-
-<p>‘dsff66’的第一个字符是d，也就是十进制中的13，第二个字符s，代表十进制中的28，这显然超出了16进制的解析范围，所以s和它之后的字符都会被parseInt自动忽略，所以我们得到13。</p>
-
-<p>相信看到这里，你对parseInt的第二个参数已经完全了解了，如果你对进制之间的转换不太了解的话，可以多去网上学习学习进制之间的转换，就算平时用不着，还是可能拿来装X嘛。</p>
-
-<p>另外补充一下，另一个函数parseFloat只接受一个参数，只能使用十进制去解析。</p>
+				
 
 
                 <hr style="visibility: hidden;">
@@ -263,17 +207,12 @@
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2016/09/03/parseint"
-                    data-title=" parseInt第二个参数详解 "
-                    data-url="http://localhost:4000/2016/09/03/parseint/"
-                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-26be885cdea0958c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+                    data-thread-key="/2016/12/20/service-worker"
+                    data-title=" Service Worker实现实时通讯 "
+                    data-url="http://localhost:4000/2016/12/20/service-worker/"
+                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-fd0ad23db0a64a13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
                     data-content="
-  不常用不代表你不用去理解它，或许哪次装逼就用上了。
-
-
-前阵子在stackOverflow上看到两个这样的问题：
-
-为什么parseInt(8,3)... | 周神的博客 | Rockjins Blog " >
+ | 周神的博客 | Rockjins Blog " >
                     <div class="ds-share-inline">
                       <style> 
                         .ds-share-icons-16 {display:none;} 
@@ -296,19 +235,12 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2016/07/01/baidu-keywords/" data-toggle="tooltip" data-placement="top" title=" 教你把百度的关键字搜索偷过来用用 ">
+                        <a href="/2016/12/19/inline-function/" data-toggle="tooltip" data-placement="top" title=" 使用内联函数进行递归 ">
                         Previous<br>
-                        <span> 教你把百度的关键字搜索偷过来用用 </span>
+                        <span> 使用内联函数进行递归 </span>
                         </a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2016/10/25/vue-getter-setter/" data-toggle="tooltip" data-placement="top" title=" 由Vue引发的getter和setter思考 ">
-                        Next<br>
-                        <span> 由Vue引发的getter和setter思考 </span>
-                        </a>
-                    </li>
                     
                 </ul>
 
@@ -317,9 +249,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2016/09/03/parseint"
-                        data-title=" parseInt第二个参数详解 "
-                        data-url="http://localhost:4000/2016/09/03/parseint/" >
+                        data-thread-key="/2016/12/20/service-worker"
+                        data-title=" Service Worker实现实时通讯 "
+                        data-url="http://localhost:4000/2016/12/20/service-worker/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->

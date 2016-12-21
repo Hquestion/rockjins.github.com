@@ -4,7 +4,7 @@ title:      " 使用内联函数进行递归 "
 subtitle:   " Recursion is one of the hardest things to understand in the world. "
 date:       2016-12-19
 author:     "Shock"
-header-img: "/upload-images.jianshu.io/upload_images/2859850-f0da0cbd37a65fd2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+header-img: "/upload-images.jianshu.io/upload_images/2859850-46bfbe3d67c7aa38.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
 catalog: true
 tags:
     - JavaScript

@@ -8,6 +8,7 @@ header-img: "/upload-images.jianshu.io/upload_images/2859850-46bfbe3d67c7aa38.jp
 catalog: true
 tags:
     - JavaScript
+    - Function
 
 ---
 

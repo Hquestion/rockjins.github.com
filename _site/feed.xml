@@ -5,8 +5,8 @@
     <description> 周神的个人博客，和你一起进步，一起探索更奥妙的知识，更新奇的技术。 </description>
     <link>https://rockjins.github.io/</link>
     <atom:link href="https://rockjins.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 21 Dec 2016 22:53:27 +0800</pubDate>
-    <lastBuildDate>Wed, 21 Dec 2016 22:53:27 +0800</lastBuildDate>
+    <pubDate>Wed, 21 Dec 2016 22:55:16 +0800</pubDate>
+    <lastBuildDate>Wed, 21 Dec 2016 22:55:16 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -125,6 +125,8 @@
         <guid isPermaLink="true">https://rockjins.github.io/2016/12/19/inline-function/</guid>
         
         <category>JavaScript</category>
+        
+        <category>Function</category>
         
         
       </item>

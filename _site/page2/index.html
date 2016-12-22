@@ -10,7 +10,7 @@
     <meta name="keywords"  content="周神, Shock, @rockjins, @chinajins, 周神的博客, Rockjins Blog, 博客, 个人网站, 互联网, 前端, 设计, 产品">
     <meta name="theme-color" content="#000000">
 
-    <title> 来自网易云的黑科技，带尖角的div......  - 周神的博客 | Rockjins Blog</title>
+    <title>周神的博客 | Rockjins Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2016/06/22/music-cloud/">
+    <link rel="canonical" href="http://localhost:4000/page2/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -149,294 +149,202 @@
 </script>
 
 
-    <!-- Image to hack wechat -->
-<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="//upload-images.jianshu.io/upload_images/2859850-a995adb879946d2d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="0" height="0"> -->
-
-<!-- Post Header -->
-<style type="text/css">
-    header.intro-header{
-        position: relative;
-        background-image: url('//upload-images.jianshu.io/upload_images/2859850-a995adb879946d2d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')
-    }
-
-    
-</style>
-<header class="intro-header" >
-    <div class="header-mask"></div>
+    <!-- Page Header -->
+<header class="intro-header" style="background-image: url('//upload-images.jianshu.io/upload_images/2859850-a23b98c1d652080e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <div class="tags">
-                        
-                        <a class="tag" href="/tags/#CSS" title="CSS">CSS</a>
-                        
-                    </div>
-                    <h1> 来自网易云的黑科技，带尖角的div...... </h1>
-                    
-                    
-                    <h2 class="subheading"> How amazing!The programmer is a genius! </h2>
-                    
-                    <span class="meta">Posted by Shock on June 22, 2016</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>Rockjins Blog</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading">Teenager’s Rock Dream</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+        
 
-    <!-- Post Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
-
-				<blockquote>
-  <p>很多时候最不能相信的就是你的眼睛。</p>
-</blockquote>
-
-<p>今天在网易云的网页版听歌，话说Steve Vai的曲子永远是这么让人揣摩不透，不过我还时更喜欢老Joe，咦，跑题了···</p>
-
-<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160622141525235-1632127211.png" alt="" /></p>
-
-<p>大家可以看到评论输入框和回复框，上面都有个小尖角，实现的方式有很多，我一般是用border来做，只要给一个元素加上这四条属性就行了：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>border-top: 400px solid red;
-border-right: 400px solid transparent;
-border-bottom: 400px solid transparent;
-border-left: 400px solid transparent;
-</code></pre>
-</div>
-
-<p>下面要讲的是网易云上面的黑科技，我看完真的是服···</p>
-
-<p>作为一个程序猿，看网页总喜欢手贱的审查元素…</p>
-
-<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160622142259547-420713142.png" alt="" /></p>
-
-<p>咦？这两个小黑块是啥？稍微一想，原来是这样….</p>
-
-<p>顶层的小方块颜色是白色背景颜色，下面还层叠了一个背景颜色为边框颜色的小方块，还是上图比较直观：</p>
-
-<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160622145114469-397586137.png" alt="" /></p>
-
-<p>这里有两个小方块，我们两个小方块都position:absolute;把右边的小方块向左移，移到马上覆盖左边方块为止：</p>
-
-<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160622145402953-873575.png" alt="" /></p>
-
-<p>OK，就像这个样子，聪明的你可能已经知道这个是什么了，假定背景颜色是白色的，边框是红色的，那我们只需要改变着两个元素的color属性即可：</p>
-
-<p><img src="http://upload-images.jianshu.io/upload_images/2859850-aae2fc70b22d91c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
-
-<p>我们只需给父元素position:relative;把这两个小方块定位到相应的地方就OK啦，感觉能想到这种方法的人也挺牛的，啊哈。</p>
-
-
-                <hr style="visibility: hidden;">
-
-                
-                <!-- 多说 Share start -->
-                <div class="ds-share"
-                    style="text-align: right"
-                    data-thread-key="/2016/06/22/music-cloud"
-                    data-title=" 来自网易云的黑科技，带尖角的div...... "
-                    data-url="http://localhost:4000/2016/06/22/music-cloud/"
-                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-a995adb879946d2d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
-                    data-content="
+<!-- USE SIDEBAR -->
+    <!-- PostList Container -->
+    		<div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                postlist-container
+            ">
+    			
+<div class="post-preview">
+    <a href="/2016/06/22/music-cloud/">
+        <h2 class="post-title">
+             来自网易云的黑科技，带尖角的div...... 
+        </h2>
+        
+        <h3 class="post-subtitle">
+             How amazing!The programmer is a genius! 
+        </h3>
+        
+        <div class="post-content-preview">
+            
   很多时候最不能相信的就是你的眼睛。
 
 
-今天在网易云的网页版听歌，话说Steve Vai的曲子永远是这么让人揣摩不透，不过我还时更喜欢老Joe，咦，... | 周神的博客 | Rockjins Blog " >
-                    <div class="ds-share-inline">
-                      <style> 
-                        .ds-share-icons-16 {display:none;} 
-                      </style>
-                      <ul class="ds-share-icons-16">
-                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
-                        <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-                        <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
-                        <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
-                      </ul>
-                      <div class="ds-share-icons-more">
-                      </div>
-                    </div>
-                <hr>
-                </div>
-                <!-- 多说 Share end-->
-                
+今天在网易云的网页版听歌，话说Steve Vai的曲子永远是这么让人揣摩不透，不过我还时更喜欢老Joe，咦，跑题了···
 
 
-                <ul class="pager">
-                    
-                    
-                    <li class="next">
-                        <a href="/2016/06/28/php-demo/" data-toggle="tooltip" data-placement="top" title=" 一起来花5分钟写一个PHP入门Demo ">
-                        Next<br>
-                        <span> 一起来花5分钟写一个PHP入门Demo </span>
-                        </a>
-                    </li>
-                    
-                </ul>
+
+大家可以看到评论输入框和回复框，上面都有个小尖角，实现的方式有很多，我一般是用border来做，只要给一个元素加上这四条属性就行了：
+
+border-top: 400px solid red;
+border-right:...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Shock on June 22, 2016
+    </p>
+</div>
+<hr>
 
 
-                
-                <!-- 多说评论框 start -->
-                <div class="comment">
-                    <div class="ds-thread"
-                        data-thread-key="/2016/06/22/music-cloud"
-                        data-title=" 来自网易云的黑科技，带尖角的div...... "
-                        data-url="http://localhost:4000/2016/06/22/music-cloud/" >
-                    </div>
-                </div>
-                <!-- 多说评论框 end -->
-                
+<!-- Pager -->
 
-                
+<ul class="pager">
+    
+    <li class="previous">
+        <a href="/">&larr; Newer Posts</a>
+    </li>
+    
+    
+</ul>
 
-            </div>  
 
-    <!-- Side Catalog Container -->
-        
-            <div class="
-                col-lg-2 col-lg-offset-0
-                visible-lg-block
-                sidebar-container
-                catalog-container">
-                <div class="side-catalog">
-                    <hr class="hidden-sm hidden-xs">
-                    <h5>
-                        <a class="catalog-toggle" href="#">CATALOG</a>
-                    </h5>
-                    <ul class="catalog-body"></ul>
-                </div>
-            </div>
-        
-
+    		</div>
     <!-- Sidebar Container -->
             <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
                 <!-- Featured Tags -->
                 
                 <section>
                     <hr class="hidden-sm hidden-xs">
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
-        				
+                        
                             
-        				
+                        
                             
-        				
+                        
                             
-        				
+                        
                             
-                				<a href="/tags/#JavaScript" title="JavaScript" rel="7">
+                                <a href="/tags/#JavaScript" title="JavaScript" rel="7">
                                     JavaScript
                                 </a>
                             
-        				
+                        
                             
-        				
+                        
                             
-        				
+                        
                             
-                				<a href="/tags/#Function" title="Function" rel="3">
+                                <a href="/tags/#Function" title="Function" rel="3">
                                     Function
                                 </a>
                             
-        				
+                        
                             
-                				<a href="/tags/#Vue" title="Vue" rel="2">
+                                <a href="/tags/#Vue" title="Vue" rel="2">
                                     Vue
                                 </a>
                             
-        				
+                        
                             
-                				<a href="/tags/#生活" title="生活" rel="2">
+                                <a href="/tags/#生活" title="生活" rel="2">
                                     生活
                                 </a>
                             
-        				
+                        
                             
-        				
+                        
                             
-        				
-        			</div>
+                        
+                    </div>
                 </section>
                 
 
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
+                    <div class="short-about">
+                        
+                            <img src="//upload-images.jianshu.io/upload_images/2859850-110ff7e48ea1d390.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" />
+                        
+                        
+                            <p>爱学习，爱摇滚，<br/>做一个勇敢的人。</p>
+                        
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+                            
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://www.zhihu.com/people/zhou-bao-bo-24">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa  fa-stack-1x fa-inverse">知</i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="http://weibo.com/rockjins">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://www.facebook.com/jins.chow">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://github.com/rockjins">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                        </ul>
+                    </div>
+                </section>
                 <!-- Friends Blog -->
                 
-            </div>
-        </div>
-    </div>
-</article>
-
-
-
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-    // dynamic User by Hux
-    var _user = 'huxblog';
-
-    // duoshuo comment query.
-    var duoshuoQuery = {short_name: _user };
-    (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0]
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-</script>
-<!-- 多说公共JS代码 end -->
-
-
-
-
-
-
-
-<!-- async load function -->
-<script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
-</script>
-<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
-<script>
-    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
-        anchors.options = {
-          visible: 'always',
-          placement: 'right',
-          icon: '#'
-        };
-        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-    })
-</script>
-<style>
-    /* place left on bigger screen */
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.1em;
-            margin-top : -0.1em;
-        }
-    }
-</style>
+    		</div>
+        
+	</div>
+</div>
 
 
     <!-- Footer -->
@@ -604,50 +512,6 @@ border-left: 400px solid transparent;
 
 
 <!-- Side Catalog -->
-
-<script type="text/javascript">
-    function generateCatalog (selector) {
-        var P = $('div.post-container'),a,n,t,l,i,c;
-        a = P.find('h1,h2,h3,h4,h5,h6');
-        a.each(function () {
-            n = $(this).prop('tagName').toLowerCase();
-            i = "#"+$(this).prop('id');
-            t = $(this).text();
-            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
-            l = $('<li class="'+n+'_nav"></li>').append(c);
-            $(selector).append(l);
-        });
-        return true;
-    }
-
-    generateCatalog(".catalog-body");
-
-    // toggle side catalog
-    $(".catalog-toggle").click((function(e){
-        e.preventDefault();
-        $('.side-catalog').toggleClass("fold")
-    }))
-
-    /*
-     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
-     * Fork by Hux to support padding
-     */
-    async("/js/jquery.nav.js", function () {
-        $('.catalog-body').onePageNav({
-            currentClass: "active",
-            changeHash: !1,
-            easing: "swing",
-            filter: "",
-            scrollSpeed: 700,
-            scrollOffset: 0,
-            scrollThreshold: .2,
-            begin: null,
-            end: null,
-            scrollChange: null,
-            padding: 80
-        });
-    });
-</script>
 
 
 

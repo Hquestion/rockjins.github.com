@@ -10,7 +10,7 @@
     <meta name="keywords"  content="周神, Shock, @rockjins, @chinajins, 周神的博客, Rockjins Blog, 博客, 个人网站, 互联网, 前端, 设计, 产品">
     <meta name="theme-color" content="#000000">
 
-    <title> 由Vue引发的getter和setter思考  - 周神的博客 | Rockjins Blog</title>
+    <title> 如何伪造数组？  - 周神的博客 | Rockjins Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2016/10/25/vue-getter-setter/">
+    <link rel="canonical" href="http://localhost:4000/2016/07/01/fake-array/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -151,13 +151,13 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="//upload-images.jianshu.io/upload_images/2859850-6142a6b04f7319fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="0" height="0"> -->
+<!-- <img src="//upload-images.jianshu.io/upload_images/2859850-5cea7011542ce57d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('//upload-images.jianshu.io/upload_images/2859850-6142a6b04f7319fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')
+        background-image: url('//upload-images.jianshu.io/upload_images/2859850-5cea7011542ce57d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')
     }
 
     
@@ -170,17 +170,21 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#Vue" title="Vue">Vue</a>
+                        <a class="tag" href="/tags/#Array" title="Array">Array</a>
+                        
+                        <a class="tag" href="/tags/#Object" title="Object">Object</a>
+                        
+                        <a class="tag" href="/tags/#Function" title="Function">Function</a>
                         
                         <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
                         
                     </div>
-                    <h1> 由Vue引发的getter和setter思考 </h1>
+                    <h1> 如何伪造数组？ </h1>
                     
                     
-                    <h2 class="subheading"> Thinking can make you stronger. </h2>
+                    <h2 class="subheading"> Camouflage is the most basic skills of a ninja. </h2>
                     
-                    <span class="meta">Posted by Shock on October 25, 2016</span>
+                    <span class="meta">Posted by Shock on July 1, 2016</span>
                 </div>
             </div>
         </div>
@@ -199,123 +203,57 @@
                 post-container">
 
 				<blockquote>
-  <p>接触新事物总会让人很难受，但也会让人成长。</p>
+  <p>真的假不了，假的真不了。</p>
 </blockquote>
 
-<p>公司的新项目决定使用Vue.js来做，当我打印出Vue实例下的data对象里的属性时，发现了一个有趣的事情：</p>
+<p>我们经常可以从各种库或框架中拿到这样的值：</p>
 
-<p><img src="http://images2015.cnblogs.com/blog/929120/201610/929120-20161025151218546-1679290074.png" alt="" /></p>
+<p>明明是一个对象，却有length属性；或者明明看上去是个数组，却不能使用数组的方法（arguments）。我们今天就来聊聊怎么伪造数组。</p>
 
-<p>它的每个属性都有两个相对应的get和set方法，我觉的这是多此一举的，于是去网上查了查Vue双向绑定的实现原理，才发现它和Angular.js双向绑定的实现原理完全不同，Angular是用的数据脏检测，当Model发生变化，会检测所有视图是否绑定了相关数据，再更改视图。而Vue使用的发布订阅模式，是点对点的绑定数据。</p>
+<p>有时，我们想创建一个包含数组数据的对象，如果仅仅是集合，只要使用数组就行。但很多时候，我们还要保存一些与集合相关的元数据。</p>
 
-<p>Vue的数据绑定只有两个步骤，compile=&gt;link。</p>
+<p>我们可以给普通对象添加一些我们想要的功能，让它看起来像一个数组吗？Array的原型链上有很多处理集合的方法，我们可以把这些方法嫁接到自己的对象上吗？</p>
 
-<p>我一直在想，vue是通过什么去监听用户对Model的修改，直到我发现Vue的data里，每个属性都有set和get属性，我才明白过来。</p>
+<p>事实证明是可以的：</p>
 
-<p>在平时，我们创建一个对象，并修改它的属性，是这样的：</p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">elems</span> <span class="o">=</span> <span class="p">{</span>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">val</span><span class="p">:</span><span class="mi">99</span>
-<span class="p">}</span>
-<span class="nx">obj</span><span class="p">.</span><span class="nx">val</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">val</span><span class="p">)</span><span class="c1">//100</span>
+  <span class="na">length</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>                                                
+
+  <span class="na">add</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">){</span>                                      
+    <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">push</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">elem</span><span class="p">);</span>
+  <span class="p">},</span>
+
+  <span class="na">gather</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">id</span><span class="p">){</span>                                     
+    <span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">id</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">elems</span><span class="p">.</span><span class="nx">gather</span><span class="p">(</span><span class="s2">"first"</span><span class="p">);</span>                                     
+
+<span class="nx">elems</span><span class="p">.</span><span class="nx">gather</span><span class="p">(</span><span class="s2">"second"</span><span class="p">);</span>              
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">elems</span><span class="p">);</span>                   
 </code></pre>
 </div>
 
-<p>没有任何问题，但是如果要你去监测，当我修改了这个对象的属性时，要去做一些事，你会怎么做？</p>
+<p>在这个例子中，我们给elems对象添加了一些模拟数组的行为，首先定义了length属性，用于保存元素个数。</p>
 
-<p>这就要用到getter和setter了。</p>
+<p>之后定义了一个方法，用于将元素添加到模拟数组的结尾。我们使用了原生数组的方法：<code class="highlighter-rouge">Array.prototype.push</code>,而不是自己编写代码。</p>
 
-<p>假设我现在要给一个码农对象添加一个name属性，而且每次更新name属性时，我要去完成一些事，我们可以这样做：</p>
+<p>正常情况下，<code class="highlighter-rouge">push</code>方法是通过其函数上下文操作自身数组的，在这里我们用<code class="highlighter-rouge">call</code>方法强制用我们自己的对象作为<code class="highlighter-rouge">push</code>的函数上下文。</p>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">Coder</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-        <span class="k">return</span> <span class="p">{</span>
-            <span class="nx">get</span> <span class="nx">name</span><span class="p">(){</span>
-                <span class="k">if</span><span class="p">(</span><span class="nx">that</span><span class="p">.</span><span class="nx">name</span><span class="p">){</span>
-                    <span class="k">return</span> <span class="nx">that</span><span class="p">.</span><span class="nx">name</span>
-                <span class="p">}</span>
-                <span class="k">return</span> <span class="s1">'你还没有取名'</span>
-            <span class="p">},</span>
-            <span class="nx">set</span> <span class="nx">name</span><span class="p">(</span><span class="nx">val</span><span class="p">){</span>
-                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'你把名字修成了'</span><span class="o">+</span><span class="nx">val</span><span class="p">)</span>
-                <span class="nx">that</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">val</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="kd">var</span> <span class="nx">isMe</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Coder</span><span class="p">()</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isMe</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
-    <span class="nx">isMe</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'周神'</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isMe</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isMe</span><span class="p">)</span>
-</code></pre>
-</div>
+<p><code class="highlighter-rouge">push</code>函数会增加length属性，并给对象添加一个数字属性，再将其引用到传入的元素上。在某种程度上来说，这是颠覆性的！</p>
 
-<p>输出：</p>
+<p><code class="highlighter-rouge">add</code>方法期望接收一个用于储存的元素引用，所以，我们为了方便，定义了<code class="highlighter-rouge">gather</code>方法，用于根据id值查找对应元素，并调用<code class="highlighter-rouge">add</code>方法将其添加到储存中。</p>
 
-<p><img src="http://images2015.cnblogs.com/blog/929120/201610/929120-20161025173135343-1508869676.png" alt="" /></p>
+<p>我们打印出<code class="highlighter-rouge">elems</code>对象看一看：</p>
 
-<p>你会发现这个对象和最上面的Vue中的data对象，打印出来的效果是一样的，都拥有get和set属性。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2859850-bd6b647f0354c477.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
 
-<p>我们来一步步分析下上面的代码,很有趣。</p>
+<p>这就是我们想要的！</p>
 
-<p>我们先创建一个对象字面量：</p>
-
-<p>var Coder = function() {…}</p>
-
-<p>再把this缓存一下：</p>
-
-<p>var that = this;</p>
-
-<p>接下来是最重要的，我们return了一个对象回去：</p>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">{</span>
-  <span class="nx">get</span> <span class="nx">name</span><span class="p">(){</span><span class="cm">/*do something*/</span><span class="p">},</span>
-
-  <span class="nx">set</span> <span class="nx">name</span><span class="p">(</span><span class="nx">val</span><span class="p">){</span><span class="cm">/*do something*/</span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<p>顾名思义，get为取值，set为赋值，正常情况下，我们取值和赋值是用obj.prop的方式，但是这样做有一个问题，我如何知道对象的值改变了？所以就轮到set登场了。</p>
-
-<p>你可以把get和set理解为function，当然，只是可以这么理解，这是完全不一样的两个东西。</p>
-
-<p>接下来创建一个码农的实例，isMe；此时，isMe是没有name属性的，当我们调用isMe.name时，我们会进入到get name(){…}中，先判断isMe是否有name属性，答案是否定的，那麽就添加一个name属性，并给它赋值：”你还没有取名”；如果有name属性，那就返回name属性。</p>
-
-<p>看到这里你一定知道get怎么使用了，对，你可以把get看成一个取值的函数，函数的返回值就是它拿到的值。</p>
-
-<p>我感觉比较重要的是set属性，当我给实例赋值：</p>
-
-<p>isMe.name=”周神”</p>
-
-<p>此时，会进入set name(val){…}；形参val就是我赋给name属性的值，在这个函数里，我就可以做很多事了，比如双向绑定！因为这个值的每次改变都必须经过set，其他方式是改变不了它的，相当于一个万能的监听器。</p>
-
-<p>还有另一种方法可以实现这个功能。</p>
-
-<p>ES5的对象原型有两个新的属性__defineGetter__和__defineSetter__，专门用来给对象绑定get和set。可以这样书写：</p>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">Coder</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="p">}</span>
-    <span class="nx">Coder</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">__defineGetter__</span><span class="p">(</span><span class="s1">'name'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span>
-        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-            <span class="k">return</span> <span class="s1">'你还没有取名'</span>
-        <span class="p">}</span>
-    <span class="p">})</span>
-    <span class="nx">Coder</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">__defineSetter__</span><span class="p">(</span><span class="s1">'name'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">val</span>
-    <span class="p">})</span>
-    <span class="kd">var</span> <span class="nx">isMe</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Coder</span><span class="p">()</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isMe</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
-    <span class="nx">isMe</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'周神'</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isMe</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isMe</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<p>效果是一样的，建议使用下面这种方式，因为是在原型上书写，所以可以继承和重用，最近想写点小框架，才发现知识不够用，大家一起加油吧！</p>
+<p>当然，这只是表面我们看到的，关于伪造数组，还有很多的知识要了解，这里只是告诉你它的基本实现，有兴趣了解更多的话，Google一下吧！</p>
 
 
                 <hr style="visibility: hidden;">
@@ -324,15 +262,17 @@
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2016/10/25/vue-getter-setter"
-                    data-title=" 由Vue引发的getter和setter思考 "
-                    data-url="http://localhost:4000/2016/10/25/vue-getter-setter/"
-                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-6142a6b04f7319fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+                    data-thread-key="/2016/07/01/fake-array"
+                    data-title=" 如何伪造数组？ "
+                    data-url="http://localhost:4000/2016/07/01/fake-array/"
+                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-5cea7011542ce57d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
                     data-content="
-  接触新事物总会让人很难受，但也会让人成长。
+  真的假不了，假的真不了。
 
 
-公司的新项目决定使用Vue.js来做，当我打印出Vue实例下的data对象里的属性时，发现了一个有趣... | 周神的博客 | Rockjins Blog " >
+我们经常可以从各种库或框架中拿到这样的值：
+
+明明是一个对象，却有length属性；或者明明看上去是个数组，却不能使用... | 周神的博客 | Rockjins Blog " >
                     <div class="ds-share-inline">
                       <style> 
                         .ds-share-icons-16 {display:none;} 
@@ -355,17 +295,17 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2016/09/03/parseint/" data-toggle="tooltip" data-placement="top" title=" parseInt第二个参数详解 ">
+                        <a href="/2016/07/01/baidu-keywords/" data-toggle="tooltip" data-placement="top" title=" 教你把百度的关键字搜索偷过来用用 ">
                         Previous<br>
-                        <span> parseInt第二个参数详解 </span>
+                        <span> 教你把百度的关键字搜索偷过来用用 </span>
                         </a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2016/11/11/memoization/" data-toggle="tooltip" data-placement="top" title=" 使用自记忆函数提高页面性能 ">
+                        <a href="/2016/09/03/parseint/" data-toggle="tooltip" data-placement="top" title=" parseInt第二个参数详解 ">
                         Next<br>
-                        <span> 使用自记忆函数提高页面性能 </span>
+                        <span> parseInt第二个参数详解 </span>
                         </a>
                     </li>
                     
@@ -376,9 +316,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2016/10/25/vue-getter-setter"
-                        data-title=" 由Vue引发的getter和setter思考 "
-                        data-url="http://localhost:4000/2016/10/25/vue-getter-setter/" >
+                        data-thread-key="/2016/07/01/fake-array"
+                        data-title=" 如何伪造数组？ "
+                        data-url="http://localhost:4000/2016/07/01/fake-array/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->

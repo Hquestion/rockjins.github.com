@@ -5,8 +5,8 @@
     <description> 周神的个人博客，和你一起进步，一起探索更奥妙的知识，更新奇的技术。 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 22 Dec 2016 16:32:33 +0800</pubDate>
-    <lastBuildDate>Thu, 22 Dec 2016 16:32:33 +0800</lastBuildDate>
+    <pubDate>Thu, 22 Dec 2016 20:31:14 +0800</pubDate>
+    <lastBuildDate>Thu, 22 Dec 2016 20:31:14 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -643,6 +643,76 @@
       </item>
     
       <item>
+        <title> 如何伪造数组？ </title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;真的假不了，假的真不了。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;我们经常可以从各种库或框架中拿到这样的值：&lt;/p&gt;
+
+&lt;p&gt;明明是一个对象，却有length属性；或者明明看上去是个数组，却不能使用数组的方法（arguments）。我们今天就来聊聊怎么伪造数组。&lt;/p&gt;
+
+&lt;p&gt;有时，我们想创建一个包含数组数据的对象，如果仅仅是集合，只要使用数组就行。但很多时候，我们还要保存一些与集合相关的元数据。&lt;/p&gt;
+
+&lt;p&gt;我们可以给普通对象添加一些我们想要的功能，让它看起来像一个数组吗？Array的原型链上有很多处理集合的方法，我们可以把这些方法嫁接到自己的对象上吗？&lt;/p&gt;
+
+&lt;p&gt;事实证明是可以的：&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;elems&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+  &lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;                                                
+
+  &lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;elem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;                                      
+    &lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;elem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+  &lt;span class=&quot;na&quot;&gt;gather&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;                                     
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;elems&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gather&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;first&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;                                     
+
+&lt;span class=&quot;nx&quot;&gt;elems&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gather&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;second&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;              
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;elems&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;                   
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;在这个例子中，我们给elems对象添加了一些模拟数组的行为，首先定义了length属性，用于保存元素个数。&lt;/p&gt;
+
+&lt;p&gt;之后定义了一个方法，用于将元素添加到模拟数组的结尾。我们使用了原生数组的方法：&lt;code class=&quot;highlighter-rouge&quot;&gt;Array.prototype.push&lt;/code&gt;,而不是自己编写代码。&lt;/p&gt;
+
+&lt;p&gt;正常情况下，&lt;code class=&quot;highlighter-rouge&quot;&gt;push&lt;/code&gt;方法是通过其函数上下文操作自身数组的，在这里我们用&lt;code class=&quot;highlighter-rouge&quot;&gt;call&lt;/code&gt;方法强制用我们自己的对象作为&lt;code class=&quot;highlighter-rouge&quot;&gt;push&lt;/code&gt;的函数上下文。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;push&lt;/code&gt;函数会增加length属性，并给对象添加一个数字属性，再将其引用到传入的元素上。在某种程度上来说，这是颠覆性的！&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;add&lt;/code&gt;方法期望接收一个用于储存的元素引用，所以，我们为了方便，定义了&lt;code class=&quot;highlighter-rouge&quot;&gt;gather&lt;/code&gt;方法，用于根据id值查找对应元素，并调用&lt;code class=&quot;highlighter-rouge&quot;&gt;add&lt;/code&gt;方法将其添加到储存中。&lt;/p&gt;
+
+&lt;p&gt;我们打印出&lt;code class=&quot;highlighter-rouge&quot;&gt;elems&lt;/code&gt;对象看一看：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/2859850-bd6b647f0354c477.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这就是我们想要的！&lt;/p&gt;
+
+&lt;p&gt;当然，这只是表面我们看到的，关于伪造数组，还有很多的知识要了解，这里只是告诉你它的基本实现，有兴趣了解更多的话，Google一下吧！&lt;/p&gt;
+</description>
+        <pubDate>Fri, 01 Jul 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/07/01/fake-array/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/07/01/fake-array/</guid>
+        
+        <category>Array</category>
+        
+        <category>Object</category>
+        
+        <category>Function</category>
+        
+        <category>JavaScript</category>
+        
+        
+      </item>
+    
+      <item>
         <title> 教你把百度的关键字搜索偷过来用用 </title>
         <description>&lt;blockquote&gt;
   &lt;p&gt;你真以为我偷东西啊！对啊，我就是偷东西。&lt;/p&gt;
@@ -896,56 +966,6 @@
         <guid isPermaLink="true">http://localhost:4000/2016/06/28/php-demo/</guid>
         
         <category>PHP</category>
-        
-        
-      </item>
-    
-      <item>
-        <title> 来自网易云的黑科技，带尖角的div...... </title>
-        <description>&lt;blockquote&gt;
-  &lt;p&gt;很多时候最不能相信的就是你的眼睛。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;今天在网易云的网页版听歌，话说Steve Vai的曲子永远是这么让人揣摩不透，不过我还时更喜欢老Joe，咦，跑题了···&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201606/929120-20160622141525235-1632127211.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;大家可以看到评论输入框和回复框，上面都有个小尖角，实现的方式有很多，我一般是用border来做，只要给一个元素加上这四条属性就行了：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;border-top: 400px solid red;
-border-right: 400px solid transparent;
-border-bottom: 400px solid transparent;
-border-left: 400px solid transparent;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;下面要讲的是网易云上面的黑科技，我看完真的是服···&lt;/p&gt;
-
-&lt;p&gt;作为一个程序猿，看网页总喜欢手贱的审查元素…&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201606/929120-20160622142259547-420713142.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;咦？这两个小黑块是啥？稍微一想，原来是这样….&lt;/p&gt;
-
-&lt;p&gt;顶层的小方块颜色是白色背景颜色，下面还层叠了一个背景颜色为边框颜色的小方块，还是上图比较直观：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201606/929120-20160622145114469-397586137.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;这里有两个小方块，我们两个小方块都position:absolute;把右边的小方块向左移，移到马上覆盖左边方块为止：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201606/929120-20160622145402953-873575.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;OK，就像这个样子，聪明的你可能已经知道这个是什么了，假定背景颜色是白色的，边框是红色的，那我们只需要改变着两个元素的color属性即可：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2859850-aae2fc70b22d91c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;我们只需给父元素position:relative;把这两个小方块定位到相应的地方就OK啦，感觉能想到这种方法的人也挺牛的，啊哈。&lt;/p&gt;
-</description>
-        <pubDate>Wed, 22 Jun 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/06/22/music-cloud/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/06/22/music-cloud/</guid>
-        
-        <category>CSS</category>
         
         
       </item>

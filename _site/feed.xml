@@ -5,8 +5,8 @@
     <description> 周神的个人博客，和你一起进步，一起探索更奥妙的知识，更新奇的技术。 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 22 Dec 2016 20:33:43 +0800</pubDate>
-    <lastBuildDate>Thu, 22 Dec 2016 20:33:43 +0800</lastBuildDate>
+    <pubDate>Thu, 22 Dec 2016 20:42:12 +0800</pubDate>
+    <lastBuildDate>Thu, 22 Dec 2016 20:42:12 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -645,7 +645,7 @@
       <item>
         <title> 如何伪造数组？ </title>
         <description>&lt;blockquote&gt;
-  &lt;p&gt;真的假不了，假的真不了。&lt;/p&gt;
+  &lt;p&gt;万物皆为一物。&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;我们经常可以从各种库或框架中拿到这样的值：&lt;/p&gt;

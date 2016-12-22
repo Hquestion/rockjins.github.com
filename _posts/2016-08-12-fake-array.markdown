@@ -2,7 +2,7 @@
 layout:     post
 title:      " 如何伪造数组？ "
 subtitle:   " Camouflage is the most basic skills of a ninja. "
-date:       2016-07-01
+date:       2016-08-12
 author:     "Shock"
 header-img: "/upload-images.jianshu.io/upload_images/2859850-5cea7011542ce57d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
 catalog: true

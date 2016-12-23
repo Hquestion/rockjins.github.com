@@ -3,10 +3,10 @@
   <channel>
     <title>Rockjins Blog</title>
     <description> 周神的个人博客，和你一起进步，一起探索更奥妙的知识，更新奇的技术。 </description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 22 Dec 2016 20:42:12 +0800</pubDate>
-    <lastBuildDate>Thu, 22 Dec 2016 20:42:12 +0800</lastBuildDate>
+    <link>https://rockjins.github.io/</link>
+    <atom:link href="https://rockjins.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Fri, 23 Dec 2016 09:12:58 +0800</pubDate>
+    <lastBuildDate>Fri, 23 Dec 2016 09:12:58 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -102,8 +102,8 @@
 &lt;p&gt;这个技巧在递归中常常会用到，如果你留意的话。&lt;/p&gt;
 </description>
         <pubDate>Mon, 19 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/19/inline-function/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/19/inline-function/</guid>
+        <link>https://rockjins.github.io/2016/12/19/inline-function/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/12/19/inline-function/</guid>
         
         <category>JavaScript</category>
         
@@ -187,8 +187,8 @@
 &lt;p&gt;睡一觉，醒来继续活。&lt;/p&gt;
 </description>
         <pubDate>Sat, 17 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/17/faith/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/17/faith/</guid>
+        <link>https://rockjins.github.io/2016/12/17/faith/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/12/17/faith/</guid>
         
         <category>信仰</category>
         
@@ -228,8 +228,8 @@
 &lt;p&gt;少年，这也就是别人为什么比你成功的原因，你真的很勤奋努力吗？只有你自己知道。&lt;/p&gt;
 </description>
         <pubDate>Mon, 12 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/12/evil/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/12/evil/</guid>
+        <link>https://rockjins.github.io/2016/12/12/evil/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/12/12/evil/</guid>
         
         <category>生活</category>
         
@@ -304,8 +304,8 @@
 &lt;p&gt;这个坑牛逼不，我真是个奇葩。&lt;/p&gt;
 </description>
         <pubDate>Thu, 01 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/01/vue-problem/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/01/vue-problem/</guid>
+        <link>https://rockjins.github.io/2016/12/01/vue-problem/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/12/01/vue-problem/</guid>
         
         <category>Vue</category>
         
@@ -429,8 +429,8 @@
 &lt;p&gt;至于，是否运用这种技巧在你项目中，那得看你的实际情况了。&lt;/p&gt;
 </description>
         <pubDate>Fri, 11 Nov 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/11/11/memoization/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/11/11/memoization/</guid>
+        <link>https://rockjins.github.io/2016/11/11/memoization/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/11/11/memoization/</guid>
         
         <category>Function</category>
         
@@ -561,8 +561,8 @@
 &lt;p&gt;效果是一样的，建议使用下面这种方式，因为是在原型上书写，所以可以继承和重用，最近想写点小框架，才发现知识不够用，大家一起加油吧！&lt;/p&gt;
 </description>
         <pubDate>Tue, 25 Oct 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/10/25/vue-getter-setter/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/10/25/vue-getter-setter/</guid>
+        <link>https://rockjins.github.io/2016/10/25/vue-getter-setter/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/10/25/vue-getter-setter/</guid>
         
         <category>Vue</category>
         
@@ -634,8 +634,8 @@
 &lt;p&gt;另外补充一下，另一个函数parseFloat只接受一个参数，只能使用十进制去解析。&lt;/p&gt;
 </description>
         <pubDate>Sat, 03 Sep 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/09/03/parseint/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/09/03/parseint/</guid>
+        <link>https://rockjins.github.io/2016/09/03/parseint/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/09/03/parseint/</guid>
         
         <category>JavaScript</category>
         
@@ -698,8 +698,8 @@
 &lt;p&gt;当然，这只是表面我们看到的，关于伪造数组，还有很多的知识要了解，这里只是告诉你它的基本实现，有兴趣了解更多的话，Google一下吧！&lt;/p&gt;
 </description>
         <pubDate>Fri, 12 Aug 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/08/12/fake-array/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/08/12/fake-array/</guid>
+        <link>https://rockjins.github.io/2016/08/12/fake-array/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/08/12/fake-array/</guid>
         
         <category>Array</category>
         
@@ -825,8 +825,8 @@
 &lt;p&gt;现在我们只需要把数据console.log出来，并解析到页面上，就可以实现文章开头的效果了，简单吧！(记得放在服务器环境运行哦！)&lt;/p&gt;
 </description>
         <pubDate>Fri, 01 Jul 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/07/01/baidu-keywords/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/07/01/baidu-keywords/</guid>
+        <link>https://rockjins.github.io/2016/07/01/baidu-keywords/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/07/01/baidu-keywords/</guid>
         
         <category>JSONP</category>
         
@@ -962,8 +962,8 @@
 &lt;p&gt;最后附上项目源码:&lt;a href=&quot;https://github.com/rockjins/firstPython/tree/gh-pages/test/easyPHP&quot;&gt;EasyPHP&lt;/a&gt;(还是希望大家能敲一下)&lt;/p&gt;
 </description>
         <pubDate>Tue, 28 Jun 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/06/28/php-demo/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/06/28/php-demo/</guid>
+        <link>https://rockjins.github.io/2016/06/28/php-demo/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/06/28/php-demo/</guid>
         
         <category>PHP</category>
         

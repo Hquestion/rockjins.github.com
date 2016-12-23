@@ -10,7 +10,7 @@
     <meta name="keywords"  content="周神, Shock, @rockjins, @chinajins, 周神的博客, Rockjins Blog, 博客, 个人网站, 互联网, 前端, 设计, 产品">
     <meta name="theme-color" content="#000000">
 
-    <title> Vue数据绑定隐藏的神坑....  - 周神的博客 | Rockjins Blog</title>
+    <title> 『置顶』不定期更新 JavaScript技巧  - 周神的博客 | Rockjins Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2016/12/01/vue-problem/">
+    <link rel="canonical" href="http://localhost:4000/2016/12/23/some-skill/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -151,13 +151,13 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="//upload-images.jianshu.io/upload_images/2859850-869affe7daaa25d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="0" height="0"> -->
+<!-- <img src="//upload-images.jianshu.io/upload_images/2859850-13d53baf09a3de93.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('//upload-images.jianshu.io/upload_images/2859850-869affe7daaa25d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')
+        background-image: url('//upload-images.jianshu.io/upload_images/2859850-13d53baf09a3de93.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')
     }
 
     
@@ -170,17 +170,15 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#Vue" title="Vue">Vue</a>
-                        
                         <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
                         
                     </div>
-                    <h1> Vue数据绑定隐藏的神坑.... </h1>
+                    <h1> 『置顶』不定期更新 JavaScript技巧 </h1>
                     
                     
-                    <h2 class="subheading"> Someone walk, will have a road. </h2>
+                    <h2 class="subheading"> Efficiency, is useful. </h2>
                     
-                    <span class="meta">Posted by Shock on December 1, 2016</span>
+                    <span class="meta">Posted by Shock on December 23, 2016</span>
                 </div>
             </div>
         </div>
@@ -199,67 +197,40 @@
                 post-container">
 
 				<blockquote>
-  <p>出现问题是好的，那说明你在行动。</p>
+  <p> JavaScript技巧，长期置顶，偶尔更新。</p>
 </blockquote>
 
-<p>今天被Vue的一个坑给折磨了一天，终于发现是什么问题，我们先来模拟一个场景：
-代码如下：</p>
+<h3 id="计算数组的极值">计算数组的极值：</h3>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;title&gt;</span>vue<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">v-model=</span><span class="s">'sendJson.name'</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;button</span> <span class="err">@</span><span class="na">click=</span><span class="s">'showName'</span><span class="nt">&gt;</span>打印输入框的值<span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">'./vue.min.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
-    <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
-        <span class="na">el</span><span class="p">:</span><span class="s1">'#app'</span><span class="p">,</span>
-        <span class="nx">data</span><span class="p">(){</span>
-            <span class="k">return</span><span class="p">{</span>
-                <span class="na">sendJson</span><span class="p">:{}</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="na">methods</span><span class="p">:{</span>
-            <span class="nx">showName</span><span class="p">(){</span>
-                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">sendJson</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">});</span>
-    <span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">smallest</span><span class="p">(</span><span class="nx">array</span><span class="p">){</span>                         
+  <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nb">Math</span><span class="p">,</span> <span class="nx">array</span><span class="p">);</span>             
+<span class="p">}</span>                                                 
+
+<span class="kd">function</span> <span class="nx">largest</span><span class="p">(</span><span class="nx">array</span><span class="p">){</span>                          
+  <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nb">Math</span><span class="p">,</span> <span class="nx">array</span><span class="p">);</span>             
+<span class="p">}</span>  
+
+<span class="nx">smallest</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">]);</span> <span class="c1">// 0</span>
+
+<span class="nx">largest</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">]);</span> <span class="c1">// 3.3</span>
 </code></pre>
 </div>
 
-<p>我们进页面就点按钮，你猜会输出什么？</p>
+<h3 id="迭代arguments">迭代arguments：</h3>
 
-<p>是undefined，不算奇怪，你什么都没输入，当然是undefined了。</p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">useCall</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">[].</span><span class="nx">forEach</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">val</span><span class="p">)</span>
+    <span class="p">});</span>
+<span class="p">}</span>
 
-<p><img src="http://images2015.cnblogs.com/blog/929120/201612/929120-20161201171421084-1001813606.png" alt="" /></p>
+<span class="nx">useCall</span><span class="p">(</span><span class="s1">'Bob Dylan'</span><span class="p">,</span> <span class="s1">'Bob Marley'</span><span class="p">,</span> <span class="s1">'Steve Vai'</span><span class="p">);</span>
 
-<p>OK，接下来刷新页面，进去多一步操作，先点击一下input输入框，在点击按钮，只是多做这一步操作：</p>
-
-<p><img src="http://images2015.cnblogs.com/blog/929120/201612/929120-20161201171437131-570191932.png" alt="" /></p>
-
-<p>输出的是空白，在chrome中空白就代表空字符串，可以修改一下打印结果：</p>
-
-<p><code class="highlighter-rouge">console.log(this.sendJson.name === "")</code></p>
-
-<p><img src="http://images2015.cnblogs.com/blog/929120/201612/929120-20161201171456443-1782238340.png" alt="" /></p>
-
-<p>其实这看起来不是个大问题，但是在我的场景里问题就大了。</p>
-
-<p>我要把输入框内的值作为一个对象的属性，问题就来了，看图：</p>
-
-<p><img src="http://images2015.cnblogs.com/blog/929120/201612/929120-20161201171507646-1556743229.png" alt="" /></p>
-
-<p>这个坑牛逼不，我真是个奇葩。</p>
+<span class="c1">//0 "Bob Dylan"</span>
+<span class="c1">//1 "Bob Marley"</span>
+<span class="c1">//2 "Steve Vai"</span>
+</code></pre>
+</div>
 
 
                 <hr style="visibility: hidden;">
@@ -268,18 +239,17 @@
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2016/12/01/vue-problem"
-                    data-title=" Vue数据绑定隐藏的神坑.... "
-                    data-url="http://localhost:4000/2016/12/01/vue-problem/"
-                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-869affe7daaa25d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+                    data-thread-key="/2016/12/23/some-skill"
+                    data-title=" 『置顶』不定期更新 JavaScript技巧 "
+                    data-url="http://localhost:4000/2016/12/23/some-skill/"
+                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-13d53baf09a3de93.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
                     data-content="
-  出现问题是好的，那说明你在行动。
+   JavaScript技巧，长期置顶，偶尔更新。
 
 
-今天被Vue的一个坑给折磨了一天，终于发现是什么问题，我们先来模拟一个场景：
-代码如下：
+计算数组的极值：
 
-&lt;!DOCT... | 周神的博客 | Rockjins Blog " >
+function smallest(array){            ... | 周神的博客 | Rockjins Blog " >
                     <div class="ds-share-inline">
                       <style> 
                         .ds-share-icons-16 {display:none;} 
@@ -302,19 +272,12 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2016/11/11/memoization/" data-toggle="tooltip" data-placement="top" title=" 使用自记忆函数提高页面性能 ">
+                        <a href="/2016/12/19/inline-function/" data-toggle="tooltip" data-placement="top" title=" 使用内联函数进行递归 ">
                         Previous<br>
-                        <span> 使用自记忆函数提高页面性能 </span>
+                        <span> 使用内联函数进行递归 </span>
                         </a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2016/12/12/evil/" data-toggle="tooltip" data-placement="top" title=" 恶魔的呢喃 ">
-                        Next<br>
-                        <span> 恶魔的呢喃 </span>
-                        </a>
-                    </li>
                     
                 </ul>
 
@@ -323,9 +286,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2016/12/01/vue-problem"
-                        data-title=" Vue数据绑定隐藏的神坑.... "
-                        data-url="http://localhost:4000/2016/12/01/vue-problem/" >
+                        data-thread-key="/2016/12/23/some-skill"
+                        data-title=" 『置顶』不定期更新 JavaScript技巧 "
+                        data-url="http://localhost:4000/2016/12/23/some-skill/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->

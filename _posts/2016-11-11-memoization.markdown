@@ -89,3 +89,5 @@ function getElements(name){
 - 很难进行算法性能的测试
 
 至于，是否运用这种技巧在你项目中，那得看你的实际情况了。
+
+本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

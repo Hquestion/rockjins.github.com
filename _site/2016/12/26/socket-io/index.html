@@ -10,7 +10,7 @@
     <meta name="keywords"  content="周神, Shock, @rockjins, @chinajins, 周神的博客, Rockjins Blog, 博客, 个人网站, 互联网, 前端, 设计, 产品">
     <meta name="theme-color" content="#000000">
 
-    <title> 由Vue引发的getter和setter思考  - 周神的博客 | Rockjins Blog</title>
+    <title>『翻译』socket.io聊天室程序（官方示例）  - 周神的博客 | Rockjins Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2016/10/25/vue-getter-setter/">
+    <link rel="canonical" href="http://localhost:4000/2016/12/26/socket-io/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -151,13 +151,13 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="//upload-images.jianshu.io/upload_images/2859850-6142a6b04f7319fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="0" height="0"> -->
+<!-- <img src="//upload-images.jianshu.io/upload_images/2859850-0c2a566822a3bff8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('//upload-images.jianshu.io/upload_images/2859850-6142a6b04f7319fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')
+        background-image: url('//upload-images.jianshu.io/upload_images/2859850-0c2a566822a3bff8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')
     }
 
     
@@ -170,17 +170,19 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#Vue" title="Vue">Vue</a>
-                        
                         <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
                         
+                        <a class="tag" href="/tags/#Node.js" title="Node.js">Node.js</a>
+                        
+                        <a class="tag" href="/tags/#socket.io" title="socket.io">socket.io</a>
+                        
                     </div>
-                    <h1> 由Vue引发的getter和setter思考 </h1>
+                    <h1>『翻译』socket.io聊天室程序（官方示例） </h1>
                     
                     
-                    <h2 class="subheading"> Thinking can make you stronger. </h2>
+                    <h2 class="subheading"> Chat application </h2>
                     
-                    <span class="meta">Posted by Shock on October 25, 2016</span>
+                    <span class="meta">Posted by Shock on December 26, 2016</span>
                 </div>
             </div>
         </div>
@@ -199,123 +201,125 @@
                 post-container">
 
 				<blockquote>
-  <p>接触新事物总会让人很难受，但也会让人成长。</p>
+  <p> 官方最新版的示例翻译</p>
 </blockquote>
 
-<p>公司的新项目决定使用Vue.js来做，当我打印出Vue实例下的data对象里的属性时，发现了一个有趣的事情：</p>
+<h2 id="开始创建聊天室程序">开始创建：聊天室程序</h2>
 
-<p><img src="http://images2015.cnblogs.com/blog/929120/201610/929120-20161025151218546-1679290074.png" alt="" /></p>
+<p>在这个教程中，我们将会创建一个基本的聊天室程序。它几乎不需要你懂得多少Node.js和socket.io的知识，所以，这个教程适用于各个技术水平的开发人员。</p>
 
-<p>它的每个属性都有两个相对应的get和set方法，我觉的这是多此一举的，于是去网上查了查Vue双向绑定的实现原理，才发现它和Angular.js双向绑定的实现原理完全不同，Angular是用的数据脏检测，当Model发生变化，会检测所有视图是否绑定了相关数据，再更改视图。而Vue使用的发布订阅模式，是点对点的绑定数据。</p>
+<h3 id="介绍">介绍</h3>
 
-<p>Vue的数据绑定只有两个步骤，compile=&gt;link。</p>
+<p>使用LAMP（PHP）这种传统的技术栈去编写一个流行的聊天室程序是很困难的。它包括了服务器的轮询，跟踪时间戳，用它们去做这些会很缓慢。</p>
 
-<p>我一直在想，vue是通过什么去监听用户对Model的修改，直到我发现Vue的data里，每个属性都有set和get属性，我才明白过来。</p>
+<p>一直以来，sockets都是即时聊天系统的架构解决方案，它提供一个双向的通讯通道在客户端和服务器之间。</p>
 
-<p>在平时，我们创建一个对象，并修改它的属性，是这样的：</p>
+<p>这意味着服务器可以推送消息到客户端。无论你何时发送聊天信息，我们都希望服务器获取到它，并把它推送到其他连接服务器的客户端上。</p>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">val</span><span class="p">:</span><span class="mi">99</span>
-<span class="p">}</span>
-<span class="nx">obj</span><span class="p">.</span><span class="nx">val</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">val</span><span class="p">)</span><span class="c1">//100</span>
+<h3 id="web-框架">Web 框架</h3>
+
+<p>首先，我们要建立一个简单的HTML页面，负责提交表单和展示消息列表。我们将使用Node.js的web框架<code class="highlighter-rouge">express</code>去实现。请确保你安装了<code class="highlighter-rouge">Node.js</code>。</p>
+
+<p>我们先创建一个package.json来描述我们的项目。我建议你创建一个空文件夹（我把它叫做chat-example）。</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"socket-chat-example"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.1"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my first socket.io app"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>现在，按顺序把我们所需要的依赖填充到<code class="highlighter-rouge">dependencies</code>，我们使用<code class="highlighter-rouge">npm install --save</code>：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>npm install --save express@4.10.2
 </code></pre>
 </div>
 
-<p>没有任何问题，但是如果要你去监测，当我修改了这个对象的属性时，要去做一些事，你会怎么做？</p>
+<p>现在，express已经安装完成，我们创建一个<code class="highlighter-rouge">index.js</code>文件，开始搭建我们的程序。</p>
 
-<p>这就要用到getter和setter了。</p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">)();</span>
+<span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'http'</span><span class="p">).</span><span class="nx">Server</span><span class="p">(</span><span class="nx">app</span><span class="p">);</span>
 
-<p>假设我现在要给一个码农对象添加一个name属性，而且每次更新name属性时，我要去完成一些事，我们可以这样做：</p>
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'&lt;h1&gt;Hello world&lt;/h1&gt;'</span><span class="p">);</span>
+<span class="p">});</span>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">Coder</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-        <span class="k">return</span> <span class="p">{</span>
-            <span class="nx">get</span> <span class="nx">name</span><span class="p">(){</span>
-                <span class="k">if</span><span class="p">(</span><span class="nx">that</span><span class="p">.</span><span class="nx">name</span><span class="p">){</span>
-                    <span class="k">return</span> <span class="nx">that</span><span class="p">.</span><span class="nx">name</span>
-                <span class="p">}</span>
-                <span class="k">return</span> <span class="s1">'你还没有取名'</span>
-            <span class="p">},</span>
-            <span class="nx">set</span> <span class="nx">name</span><span class="p">(</span><span class="nx">val</span><span class="p">){</span>
-                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'你把名字修成了'</span><span class="o">+</span><span class="nx">val</span><span class="p">)</span>
-                <span class="nx">that</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">val</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="kd">var</span> <span class="nx">isMe</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Coder</span><span class="p">()</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isMe</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
-    <span class="nx">isMe</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'周神'</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isMe</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isMe</span><span class="p">)</span>
+<span class="nx">http</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'listening on *:3000'</span><span class="p">);</span>
+<span class="p">});</span>
 </code></pre>
 </div>
 
-<p>输出：</p>
+<p>上面这段代码的意思如下：</p>
 
-<p><img src="http://images2015.cnblogs.com/blog/929120/201610/929120-20161025173135343-1508869676.png" alt="" /></p>
+<blockquote>
+  <ol>
+    <li>
+      <p>Express把<code class="highlighter-rouge">app</code>初始化为函数处理器(function handler)，它提供了一个HTTP服务。</p>
+    </li>
+    <li>
+      <p>我们定义一个路由处理器<code class="highlighter-rouge">/</code>，当我们进入网站首页时，它会执行。</p>
+    </li>
+    <li>
+      <p>我们创建一个http服务去监听3000端口。</p>
+    </li>
+  </ol>
+</blockquote>
 
-<p>你会发现这个对象和最上面的Vue中的data对象，打印出来的效果是一样的，都拥有get和set属性。</p>
+<p>如果你运行<code class="highlighter-rouge">node index.js</code>，你会看到如下所示：</p>
 
-<p>我们来一步步分析下上面的代码,很有趣。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2859850-947da750a222ceac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="node-index.js" /></p>
 
-<p>我们先创建一个对象字面量：</p>
+<p>接下来在浏览器输入<code class="highlighter-rouge">http://localhost:3000</code>，你会看到如下所示：</p>
 
-<p>var Coder = function() {…}</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2859850-52c14f95337539fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="HW" /></p>
 
-<p>再把this缓存一下：</p>
+<h3 id="创建html">创建HTML</h3>
 
-<p>var that = this;</p>
+<p>到目前为止，<code class="highlighter-rouge">index.js</code>只是用<code class="highlighter-rouge">res.send</code>返回一个HTML字符串。如果我们把整个程序的HTML代码都放在这，那会使我们头晕眼花，我们再创建一个<code class="highlighter-rouge">index.html</code>并启动它。</p>
 
-<p>接下来是最重要的，我们return了一个对象回去：</p>
+<p>我们改写路由处理器，用<code class="highlighter-rouge">sendFile</code>代替<code class="highlighter-rouge">send</code>：</p>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">{</span>
-  <span class="nx">get</span> <span class="nx">name</span><span class="p">(){</span><span class="cm">/*do something*/</span><span class="p">},</span>
-
-  <span class="nx">set</span> <span class="nx">name</span><span class="p">(</span><span class="nx">val</span><span class="p">){</span><span class="cm">/*do something*/</span><span class="p">}</span>
-<span class="p">}</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">sendFile</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">'/index.html'</span><span class="p">);</span>
+<span class="p">});</span>
 </code></pre>
 </div>
 
-<p>顾名思义，get为取值，set为赋值，正常情况下，我们取值和赋值是用obj.prop的方式，但是这样做有一个问题，我如何知道对象的值改变了？所以就轮到set登场了。</p>
+<p>然后在<code class="highlighter-rouge">index.html</code>中写入以下内容：</p>
 
-<p>你可以把get和set理解为function，当然，只是可以这么理解，这是完全不一样的两个东西。</p>
-
-<p>接下来创建一个码农的实例，isMe；此时，isMe是没有name属性的，当我们调用isMe.name时，我们会进入到get name(){…}中，先判断isMe是否有name属性，答案是否定的，那麽就添加一个name属性，并给它赋值：”你还没有取名”；如果有name属性，那就返回name属性。</p>
-
-<p>看到这里你一定知道get怎么使用了，对，你可以把get看成一个取值的函数，函数的返回值就是它拿到的值。</p>
-
-<p>我感觉比较重要的是set属性，当我给实例赋值：</p>
-
-<p>isMe.name=”周神”</p>
-
-<p>此时，会进入set name(val){…}；形参val就是我赋给name属性的值，在这个函数里，我就可以做很多事了，比如双向绑定！因为这个值的每次改变都必须经过set，其他方式是改变不了它的，相当于一个万能的监听器。</p>
-
-<p>还有另一种方法可以实现这个功能。</p>
-
-<p>ES5的对象原型有两个新的属性__defineGetter__和__defineSetter__，专门用来给对象绑定get和set。可以这样书写：</p>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">Coder</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="p">}</span>
-    <span class="nx">Coder</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">__defineGetter__</span><span class="p">(</span><span class="s1">'name'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span>
-        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-            <span class="k">return</span> <span class="s1">'你还没有取名'</span>
-        <span class="p">}</span>
-    <span class="p">})</span>
-    <span class="nx">Coder</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">__defineSetter__</span><span class="p">(</span><span class="s1">'name'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">val</span>
-    <span class="p">})</span>
-    <span class="kd">var</span> <span class="nx">isMe</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Coder</span><span class="p">()</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isMe</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
-    <span class="nx">isMe</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'周神'</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isMe</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isMe</span><span class="p">)</span>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Socket.IO chat<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;style&gt;</span>
+      <span class="o">*</span> <span class="p">{</span> <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span> <span class="p">}</span>
+      <span class="nt">body</span> <span class="p">{</span> <span class="nl">font</span><span class="p">:</span> <span class="m">13px</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="n">Arial</span><span class="p">;</span> <span class="p">}</span>
+      <span class="nt">form</span> <span class="p">{</span> <span class="nl">background</span><span class="p">:</span> <span class="m">#000</span><span class="p">;</span> <span class="nl">padding</span><span class="p">:</span> <span class="m">3px</span><span class="p">;</span> <span class="nl">position</span><span class="p">:</span> <span class="nb">fixed</span><span class="p">;</span> <span class="nl">bottom</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span> <span class="p">}</span>
+      <span class="nt">form</span> <span class="nt">input</span> <span class="p">{</span> <span class="nl">border</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span> <span class="nl">width</span><span class="p">:</span> <span class="m">90%</span><span class="p">;</span> <span class="nl">margin-right</span><span class="p">:</span> <span class="m">.5%</span><span class="p">;</span> <span class="p">}</span>
+      <span class="nt">form</span> <span class="nt">button</span> <span class="p">{</span> <span class="nl">width</span><span class="p">:</span> <span class="m">9%</span><span class="p">;</span> <span class="nl">background</span><span class="p">:</span> <span class="nb">rgb</span><span class="p">(</span><span class="m">130</span><span class="p">,</span> <span class="m">224</span><span class="p">,</span> <span class="m">255</span><span class="p">);</span> <span class="nl">border</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span> <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span> <span class="p">}</span>
+      <span class="nf">#messages</span> <span class="p">{</span> <span class="nl">list-style-type</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span> <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="p">}</span>
+      <span class="nf">#messages</span> <span class="nt">li</span> <span class="p">{</span> <span class="nl">padding</span><span class="p">:</span> <span class="m">5px</span> <span class="m">10px</span><span class="p">;</span> <span class="p">}</span>
+      <span class="nf">#messages</span> <span class="nt">li</span><span class="nd">:nth-child</span><span class="o">(</span><span class="nt">odd</span><span class="o">)</span> <span class="p">{</span> <span class="nl">background</span><span class="p">:</span> <span class="m">#eee</span><span class="p">;</span> <span class="p">}</span>
+    <span class="nt">&lt;/style&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">"messages"</span><span class="nt">&gt;&lt;/ul&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">""</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"m"</span> <span class="na">autocomplete=</span><span class="s">"off"</span> <span class="nt">/&gt;&lt;button&gt;</span>Send<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
 </code></pre>
 </div>
 
-<p>效果是一样的，建议使用下面这种方式，因为是在原型上书写，所以可以继承和重用，最近想写点小框架，才发现知识不够用，大家一起加油吧！</p>
+<p>如果你重启服务(按<code class="highlighter-rouge">Control+C</code>再运行<code class="highlighter-rouge">node index.js</code>)，刷新页面，你会看到如下界面：</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/2859850-4053a484080713ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="homepage" /></p>
+
+<p>未完，下班回去再翻。</p>
 
 <p>本文出自<a href="https://rockjins.github.io">Rockjins Blog</a>，转载请与作者联系。否则将追究法律责任。</p>
 
@@ -326,15 +330,17 @@
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2016/10/25/vue-getter-setter"
-                    data-title=" 由Vue引发的getter和setter思考 "
-                    data-url="http://localhost:4000/2016/10/25/vue-getter-setter/"
-                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-6142a6b04f7319fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+                    data-thread-key="/2016/12/26/socket-io"
+                    data-title="『翻译』socket.io聊天室程序（官方示例） "
+                    data-url="http://localhost:4000/2016/12/26/socket-io/"
+                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-0c2a566822a3bff8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
                     data-content="
-  接触新事物总会让人很难受，但也会让人成长。
+   官方最新版的示例翻译
 
 
-公司的新项目决定使用Vue.js来做，当我打印出Vue实例下的data对象里的属性时，发现了一个有趣... | 周神的博客 | Rockjins Blog " >
+开始创建：聊天室程序
+
+在这个教程中，我们将会创建一个基本的聊天室程序。它几乎不需要你懂得多少Node.js和socke... | 周神的博客 | Rockjins Blog " >
                     <div class="ds-share-inline">
                       <style> 
                         .ds-share-icons-16 {display:none;} 
@@ -357,19 +363,12 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2016/09/03/parseint/" data-toggle="tooltip" data-placement="top" title=" parseInt第二个参数详解 ">
+                        <a href="/2016/12/23/some-skill/" data-toggle="tooltip" data-placement="top" title="不定期更新 JavaScript技巧 ">
                         Previous<br>
-                        <span> parseInt第二个参数详解 </span>
+                        <span>不定期更新 JavaScript技巧 </span>
                         </a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2016/11/11/memoization/" data-toggle="tooltip" data-placement="top" title=" 使用自记忆函数提高页面性能 ">
-                        Next<br>
-                        <span> 使用自记忆函数提高页面性能 </span>
-                        </a>
-                    </li>
                     
                 </ul>
 
@@ -378,9 +377,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2016/10/25/vue-getter-setter"
-                        data-title=" 由Vue引发的getter和setter思考 "
-                        data-url="http://localhost:4000/2016/10/25/vue-getter-setter/" >
+                        data-thread-key="/2016/12/26/socket-io"
+                        data-title="『翻译』socket.io聊天室程序（官方示例） "
+                        data-url="http://localhost:4000/2016/12/26/socket-io/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->

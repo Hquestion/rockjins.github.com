@@ -132,3 +132,5 @@ wamp打开后会默认开启所有服务，你也可以左击图标，选择启�
 当然，这只是PHP最简单的一些实例，过段时间再写篇如何用PHP操作MySQL读写数据的文章，希望大家对技术保持一颗好奇心，这样才能真正成长！
 
 最后附上项目源码:[EasyPHP](https://github.com/rockjins/firstPython/tree/gh-pages/test/easyPHP)(还是希望大家能敲一下)
+
+本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      " 『置顶』不定期更新 JavaScript技巧 "
+title:      "不定期更新 JavaScript技巧 "
 subtitle:   " Efficiency, is useful. "
 date:       2016-12-23
 author:     "Shock"
@@ -44,3 +44,4 @@ useCall('Bob Dylan', 'Bob Marley', 'Steve Vai');
 //1 "Bob Marley"
 //2 "Steve Vai"
 ```
+本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

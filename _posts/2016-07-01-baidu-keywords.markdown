@@ -119,3 +119,5 @@ function require(){
 准备工作做好，可以发起ajax请求了，因为是jsonp的格式，所以要设置dataType:'jsonp'，并告诉jQuery回调函数的名称，这个名称可以在浏览器中得到（之前在浏览器地址栏输入url，得到的数据被包含在一个函数里，这里的jsonpCallback就写那个函数的名称，每个人的都不一样）。
 
 现在我们只需要把数据console.log出来，并解析到页面上，就可以实现文章开头的效果了，简单吧！(记得放在服务器环境运行哦！)
+
+本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

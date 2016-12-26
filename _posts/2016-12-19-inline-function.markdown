@@ -99,3 +99,5 @@ typeof bar;//返回undefined
 ```
 
 这个技巧在递归中常常会用到，如果你留意的话。
+
+本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

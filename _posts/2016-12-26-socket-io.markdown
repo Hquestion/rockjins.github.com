@@ -1,0 +1,128 @@
+---
+layout:     post
+title:      "『翻译』socket.io聊天室程序（官方示例） "
+subtitle:   " Chat application "
+date:       2016-12-26
+author:     "Shock"
+header-img: "/upload-images.jianshu.io/upload_images/2859850-0c2a566822a3bff8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+catalog: true
+tags:
+    - JavaScript
+    - Node.js
+    - socket.io
+
+---
+
+>  官方最新版的示例翻译
+
+## 开始创建：聊天室程序
+
+在这个教程中，我们将会创建一个基本的聊天室程序。它几乎不需要你懂得多少Node.js和socket.io的知识，所以，这个教程适用于各个技术水平的开发人员。
+
+### 介绍
+
+使用LAMP（PHP）这种传统的技术栈去编写一个流行的聊天室程序是很困难的。它包括了服务器的轮询，跟踪时间戳，用它们去做这些会很缓慢。
+
+一直以来，sockets都是即时聊天系统的架构解决方案，它提供一个双向的通讯通道在客户端和服务器之间。
+
+这意味着服务器可以推送消息到客户端。无论你何时发送聊天信息，我们都希望服务器获取到它，并把它推送到其他连接服务器的客户端上。
+
+### Web 框架
+
+首先，我们要建立一个简单的HTML页面，负责提交表单和展示消息列表。我们将使用Node.js的web框架`express`去实现。请确保你安装了`Node.js`。
+
+我们先创建一个package.json来描述我们的项目。我建议你创建一个空文件夹（我把它叫做chat-example）。
+
+
+```json
+{
+  "name": "socket-chat-example",
+  "version": "0.0.1",
+  "description": "my first socket.io app",
+  "dependencies": {}
+}
+```
+
+现在，按顺序把我们所需要的依赖填充到`dependencies`，我们使用`npm install --save`：
+
+```
+npm install --save express@4.10.2
+```
+
+现在，express已经安装完成，我们创建一个`index.js`文件，开始搭建我们的程序。
+
+```javascript
+var app = require('express')();
+var http = require('http').Server(app);
+
+app.get('/', function(req, res){
+  res.send('<h1>Hello world</h1>');
+});
+
+http.listen(3000, function(){
+  console.log('listening on *:3000');
+});
+```
+
+上面这段代码的意思如下：
+
+> 1. Express把`app`初始化为函数处理器(function handler)，它提供了一个HTTP服务。
+>
+> 2. 我们定义一个路由处理器`/`，当我们进入网站首页时，它会执行。
+>
+> 3. 我们创建一个http服务去监听3000端口。
+
+如果你运行`node index.js`，你会看到如下所示：
+
+![node-index.js](http://upload-images.jianshu.io/upload_images/2859850-947da750a222ceac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+接下来在浏览器输入`http://localhost:3000`，你会看到如下所示：
+
+![HW](http://upload-images.jianshu.io/upload_images/2859850-52c14f95337539fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+### 创建HTML
+
+到目前为止，`index.js`只是用`res.send`返回一个HTML字符串。如果我们把整个程序的HTML代码都放在这，那会使我们头晕眼花，我们再创建一个`index.html`并启动它。
+
+我们改写路由处理器，用`sendFile`代替`send`：
+
+```javascript
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
+});
+```
+
+然后在`index.html`中写入以下内容：
+
+```html
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }
+    </style>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <form action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+  </body>
+</html>
+```
+
+如果你重启服务(按`Control+C`再运行`node index.js`)，刷新页面，你会看到如下界面：
+
+![homepage](http://upload-images.jianshu.io/upload_images/2859850-4053a484080713ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+未完，下班回去再翻。
+
+本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

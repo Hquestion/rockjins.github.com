@@ -204,11 +204,11 @@
   <p> 官方最新版的示例翻译 <a href="http://socket.io/get-started/chat/">阅读原文</a></p>
 </blockquote>
 
-<h2 id="开始创建聊天室程序">开始创建：聊天室程序</h2>
+<h2 id="开始创建聊天室程序get-started-chat-application">开始创建：聊天室程序(Get Started: Chat application)</h2>
 
 <p>在这个教程中，我们将会创建一个基本的聊天室程序。它几乎不需要你懂得多少Node.js和Socket.IO的知识，所以，这个教程适用于各个技术水平的开发人员。</p>
 
-<h3 id="介绍">介绍</h3>
+<h3 id="介绍introduction">介绍(Introduction)</h3>
 
 <p>使用LAMP（PHP）这种传统的技术栈去编写一个流行的聊天室程序是很困难的。它包括了服务器的轮询，跟踪时间戳，用它们去做这些会很缓慢。</p>
 
@@ -216,7 +216,7 @@
 
 <p>这意味着服务器可以推送消息到客户端。无论你何时发送聊天信息，我们都希望服务器获取到它，并把它推送到其他连接服务器的客户端上。</p>
 
-<h3 id="web-框架">Web 框架</h3>
+<h3 id="web-框架the-web-framework">Web 框架(The web framework)</h3>
 
 <p>首先，我们要建立一个简单的HTML页面，负责提交表单和展示消息列表。我们将使用Node.js的web框架<code class="highlighter-rouge">express</code>去实现。请确保你安装了<code class="highlighter-rouge">Node.js</code>。</p>
 
@@ -276,7 +276,7 @@
 
 <p><img src="http://upload-images.jianshu.io/upload_images/2859850-52c14f95337539fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="HW" /></p>
 
-<h3 id="创建html">创建HTML</h3>
+<h3 id="创建htmlserving-html">创建HTML(Serving HTML)</h3>
 
 <p>到目前为止，<code class="highlighter-rouge">index.js</code>只是用<code class="highlighter-rouge">res.send</code>返回一个HTML字符串。如果我们把整个程序的HTML代码都放在这，那会使我们头晕眼花，我们再创建一个<code class="highlighter-rouge">index.html</code>并启动它。</p>
 
@@ -319,7 +319,7 @@
 
 <p><img src="http://upload-images.jianshu.io/upload_images/2859850-4053a484080713ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="homepage" /></p>
 
-<h3 id="集成socketio">集成Socket.IO</h3>
+<h3 id="集成socketiointegrating-socketio">集成Socket.IO(Integrating Socket.IO)</h3>
 
 <p>Socket.IO由两部分组成：</p>
 
@@ -391,9 +391,128 @@
 
 <p><img src="http://upload-images.jianshu.io/upload_images/2859850-8cbd77cd04a3e966.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="events" /></p>
 
-<h3 id="发射事件">发射事件</h3>
+<h3 id="发射事件emitting-events">发射事件(Emitting events)</h3>
 
-<p>未完…</p>
+<p>Socket.IO最主要的思想就是你可以发送和接收任何你想的事件、任何你想要的数据。任何对象都可以使用JSON进行编码，包括二进制数据同样支持。</p>
+
+<p>让我们来实现，当用户发送一条信息时，服务器接收一个<code class="highlighter-rouge">chat message</code>事件。<code class="highlighter-rouge">index.html</code>的脚本部分修改成如下所示：</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/socket.io/socket.io.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://code.jquery.com/jquery-1.11.1.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+  <span class="kd">var</span> <span class="nx">socket</span> <span class="o">=</span> <span class="nx">io</span><span class="p">();</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">submit</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">socket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">'chat message'</span><span class="p">,</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#m'</span><span class="p">).</span><span class="nx">val</span><span class="p">());</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'#m'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre>
+</div>
+
+<p>然后在<code class="highlighter-rouge">index.js</code>中，我们打印<code class="highlighter-rouge">chat message</code>事件：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">io</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'connection'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">socket</span><span class="p">){</span>
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'chat message'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">msg</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'message: '</span> <span class="o">+</span> <span class="nx">msg</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>结果应该如下视频所示：</p>
+
+<video autoplay="" loop="" width="100%"><source src="https://i.cloudup.com/transcoded/zboNrGSsai.mp4" /></video>
+
+<h3 id="广播">广播</h3>
+
+<p>下一个目标是，将发射的事件通过服务器广播给其他用户。</p>
+
+<p>为了发送一个事件给每个用户，Socket.IO给了我们一个<code class="highlighter-rouge">io.emit</code>接口：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">io</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">'some event'</span><span class="p">,</span> <span class="p">{</span> <span class="na">for</span><span class="p">:</span> <span class="s1">'everyone'</span> <span class="p">});</span>
+</code></pre>
+</div>
+
+<p>如果你想发送一则消息给所有人，除了当前socket的拥有者，我们可以使用<code class="highlighter-rouge">broadcast</code>标记:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">io</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'connection'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">socket</span><span class="p">){</span>
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">broadcast</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">'hi'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>这这个实例中，为了简单起见，我们把消息发送给每一个人，包括消息的发出者：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">io</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'connection'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">socket</span><span class="p">){</span>
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'chat message'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">msg</span><span class="p">){</span>
+    <span class="nx">io</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">'chat message'</span><span class="p">,</span> <span class="nx">msg</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>当客户端捕获到<code class="highlighter-rouge">chat message</code>事件，我们将消息插入到页面中。以下为客户端所有的JavaScript代码：</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+  <span class="kd">var</span> <span class="nx">socket</span> <span class="o">=</span> <span class="nx">io</span><span class="p">();</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">submit</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">socket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">'chat message'</span><span class="p">,</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#m'</span><span class="p">).</span><span class="nx">val</span><span class="p">());</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'#m'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">});</span>
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'chat message'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">msg</span><span class="p">){</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'#messages'</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">'&lt;li&gt;'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">msg</span><span class="p">));</span>
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre>
+</div>
+
+<p>完成我们的聊天室程序，只需要20行代码左右！它看起来像这样：</p>
+
+<video autoplay="" loop="" width="100%"><source src="https://i.cloudup.com/transcoded/J4xwRU9DRn.mp4" /></video>
+
+<h3 id="课后作业">课后作业</h3>
+
+<p>这里有一些点子来改善这个程序：</p>
+
+<ul>
+  <li>
+    <p>当有人加入聊天室或退出聊天室时，广播一则消息给所有已连接的用户</p>
+  </li>
+  <li>
+    <p>支持昵称功能</p>
+  </li>
+  <li>
+    <p>不要向自己发送消息，而是在用户回车后立即添加消息到页面上</p>
+  </li>
+  <li>
+    <p>增加”某某正在输入”的功能</p>
+  </li>
+  <li>
+    <p>展示哪些人在线上</p>
+  </li>
+  <li>
+    <p>增加私人消息传输</p>
+  </li>
+  <li>
+    <p>展示你的改进结果！</p>
+  </li>
+</ul>
+
+<h3 id="获取示例">获取示例</h3>
+
+<p>你可以在GitHub上找到它。</p>
+
+<p><a href="https://github.com/guille/chat-example">点击获取示例</a></p>
+
+<p>如果你电脑有装git，直接在项目目录下输入以下命令：</p>
+
+<blockquote>
+  <p>$ git clone https://github.com/guille/chat-example.git</p>
+</blockquote>
+
+<p><em>完</em></p>
 
 <blockquote>
   <p>本文由<a href="https://rockjins.github.io">Rockjins Blog</a>翻译，转载请与作者联系。否则将追究法律责任。</p>
@@ -414,9 +533,9 @@
    官方最新版的示例翻译 阅读原文
 
 
-开始创建：聊天室程序
+开始创建：聊天室程序(Get Started: Chat application)
 
-在这个教程中，我们将会创建一个基本的聊天室程序。它几乎不需要你懂得多少Node.js和... | 周神的博客 | Rockjins Blog " >
+在这个教程中，我们将会创... | 周神的博客 | Rockjins Blog " >
                     <div class="ds-share-inline">
                       <style> 
                         .ds-share-icons-16 {display:none;} 

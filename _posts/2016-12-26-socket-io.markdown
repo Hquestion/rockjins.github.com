@@ -15,11 +15,11 @@ tags:
 
 >  官方最新版的示例翻译 [阅读原文](http://socket.io/get-started/chat/)
 
-## 开始创建：聊天室程序
+## 开始创建：聊天室程序(Get Started: Chat application)
 
 在这个教程中，我们将会创建一个基本的聊天室程序。它几乎不需要你懂得多少Node.js和Socket.IO的知识，所以，这个教程适用于各个技术水平的开发人员。
 
-### 介绍
+### 介绍(Introduction)
 
 使用LAMP（PHP）这种传统的技术栈去编写一个流行的聊天室程序是很困难的。它包括了服务器的轮询，跟踪时间戳，用它们去做这些会很缓慢。
 
@@ -27,7 +27,7 @@ tags:
 
 这意味着服务器可以推送消息到客户端。无论你何时发送聊天信息，我们都希望服务器获取到它，并把它推送到其他连接服务器的客户端上。
 
-### Web 框架
+### Web 框架(The web framework)
 
 首先，我们要建立一个简单的HTML页面，负责提交表单和展示消息列表。我们将使用Node.js的web框架`express`去实现。请确保你安装了`Node.js`。
 
@@ -78,7 +78,7 @@ http.listen(3000, function(){
 
 ![HW](http://upload-images.jianshu.io/upload_images/2859850-52c14f95337539fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-### 创建HTML
+### 创建HTML(Serving HTML)
 
 到目前为止，`index.js`只是用`res.send`返回一个HTML字符串。如果我们把整个程序的HTML代码都放在这，那会使我们头晕眼花，我们再创建一个`index.html`并启动它。
 
@@ -121,7 +121,7 @@ app.get('/', function(req, res){
 
 ![homepage](http://upload-images.jianshu.io/upload_images/2859850-4053a484080713ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-### 集成Socket.IO
+### 集成Socket.IO(Integrating Socket.IO)
 
 Socket.IO由两部分组成：
 
@@ -186,8 +186,115 @@ io.on('connection', function(socket){
 
 ![events](http://upload-images.jianshu.io/upload_images/2859850-8cbd77cd04a3e966.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-### 发射事件
+### 发射事件(Emitting events)
 
-未完...
+Socket.IO最主要的思想就是你可以发送和接收任何你想的事件、任何你想要的数据。任何对象都可以使用JSON进行编码，包括二进制数据同样支持。
+
+让我们来实现，当用户发送一条信息时，服务器接收一个`chat message`事件。`index.html`的脚本部分修改成如下所示：
+
+```html
+<script src="/socket.io/socket.io.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+  var socket = io();
+  $('form').submit(function(){
+    socket.emit('chat message', $('#m').val());
+    $('#m').val('');
+    return false;
+  });
+</script>
+```
+
+然后在`index.js`中，我们打印`chat message`事件：
+
+```javascript
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    console.log('message: ' + msg);
+  });
+});
+```
+
+结果应该如下视频所示：
+
+<video autoplay="" loop="" width="100%"><source src="https://i.cloudup.com/transcoded/zboNrGSsai.mp4"></video>
+
+### 广播
+
+下一个目标是，将发射的事件通过服务器广播给其他用户。
+
+为了发送一个事件给每个用户，Socket.IO给了我们一个`io.emit`接口：
+
+```javascript
+io.emit('some event', { for: 'everyone' });
+```
+
+如果你想发送一则消息给所有人，除了当前socket的拥有者，我们可以使用`broadcast`标记:
+
+```javascript
+io.on('connection', function(socket){
+  socket.broadcast.emit('hi');
+});
+```
+
+这这个实例中，为了简单起见，我们把消息发送给每一个人，包括消息的发出者：
+
+```javascript
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+});
+```
+
+当客户端捕获到`chat message`事件，我们将消息插入到页面中。以下为客户端所有的JavaScript代码：
+
+```html
+<script>
+  var socket = io();
+  $('form').submit(function(){
+    socket.emit('chat message', $('#m').val());
+    $('#m').val('');
+    return false;
+  });
+  socket.on('chat message', function(msg){
+    $('#messages').append($('<li>').text(msg));
+  });
+</script>
+```
+
+完成我们的聊天室程序，只需要20行代码左右！它看起来像这样：
+
+<video autoplay="" loop="" width="100%"><source src="https://i.cloudup.com/transcoded/J4xwRU9DRn.mp4"></video>
+
+### 课后作业
+
+这里有一些点子来改善这个程序：
+
+- 当有人加入聊天室或退出聊天室时，广播一则消息给所有已连接的用户
+
+- 支持昵称功能
+
+- 不要向自己发送消息，而是在用户回车后立即添加消息到页面上
+
+- 增加"某某正在输入"的功能
+
+- 展示哪些人在线上
+
+- 增加私人消息传输
+
+- 展示你的改进结果！
+
+### 获取示例
+
+你可以在GitHub上找到它。
+
+[点击获取示例](https://github.com/guille/chat-example)
+
+如果你电脑有装git，直接在项目目录下输入以下命令：
+
+> $ git clone https://github.com/guille/chat-example.git
+
+*完*
 
 > 本文由[Rockjins Blog](https://rockjins.github.io)翻译，转载请与作者联系。否则将追究法律责任。

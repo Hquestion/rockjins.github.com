@@ -5,8 +5,8 @@
     <description> 周神的个人博客，和你一起进步，一起探索更奥妙的知识，更新奇的技术。 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 27 Dec 2016 19:26:38 +0800</pubDate>
-    <lastBuildDate>Tue, 27 Dec 2016 19:26:38 +0800</lastBuildDate>
+    <pubDate>Tue, 27 Dec 2016 20:32:03 +0800</pubDate>
+    <lastBuildDate>Tue, 27 Dec 2016 20:32:03 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -21,7 +21,7 @@
 
 &lt;h3 id=&quot;介绍introduction&quot;&gt;介绍(Introduction)&lt;/h3&gt;
 
-&lt;p&gt;使用LAMP（PHP）这种传统的技术栈去编写一个流行的聊天室程序是很困难的。它包括了服务器的轮询，跟踪时间戳，用它们去做这些会很缓慢。&lt;/p&gt;
+&lt;p&gt;使用LAMP（PHP）这种传统的技术栈去编写一个流行的聊天室程序是很困难的。它包括了服务器的轮询，跟踪时间戳，用它们去做这些会耗费你很多时间。&lt;/p&gt;
 
 &lt;p&gt;一直以来，sockets都是即时聊天系统的架构解决方案，它提供一个双向的通讯通道在客户端和服务器之间。&lt;/p&gt;
 
@@ -235,7 +235,7 @@
 
 &lt;video autoplay=&quot;&quot; loop=&quot;&quot; width=&quot;100%&quot;&gt;&lt;source src=&quot;https://i.cloudup.com/transcoded/zboNrGSsai.mp4&quot; /&gt;&lt;/video&gt;
 
-&lt;h3 id=&quot;广播&quot;&gt;广播&lt;/h3&gt;
+&lt;h3 id=&quot;广播broadcasting&quot;&gt;广播(Broadcasting)&lt;/h3&gt;
 
 &lt;p&gt;下一个目标是，将发射的事件通过服务器广播给其他用户。&lt;/p&gt;
 
@@ -283,7 +283,7 @@
 
 &lt;video autoplay=&quot;&quot; loop=&quot;&quot; width=&quot;100%&quot;&gt;&lt;source src=&quot;https://i.cloudup.com/transcoded/J4xwRU9DRn.mp4&quot; /&gt;&lt;/video&gt;
 
-&lt;h3 id=&quot;课后作业&quot;&gt;课后作业&lt;/h3&gt;
+&lt;h3 id=&quot;课后作业homework&quot;&gt;课后作业(Homework)&lt;/h3&gt;
 
 &lt;p&gt;这里有一些点子来改善这个程序：&lt;/p&gt;
 
@@ -311,7 +311,7 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;获取示例&quot;&gt;获取示例&lt;/h3&gt;
+&lt;h3 id=&quot;获取示例getting-this-example&quot;&gt;获取示例(Getting this example)&lt;/h3&gt;
 
 &lt;p&gt;你可以在GitHub上找到它。&lt;/p&gt;
 

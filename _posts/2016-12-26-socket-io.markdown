@@ -21,7 +21,7 @@ tags:
 
 ### 介绍(Introduction)
 
-使用LAMP（PHP）这种传统的技术栈去编写一个流行的聊天室程序是很困难的。它包括了服务器的轮询，跟踪时间戳，用它们去做这些会很缓慢。
+使用LAMP（PHP）这种传统的技术栈去编写一个流行的聊天室程序是很困难的。它包括了服务器的轮询，跟踪时间戳，用它们去做这些会耗费你很多时间。
 
 一直以来，sockets都是即时聊天系统的架构解决方案，它提供一个双向的通讯通道在客户端和服务器之间。
 
@@ -219,7 +219,7 @@ io.on('connection', function(socket){
 
 <video autoplay="" loop="" width="100%"><source src="https://i.cloudup.com/transcoded/zboNrGSsai.mp4"></video>
 
-### 广播
+### 广播(Broadcasting)
 
 下一个目标是，将发射的事件通过服务器广播给其他用户。
 
@@ -267,7 +267,7 @@ io.on('connection', function(socket){
 
 <video autoplay="" loop="" width="100%"><source src="https://i.cloudup.com/transcoded/J4xwRU9DRn.mp4"></video>
 
-### 课后作业
+### 课后作业(Homework)
 
 这里有一些点子来改善这个程序：
 
@@ -285,7 +285,7 @@ io.on('connection', function(socket){
 
 - 展示你的改进结果！
 
-### 获取示例
+### 获取示例(Getting this example)
 
 你可以在GitHub上找到它。
 

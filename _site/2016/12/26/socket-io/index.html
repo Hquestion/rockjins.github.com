@@ -174,7 +174,7 @@
                         
                         <a class="tag" href="/tags/#Node.js" title="Node.js">Node.js</a>
                         
-                        <a class="tag" href="/tags/#socket.io" title="socket.io">socket.io</a>
+                        <a class="tag" href="/tags/#Socket.IO" title="Socket.IO">Socket.IO</a>
                         
                     </div>
                     <h1>『翻译』socket.io聊天室程序（官方示例） </h1>
@@ -206,7 +206,7 @@
 
 <h2 id="开始创建聊天室程序">开始创建：聊天室程序</h2>
 
-<p>在这个教程中，我们将会创建一个基本的聊天室程序。它几乎不需要你懂得多少Node.js和socket.io的知识，所以，这个教程适用于各个技术水平的开发人员。</p>
+<p>在这个教程中，我们将会创建一个基本的聊天室程序。它几乎不需要你懂得多少Node.js和Socket.IO的知识，所以，这个教程适用于各个技术水平的开发人员。</p>
 
 <h3 id="介绍">介绍</h3>
 
@@ -233,9 +233,9 @@
 
 <p>现在，按顺序把我们所需要的依赖填充到<code class="highlighter-rouge">dependencies</code>，我们使用<code class="highlighter-rouge">npm install --save</code>：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>npm install --save express@4.10.2
-</code></pre>
-</div>
+<blockquote>
+  <p>npm install –save express@4.10.2</p>
+</blockquote>
 
 <p>现在，express已经安装完成，我们创建一个<code class="highlighter-rouge">index.js</code>文件，开始搭建我们的程序。</p>
 
@@ -319,9 +319,85 @@
 
 <p><img src="http://upload-images.jianshu.io/upload_images/2859850-4053a484080713ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="homepage" /></p>
 
-<p>未完，下班回去再翻。</p>
+<h3 id="集成socketio">集成Socket.IO</h3>
 
-<p>本文出自<a href="https://rockjins.github.io">Rockjins Blog</a>，转载请与作者联系。否则将追究法律责任。</p>
+<p>Socket.IO由两部分组成：</p>
+
+<ul>
+  <li>
+    <p>一个集成（或安装）了Node.js HTTP服务的服务器：<code class="highlighter-rouge">socket.io</code></p>
+  </li>
+  <li>
+    <p>一个加载在浏览器上的客户端库：<code class="highlighter-rouge">socket.io-client</code></p>
+  </li>
+</ul>
+
+<p>在开发时，<code class="highlighter-rouge">socket.io</code>为我们自动的服务客户端，就像我们看到的那样，所以现在我们只需要安装一个模块：</p>
+
+<blockquote>
+  <p>npm install –save socket.io</p>
+</blockquote>
+
+<p>包管理工具会安装这个模块，并将依赖项添加到<code class="highlighter-rouge">package.json</code>。现在让我们在<code class="highlighter-rouge">index.js</code>中写入以下代码：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">)();</span>
+<span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'http'</span><span class="p">).</span><span class="nx">Server</span><span class="p">(</span><span class="nx">app</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">io</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'socket.io'</span><span class="p">)(</span><span class="nx">http</span><span class="p">);</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">sendfile</span><span class="p">(</span><span class="s1">'index.html'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">io</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'connection'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">socket</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'a user connected'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">http</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'listening on *:3000'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>注意，我通过<code class="highlighter-rouge">http</code>(HTTP服务器)对象初始化了一个<code class="highlighter-rouge">socket.io</code>实例。然后，我监听sockets的<code class="highlighter-rouge">connection</code>事件，然后我使用console.log打印出它。</p>
+
+<p>现在我们再<code class="highlighter-rouge">index.html</code>中添加如下代码，在<code class="highlighter-rouge">&lt;/body&gt;</code>标签上方：</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/socket.io/socket.io.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+  <span class="kd">var</span> <span class="nx">socket</span> <span class="o">=</span> <span class="nx">io</span><span class="p">();</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre>
+</div>
+
+<p>我们需要加载<code class="highlighter-rouge">socket.io-client</code>，它暴露了一个全局函数<code class="highlighter-rouge">io</code>，运行它，接着去连接服务器。</p>
+
+<p>注意，当我调用<code class="highlighter-rouge">io()</code>时，不指定任何URL，因为它默认会尝试连接到这个页面的主机服务器。</p>
+
+<p>如果你现在重启服务并刷新网页，你将看到终端打印出”a user connected”：</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/2859850-69655e65f31c9063.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="terminal" /></p>
+
+<p>每个socket同样会触发一个特殊的<code class="highlighter-rouge">disconnect</code>事件：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">io</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'connection'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">socket</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'a user connected'</span><span class="p">);</span>
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'disconnect'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'user disconnected'</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+<p>接下来，你重启服务，刷新网页并关闭它，就可以看到事件的执行：</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/2859850-8cbd77cd04a3e966.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="events" /></p>
+
+<h3 id="发射事件">发射事件</h3>
+
+<p>未完…</p>
+
+<blockquote>
+  <p>本文由<a href="https://rockjins.github.io">Rockjins Blog</a>翻译，转载请与作者联系。否则将追究法律责任。</p>
+</blockquote>
 
 
                 <hr style="visibility: hidden;">

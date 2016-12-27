@@ -65,4 +65,4 @@ console.log(elems);
 
 当然，这只是表面我们看到的，关于伪造数组，还有很多的知识要了解，这里只是告诉你它的基本实现，有兴趣了解更多的话，Google一下吧！
 
-本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。
+> 本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

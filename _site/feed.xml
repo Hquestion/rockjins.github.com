@@ -5,8 +5,8 @@
     <description> 周神的个人博客，和你一起进步，一起探索更奥妙的知识，更新奇的技术。 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 26 Dec 2016 21:15:06 +0800</pubDate>
-    <lastBuildDate>Mon, 26 Dec 2016 21:15:06 +0800</lastBuildDate>
+    <pubDate>Tue, 27 Dec 2016 11:06:09 +0800</pubDate>
+    <lastBuildDate>Tue, 27 Dec 2016 11:06:09 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -17,7 +17,7 @@
 
 &lt;h2 id=&quot;开始创建聊天室程序&quot;&gt;开始创建：聊天室程序&lt;/h2&gt;
 
-&lt;p&gt;在这个教程中，我们将会创建一个基本的聊天室程序。它几乎不需要你懂得多少Node.js和socket.io的知识，所以，这个教程适用于各个技术水平的开发人员。&lt;/p&gt;
+&lt;p&gt;在这个教程中，我们将会创建一个基本的聊天室程序。它几乎不需要你懂得多少Node.js和Socket.IO的知识，所以，这个教程适用于各个技术水平的开发人员。&lt;/p&gt;
 
 &lt;h3 id=&quot;介绍&quot;&gt;介绍&lt;/h3&gt;
 
@@ -44,9 +44,9 @@
 
 &lt;p&gt;现在，按顺序把我们所需要的依赖填充到&lt;code class=&quot;highlighter-rouge&quot;&gt;dependencies&lt;/code&gt;，我们使用&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install --save&lt;/code&gt;：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install --save express@4.10.2
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;npm install –save express@4.10.2&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;现在，express已经安装完成，我们创建一个&lt;code class=&quot;highlighter-rouge&quot;&gt;index.js&lt;/code&gt;文件，开始搭建我们的程序。&lt;/p&gt;
 
@@ -130,9 +130,85 @@
 
 &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2859850-4053a484080713ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;homepage&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;未完，下班回去再翻。&lt;/p&gt;
+&lt;h3 id=&quot;集成socketio&quot;&gt;集成Socket.IO&lt;/h3&gt;
 
-&lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;p&gt;Socket.IO由两部分组成：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;一个集成（或安装）了Node.js HTTP服务的服务器：&lt;code class=&quot;highlighter-rouge&quot;&gt;socket.io&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;一个加载在浏览器上的客户端库：&lt;code class=&quot;highlighter-rouge&quot;&gt;socket.io-client&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在开发时，&lt;code class=&quot;highlighter-rouge&quot;&gt;socket.io&lt;/code&gt;为我们自动的服务客户端，就像我们看到的那样，所以现在我们只需要安装一个模块：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;npm install –save socket.io&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;包管理工具会安装这个模块，并将依赖项添加到&lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt;。现在让我们在&lt;code class=&quot;highlighter-rouge&quot;&gt;index.js&lt;/code&gt;中写入以下代码：&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'express'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)();&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;http&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'http'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Server&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;io&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'socket.io'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sendfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'index.html'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'connection'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a user connected'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;listen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'listening on *:3000'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;注意，我通过&lt;code class=&quot;highlighter-rouge&quot;&gt;http&lt;/code&gt;(HTTP服务器)对象初始化了一个&lt;code class=&quot;highlighter-rouge&quot;&gt;socket.io&lt;/code&gt;实例。然后，我监听sockets的&lt;code class=&quot;highlighter-rouge&quot;&gt;connection&lt;/code&gt;事件，然后我使用console.log打印出它。&lt;/p&gt;
+
+&lt;p&gt;现在我们再&lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt;中添加如下代码，在&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;/body&amp;gt;&lt;/code&gt;标签上方：&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/socket.io/socket.io.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;socket&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;我们需要加载&lt;code class=&quot;highlighter-rouge&quot;&gt;socket.io-client&lt;/code&gt;，它暴露了一个全局函数&lt;code class=&quot;highlighter-rouge&quot;&gt;io&lt;/code&gt;，运行它，接着去连接服务器。&lt;/p&gt;
+
+&lt;p&gt;注意，当我调用&lt;code class=&quot;highlighter-rouge&quot;&gt;io()&lt;/code&gt;时，不指定任何URL，因为它默认会尝试连接到这个页面的主机服务器。&lt;/p&gt;
+
+&lt;p&gt;如果你现在重启服务并刷新网页，你将看到终端打印出”a user connected”：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2859850-69655e65f31c9063.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;terminal&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;每个socket同样会触发一个特殊的&lt;code class=&quot;highlighter-rouge&quot;&gt;disconnect&lt;/code&gt;事件：&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'connection'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a user connected'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'disconnect'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'user disconnected'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;接下来，你重启服务，刷新网页并关闭它，就可以看到事件的执行：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2859850-8cbd77cd04a3e966.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;events&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;发射事件&quot;&gt;发射事件&lt;/h3&gt;
+
+&lt;p&gt;未完…&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;本文由&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;翻译，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 26 Dec 2016 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2016/12/26/socket-io/</link>
@@ -142,7 +218,7 @@
         
         <category>Node.js</category>
         
-        <category>socket.io</category>
+        <category>Socket.IO</category>
         
         
       </item>
@@ -184,7 +260,9 @@
 &lt;span class=&quot;c1&quot;&gt;//2 &quot;Steve Vai&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         <pubDate>Fri, 23 Dec 2016 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2016/12/23/some-skill/</link>
@@ -287,7 +365,9 @@
 
 &lt;p&gt;这个技巧在递归中常常会用到，如果你留意的话。&lt;/p&gt;
 
-&lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 19 Dec 2016 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2016/12/19/inline-function/</link>
@@ -374,7 +454,9 @@
 
 &lt;p&gt;睡一觉，醒来继续活。&lt;/p&gt;
 
-&lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         <pubDate>Sat, 17 Dec 2016 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2016/12/17/faith/</link>
@@ -417,7 +499,9 @@
 
 &lt;p&gt;少年，这也就是别人为什么比你成功的原因，你真的很勤奋努力吗？只有你自己知道。&lt;/p&gt;
 
-&lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 12 Dec 2016 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2016/12/12/evil/</link>
@@ -495,7 +579,9 @@
 
 &lt;p&gt;这个坑牛逼不，我真是个奇葩。&lt;/p&gt;
 
-&lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         <pubDate>Thu, 01 Dec 2016 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2016/12/01/vue-problem/</link>
@@ -622,7 +708,9 @@
 
 &lt;p&gt;至于，是否运用这种技巧在你项目中，那得看你的实际情况了。&lt;/p&gt;
 
-&lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         <pubDate>Fri, 11 Nov 2016 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2016/11/11/memoization/</link>
@@ -756,7 +844,9 @@
 
 &lt;p&gt;效果是一样的，建议使用下面这种方式，因为是在原型上书写，所以可以继承和重用，最近想写点小框架，才发现知识不够用，大家一起加油吧！&lt;/p&gt;
 
-&lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         <pubDate>Tue, 25 Oct 2016 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2016/10/25/vue-getter-setter/</link>
@@ -831,7 +921,9 @@
 
 &lt;p&gt;另外补充一下，另一个函数parseFloat只接受一个参数，只能使用十进制去解析。&lt;/p&gt;
 
-&lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         <pubDate>Sat, 03 Sep 2016 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2016/09/03/parseint/</link>
@@ -897,7 +989,9 @@
 
 &lt;p&gt;当然，这只是表面我们看到的，关于伪造数组，还有很多的知识要了解，这里只是告诉你它的基本实现，有兴趣了解更多的话，Google一下吧！&lt;/p&gt;
 
-&lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         <pubDate>Fri, 12 Aug 2016 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2016/08/12/fake-array/</link>

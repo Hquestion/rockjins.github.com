@@ -63,4 +63,4 @@ parseInt(16,3)同样，出现最大的数字是2，那么6就是被自动忽略�
 
 另外补充一下，另一个函数parseFloat只接受一个参数，只能使用十进制去解析。
 
-本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。
+> 本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

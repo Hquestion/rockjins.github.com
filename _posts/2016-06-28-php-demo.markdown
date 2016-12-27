@@ -133,4 +133,4 @@ wamp打开后会默认开启所有服务，你也可以左击图标，选择启�
 
 最后附上项目源码:[EasyPHP](https://github.com/rockjins/firstPython/tree/gh-pages/test/easyPHP)(还是希望大家能敲一下)
 
-本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。
+> 本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

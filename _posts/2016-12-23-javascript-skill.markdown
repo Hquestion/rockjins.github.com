@@ -11,7 +11,7 @@ tags:
 
 ---
 
->  JavaScript技巧，长期置顶，偶尔更新。
+>  JavaScript技巧，偶尔更新。
 
 ### 计算数组的极值：
 

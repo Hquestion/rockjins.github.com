@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "不定期更新 JavaScript技巧 "
+title:      " 不定期更新 JavaScript技巧 "
 subtitle:   " Efficiency, is useful. "
 date:       2016-12-29
 author:     "Shock"

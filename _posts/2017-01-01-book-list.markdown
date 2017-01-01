@@ -13,7 +13,7 @@ tags:
 
 >  2017来了，整理下过去一年的书单
 
-![](http://upload-images.jianshu.io/upload_images/2859850-6724ead4eea09987.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://upload-images.jianshu.io/upload_images/2859850-0f1aa7bfaf42bcd8.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ### [JavaScript语言精粹](https://book.douban.com/subject/11874748/)
 

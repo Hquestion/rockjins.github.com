@@ -3,11 +3,90 @@
   <channel>
     <title>Rockjins Blog</title>
     <description> 周神的个人博客，和你一起进步，一起探索更奥妙的知识，更新奇的技术。 </description>
-    <link>https://rockjins.github.io/</link>
-    <atom:link href="https://rockjins.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 01 Jan 2017 21:35:49 +0800</pubDate>
-    <lastBuildDate>Sun, 01 Jan 2017 21:35:49 +0800</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 02 Jan 2017 23:44:16 +0800</pubDate>
+    <lastBuildDate>Mon, 02 Jan 2017 23:44:16 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title> 台湾和大陆不一样的术语称呼 </title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt; 买了本湾湾翻译的书来看，真想说台湾话真是狗屎，但真正从历史上来说，简体中文才是狗屎&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;整理了一下台湾和大陆一些不一样的术语，简直痛苦&lt;/p&gt;
+
+&lt;p&gt;物件 ==&amp;gt; 对象&lt;/p&gt;
+
+&lt;p&gt;函式 ==&amp;gt; 函数&lt;/p&gt;
+
+&lt;p&gt;变数 ==&amp;gt; 变量&lt;/p&gt;
+
+&lt;p&gt;阵列 ==&amp;gt; 数组&lt;/p&gt;
+
+&lt;p&gt;正规 ==&amp;gt; 正则&lt;/p&gt;
+
+&lt;p&gt;特性 ==&amp;gt; 属性&lt;/p&gt;
+
+&lt;p&gt;程式 ==&amp;gt; 程序&lt;/p&gt;
+
+&lt;p&gt;字面值 ==&amp;gt; 字面量&lt;/p&gt;
+
+&lt;p&gt;识别字 ==&amp;gt; 关键字&lt;/p&gt;
+
+&lt;p&gt;运算子 ==&amp;gt; 运算符&lt;/p&gt;
+
+&lt;p&gt;字串 ==&amp;gt; 字符串&lt;/p&gt;
+
+&lt;p&gt;物件导向 ==&amp;gt; 面向对象&lt;/p&gt;
+
+&lt;p&gt;注解 ==&amp;gt; 注释&lt;/p&gt;
+
+&lt;p&gt;运算式 ==&amp;gt; 表达式&lt;/p&gt;
+
+&lt;p&gt;宣告 ==&amp;gt; 声明&lt;/p&gt;
+
+&lt;p&gt;建构器 ==&amp;gt; 构造器&lt;/p&gt;
+
+&lt;p&gt;引数 ==&amp;gt; 参数&lt;/p&gt;
+
+&lt;p&gt;型别 ==&amp;gt; 类型&lt;/p&gt;
+
+&lt;p&gt;迴圈 ==&amp;gt; 循环&lt;/p&gt;
+
+&lt;p&gt;范畴 ==&amp;gt; 作用域&lt;/p&gt;
+
+&lt;p&gt;呼叫 ==&amp;gt; 调用&lt;/p&gt;
+
+&lt;p&gt;自由 ==&amp;gt; 自动&lt;/p&gt;
+
+&lt;p&gt;建置 ==&amp;gt; 构建&lt;/p&gt;
+
+&lt;p&gt;资料 ==&amp;gt; 数据&lt;/p&gt;
+
+&lt;p&gt;伺服器 ==&amp;gt; 服务器&lt;/p&gt;
+
+&lt;p&gt;剖析 ==&amp;gt; 解析&lt;/p&gt;
+
+&lt;p&gt;程式码 ==&amp;gt; 代码&lt;/p&gt;
+
+&lt;p&gt;标记 ==&amp;gt; 标签（元素）&lt;/p&gt;
+
+&lt;p&gt;指令稿 ==&amp;gt; 脚本&lt;/p&gt;
+
+&lt;p&gt;实作 ==&amp;gt; 操作&lt;/p&gt;
+
+&lt;p&gt;参考 ==&amp;gt; 指针&lt;/p&gt;
+</description>
+        <pubDate>Mon, 02 Jan 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/01/02/tw-spaeak/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/02/tw-spaeak/</guid>
+        
+        <category>Book</category>
+        
+        
+      </item>
     
       <item>
         <title> 2016 我的书单 </title>
@@ -96,8 +175,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Sun, 01 Jan 2017 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2017/01/01/book-list/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2017/01/01/book-list/</guid>
+        <link>http://localhost:4000/2017/01/01/book-list/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/01/book-list/</guid>
         
         <category>Book</category>
         
@@ -165,8 +244,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Thu, 29 Dec 2016 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2016/12/29/javascript-skill/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2016/12/29/javascript-skill/</guid>
+        <link>http://localhost:4000/2016/12/29/javascript-skill/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/29/javascript-skill/</guid>
         
         <category>JavaScript</category>
         
@@ -494,8 +573,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 26 Dec 2016 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2016/12/26/socket-io/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2016/12/26/socket-io/</guid>
+        <link>http://localhost:4000/2016/12/26/socket-io/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/26/socket-io/</guid>
         
         <category>JavaScript</category>
         
@@ -603,8 +682,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 19 Dec 2016 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2016/12/19/inline-function/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2016/12/19/inline-function/</guid>
+        <link>http://localhost:4000/2016/12/19/inline-function/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/19/inline-function/</guid>
         
         <category>JavaScript</category>
         
@@ -692,8 +771,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Sat, 17 Dec 2016 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2016/12/17/faith/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2016/12/17/faith/</guid>
+        <link>http://localhost:4000/2016/12/17/faith/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/17/faith/</guid>
         
         <category>信仰</category>
         
@@ -737,8 +816,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 12 Dec 2016 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2016/12/12/evil/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2016/12/12/evil/</guid>
+        <link>http://localhost:4000/2016/12/12/evil/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/12/evil/</guid>
         
         <category>生活</category>
         
@@ -817,8 +896,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Thu, 01 Dec 2016 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2016/12/01/vue-problem/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2016/12/01/vue-problem/</guid>
+        <link>http://localhost:4000/2016/12/01/vue-problem/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/01/vue-problem/</guid>
         
         <category>Vue</category>
         
@@ -946,8 +1025,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Fri, 11 Nov 2016 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2016/11/11/memoization/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2016/11/11/memoization/</guid>
+        <link>http://localhost:4000/2016/11/11/memoization/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/11/11/memoization/</guid>
         
         <category>Function</category>
         
@@ -1082,85 +1161,10 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Tue, 25 Oct 2016 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2016/10/25/vue-getter-setter/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2016/10/25/vue-getter-setter/</guid>
+        <link>http://localhost:4000/2016/10/25/vue-getter-setter/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/10/25/vue-getter-setter/</guid>
         
         <category>Vue</category>
-        
-        <category>JavaScript</category>
-        
-        
-      </item>
-    
-      <item>
-        <title> parseInt第二个参数详解 </title>
-        <description>&lt;blockquote&gt;
-  &lt;p&gt;不常用不代表你不用去理解它，或许哪次装逼就用上了。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;前阵子在stackOverflow上看到两个这样的问题：&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/39147108/why-is-it-that-parseint8-3-nan-and-parseint16-3-1&quot;&gt;为什么parseInt(8,3) == NaN，parseInt(16,3) == 1？&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/26017371/why-does-parseintdsff66-16-return-13?rq=1&quot;&gt;为什么parseInt(‘dsff66’,16) == 13？&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;parseInt大家应该都很熟悉了，我们一般用他来把一个小数或字符串转换为整数，正常情况下我们都是这样做的:&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;11.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//返回11&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;13&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//返回Number类型的13&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;函数会尝试逐个解析字符串中的字符，直到遇上一个无法被解析成数字的字符，然后返回该字符前所有数字字符组成的数字。&lt;/p&gt;
-
-&lt;p&gt;但是parseInt的第二个参数很多朋友就不太清楚了，因为本身就很少使用第二个参数，我们看看MDN上对第二个参数的解释：&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;一个2到36之间的整数值，用于指定转换中采用的基数。比如参数”10”表示使用我们通常使用的十进制数值系统。总是指定该参数可以消除阅读该代码时的困惑并且保证转换结果可预测。当忽略该参数时，不同的实现环境可能产生不同的结果。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;最后说到如果忽略的话，不同环境会有不同结果，大家不用担心，ES5已经规定了如果省略就代表用十进制解析。&lt;/p&gt;
-
-&lt;p&gt;第二个参数是2~36之间的整数值，这个值其实就是我们说的进制，比如，我们用二进制去解析第一个参数，那么就这么做：&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;101&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//返回5&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;下面我们来分析一下上面的两个问题，相信大家对这第二个参数就能有个透彻的认识了。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;em&gt;为什么parseInt(8,3) == NaN，parseInt(16,3) == 1？&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;先来看第一个parseInt(8,3) ，这里的意思就是用,三进制去解析8，我们知道二进制是遇2进1，三进制同样，遇3进1，比如我要用三进表示十进制中的5，那么就是12，也就是(2&lt;em&gt;(3^0))+(1&lt;/em&gt;(3^1))=5；&lt;/p&gt;
-
-&lt;p&gt;所以在三进制中，出现的最大的数字也就是2，8这个数字不可能出现在三进制中，所以返回NaN。&lt;/p&gt;
-
-&lt;p&gt;parseInt(16,3)同样，出现最大的数字是2，那么6就是被自动忽略掉，所以parseInt是直接用三进制去解析1，得到的当然是1了。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;em&gt;为什么parseInt(‘dsff66’，16) == 13？&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;我们知道，平时使用parseInt，它会忽略到除数字之外的字符，但是这里不一样，因为十进制最大的数字是9，但是到了十一进制往上，最大的数字是两位数了，这当然不行，所以从10开始往上，就用字母代替，a==10,b==11……z==35；所以你知道为什么parseInt的第二个参数要规定在2~36了吗？&lt;/p&gt;
-
-&lt;p&gt;再看看上面这道问题，在16进制中，最大的数字是15，对应字母也就是f，超过f的字母也就超出了16进制的解析范围。&lt;/p&gt;
-
-&lt;p&gt;‘dsff66’的第一个字符是d，也就是十进制中的13，第二个字符s，代表十进制中的28，这显然超出了16进制的解析范围，所以s和它之后的字符都会被parseInt自动忽略，所以我们得到13。&lt;/p&gt;
-
-&lt;p&gt;相信看到这里，你对parseInt的第二个参数已经完全了解了，如果你对进制之间的转换不太了解的话，可以多去网上学习学习进制之间的转换，就算平时用不着，还是可能拿来装X嘛。&lt;/p&gt;
-
-&lt;p&gt;另外补充一下，另一个函数parseFloat只接受一个参数，只能使用十进制去解析。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
-&lt;/blockquote&gt;
-</description>
-        <pubDate>Sat, 03 Sep 2016 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2016/09/03/parseint/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2016/09/03/parseint/</guid>
         
         <category>JavaScript</category>
         

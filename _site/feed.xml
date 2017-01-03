@@ -5,8 +5,8 @@
     <description> 周神的个人博客，和你一起进步，一起探索更奥妙的知识，更新奇的技术。 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 02 Jan 2017 23:44:16 +0800</pubDate>
-    <lastBuildDate>Mon, 02 Jan 2017 23:44:16 +0800</lastBuildDate>
+    <pubDate>Tue, 03 Jan 2017 16:56:02 +0800</pubDate>
+    <lastBuildDate>Tue, 03 Jan 2017 16:56:02 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -15,69 +15,146 @@
   &lt;p&gt; 买了本湾湾翻译的书来看，真想说台湾话真是狗屎，但真正从历史上来说，简体中文才是狗屎&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;整理了一下台湾和大陆一些不一样的术语，简直痛苦&lt;/p&gt;
+&lt;p&gt;整理了一下台湾和大陆一些不一样的术语，读起来简直痛苦&lt;/p&gt;
 
-&lt;p&gt;物件 ==&amp;gt; 对象&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;台湾&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;大陆&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;物件&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;对象&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;函式&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;函数&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;变数&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;变量&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;阵列&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;数组&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;正规&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;正则&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;特性&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;属性&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;程式&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;程序&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;字串&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;字符&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;注解&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;注释串&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;宣告&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;声明&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;引数&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;参数&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;型别&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;类型&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;迴圈&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;循环&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;范畴&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;作用域&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;呼叫&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;调用&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;自由&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;自动&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;建置&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;构建&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;资料&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;数据&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;剖析&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;解析&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;实作&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;操作&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;参考&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;指针&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;标记&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;标签（元素）&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;伺服器&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;服务器&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;建构器&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;构造器&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;程式码&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;代码&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;运算式&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;表达式&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;指令稿&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;脚本&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;字面值&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;字面量&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;识别字&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;关键字&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;运算子&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;运算符&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;物件导向&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;面向对象&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-&lt;p&gt;函式 ==&amp;gt; 函数&lt;/p&gt;
-
-&lt;p&gt;变数 ==&amp;gt; 变量&lt;/p&gt;
-
-&lt;p&gt;阵列 ==&amp;gt; 数组&lt;/p&gt;
-
-&lt;p&gt;正规 ==&amp;gt; 正则&lt;/p&gt;
-
-&lt;p&gt;特性 ==&amp;gt; 属性&lt;/p&gt;
-
-&lt;p&gt;程式 ==&amp;gt; 程序&lt;/p&gt;
-
-&lt;p&gt;字面值 ==&amp;gt; 字面量&lt;/p&gt;
-
-&lt;p&gt;识别字 ==&amp;gt; 关键字&lt;/p&gt;
-
-&lt;p&gt;运算子 ==&amp;gt; 运算符&lt;/p&gt;
-
-&lt;p&gt;字串 ==&amp;gt; 字符串&lt;/p&gt;
-
-&lt;p&gt;物件导向 ==&amp;gt; 面向对象&lt;/p&gt;
-
-&lt;p&gt;注解 ==&amp;gt; 注释&lt;/p&gt;
-
-&lt;p&gt;运算式 ==&amp;gt; 表达式&lt;/p&gt;
-
-&lt;p&gt;宣告 ==&amp;gt; 声明&lt;/p&gt;
-
-&lt;p&gt;建构器 ==&amp;gt; 构造器&lt;/p&gt;
-
-&lt;p&gt;引数 ==&amp;gt; 参数&lt;/p&gt;
-
-&lt;p&gt;型别 ==&amp;gt; 类型&lt;/p&gt;
-
-&lt;p&gt;迴圈 ==&amp;gt; 循环&lt;/p&gt;
-
-&lt;p&gt;范畴 ==&amp;gt; 作用域&lt;/p&gt;
-
-&lt;p&gt;呼叫 ==&amp;gt; 调用&lt;/p&gt;
-
-&lt;p&gt;自由 ==&amp;gt; 自动&lt;/p&gt;
-
-&lt;p&gt;建置 ==&amp;gt; 构建&lt;/p&gt;
-
-&lt;p&gt;资料 ==&amp;gt; 数据&lt;/p&gt;
-
-&lt;p&gt;伺服器 ==&amp;gt; 服务器&lt;/p&gt;
-
-&lt;p&gt;剖析 ==&amp;gt; 解析&lt;/p&gt;
-
-&lt;p&gt;程式码 ==&amp;gt; 代码&lt;/p&gt;
-
-&lt;p&gt;标记 ==&amp;gt; 标签（元素）&lt;/p&gt;
-
-&lt;p&gt;指令稿 ==&amp;gt; 脚本&lt;/p&gt;
-
-&lt;p&gt;实作 ==&amp;gt; 操作&lt;/p&gt;
-
-&lt;p&gt;参考 ==&amp;gt; 指针&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 02 Jan 2017 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2017/01/02/tw-spaeak/</link>

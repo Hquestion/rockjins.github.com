@@ -10,7 +10,7 @@
     <meta name="keywords"  content="周神, Shock, @rockjins, @chinajins, 周神的博客, Rockjins Blog, 博客, 个人网站, 互联网, 前端, 设计, 产品">
     <meta name="theme-color" content="#000000">
 
-    <title> 一起来花5分钟写一个PHP入门Demo  - 周神的博客 | Rockjins Blog</title>
+    <title> oh-my-zsh中git常用命令  - 周神的博客 | Rockjins Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2016/06/28/php-demo/">
+    <link rel="canonical" href="http://localhost:4000/2017/01/04/zsh-git/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -151,13 +151,13 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="//upload-images.jianshu.io/upload_images/2859850-89a10d6e30f41a6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="0" height="0"> -->
+<!-- <img src="//upload-images.jianshu.io/upload_images/2859850-d7382a23565585e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('//upload-images.jianshu.io/upload_images/2859850-89a10d6e30f41a6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')
+        background-image: url('//upload-images.jianshu.io/upload_images/2859850-d7382a23565585e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')
     }
 
     
@@ -170,15 +170,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#PHP" title="PHP">PHP</a>
+                        <a class="tag" href="/tags/#oh-my-zsh" title="oh-my-zsh">oh-my-zsh</a>
+                        
+                        <a class="tag" href="/tags/#git" title="git">git</a>
                         
                     </div>
-                    <h1> 一起来花5分钟写一个PHP入门Demo </h1>
+                    <h1> oh-my-zsh中git常用命令 </h1>
                     
                     
-                    <h2 class="subheading"> When you really want to know a thing, You will see is really very simple. </h2>
+                    <h2 class="subheading"> oh-my-zsh Plugin:git </h2>
                     
-                    <span class="meta">Posted by Shock on June 28, 2016</span>
+                    <span class="meta">Posted by Shock on January 4, 2017</span>
                 </div>
             </div>
         </div>
@@ -197,128 +199,55 @@
                 post-container">
 
 				<blockquote>
-  <p>你以为很难，只是因为你没有去行动。</p>
+  <p>自己常用的几个命令 希望能帮到你</p>
 </blockquote>
 
-<p>最近公司招了几个应届毕业生，他们对前端的了解还挺多，但是对后端的技术一无所知，我觉得，作为一个前端攻城狮，如果你有远大的抱负，就应该雨露均沾…</p>
-
-<p>今天我就跟大家讲一讲PHP最基本的入门，至少别人问起你来，不会一点都不懂。</p>
-
-<p>大家知道PHP搭建环境蛮麻烦的，咱们前端攻城狮就没必要去钻研环境的搭建了，网上已经有集成好的PHP环境可以直接下载，<code class="highlighter-rouge">wamp</code>和<code class="highlighter-rouge">phpstudy</code>，安装只需下一步就行。</p>
-
-<p>因为我一直是使用wamp，一下就以wamp为例来讲解。</p>
-
-<p>安装好wamp后，屏幕右下角会出现这个图标。</p>
-
-<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160628093309312-1402371585.png" alt="" /></p>
-
-<p>如果你英语不是很好的话，可以右击图标，选择中文。</p>
-
-<p>wamp打开后会默认开启所有服务，你也可以左击图标，选择启动所有服务，并且切换到在线状态。</p>
-
-<p>到此，PHP运行的环境就准备好了。</p>
-
-<p>下面开始写demo了。</p>
-
-<p>点击右下角小图标，有个www目录，进入后创建一个叫php的项目文件夹：</p>
-
-<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160628111027265-2145567082.png" alt="" /></p>
-
-<p>在文件夹中新建这几个文件：</p>
-
-<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160628111159343-1711797668.png" alt="" /></p>
-
-<p>我们先打开<code class="highlighter-rouge">login.html</code>，写入一个简单的表单：</p>
-
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;title&gt;</span>Document<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"success.php"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
-        用户名：<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"username"</span><span class="nt">&gt;&lt;br/&gt;&lt;br/&gt;</span>
-        密码：<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"pwd"</span><span class="nt">&gt;&lt;br/&gt;&lt;br/&gt;</span>
-        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">name=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"提交"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/form&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre>
-</div>
-
-<p>效果如下：</p>
-
-<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160628111413999-225059502.png" alt="" /></p>
-
-<p>我们需要实现用户点击提交时，把用户输入的用户名和密码保存在本地的<code class="highlighter-rouge">data.txt</code>文件里，并且在<code class="highlighter-rouge">success.php</code>页面提示用户登录成功。</p>
-
-<p>下面我们开始关键的php代码，打开<code class="highlighter-rouge">success.php</code>文件，敲入以下代码：</p>
-
-<div class="language-php highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;title&gt;</span>Document<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-    <span class="cp">&lt;?php</span>
-        <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s2">"username"</span><span class="p">];</span>
-        <span class="nv">$pwd</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s2">"pwd"</span><span class="p">];</span>
-        <span class="nv">$fp</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">"./data.txt"</span><span class="p">,</span> <span class="s2">"a"</span><span class="p">);</span>
-        <span class="nv">$str</span> <span class="o">=</span> <span class="s2">"user:"</span><span class="o">.</span><span class="nv">$name</span><span class="o">.</span><span class="s2">"&amp;password:"</span><span class="o">.</span><span class="nv">$pwd</span><span class="o">.</span><span class="s2">"</span><span class="se">\r\n</span><span class="s2">"</span><span class="p">;</span>
-        <span class="nb">fwrite</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span><span class="nv">$str</span><span class="p">);</span>
-        <span class="nb">fclose</span><span class="p">(</span><span class="nv">$fp</span><span class="p">);</span>
-        <span class="k">echo</span> <span class="s2">"&lt;h1&gt;欢迎回来,"</span><span class="o">.</span><span class="nv">$name</span><span class="o">.</span><span class="s2">"！&lt;/h1&gt;"</span><span class="p">;</span>
-    <span class="cp">?&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre>
-</div>
-
-<p>大家要注意，PHP代码可以和HTML代码混合使用，包裹在<code class="highlighter-rouge">&lt;?php doSomething ?&gt;</code>标签内的代码，服务器就会用PHP的解析器去解析，我们来分析一下上面的代码。</p>
-
-<p>因为表单使用post方式提交的，所以我们需要用POST方式去接收，PHP接收POST发送过来的数据使用<code class="highlighter-rouge">$_POST[""]</code>;语句，get用法一样，把POST改成GET，在中括号内填写你需要获取表单项的name名。</p>
-
-<p>接下来我们要把所得到的数据写入到<code class="highlighter-rouge">data.txt</code>文件内，实际项目开发中，这些数据都是写入到数据库中。</p>
-
-<p>我们用<code class="highlighter-rouge">fopen</code>命令打开一个文件，<code class="highlighter-rouge">fopen</code>接收两个参数，第一个是要打开文件的路径；第二个是打开的方式，这里使用<code class="highlighter-rouge">a</code>写入方式打开，将文件指针指向文件末尾，如果文件不存在，则会尝试创建这个文件。（其他参数详情请到W3school查看）</p>
-
-<p>还需要注意的是，PHP中的变量声明并不是用<code class="highlighter-rouge">var</code>，而是<code class="highlighter-rouge">$</code>+变量名。</p>
-
-<p>接下来把用户名和密码拼接成字符串，PHP中的字符串拼接和JavaScript也有差异，PHP使用<code class="highlighter-rouge">.</code>来做拼接符。</p>
-
-<p>我们用<code class="highlighter-rouge">fwrite</code>命令来写入文件，它接收两个参数，第一个是要打开的文件，也就是我们前面定义的<code class="highlighter-rouge">$fp</code>；第二个是要写入的内容，把之前拼接好的字符串放入。</p>
-
-<p>最后还需要关闭文件，使用<code class="highlighter-rouge">fclose</code>命令，传入需要关闭的文件。如果不关闭文件的话，这个文件就会一直被占用，别人就不能读写这个文件了，所以这一步千万不能忘记。</p>
-
-<p>最后，我么在<code class="highlighter-rouge">success.php</code>页面输出一条消息，<code class="highlighter-rouge">JavaScript</code>中可以用<code class="highlighter-rouge">document.write</code>来输出内容，PHP使用<code class="highlighter-rouge">echo</code>语句来输出内容，支持输入HTML标签。</p>
-
-<p>到此，一个简单的PHP_Demo就写好了，我们来测试一下吧。</p>
-
-<p>在浏览器输入<code class="highlighter-rouge">http://localhost/php/login.html</code>进入页面，我们随便输入一些信息：</p>
-
-<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160628125812593-1050524524.png" alt="" /></p>
-
-<p>提交后，页面跳转到<code class="highlighter-rouge">success.php</code>，我们看到如下内容：</p>
-
-<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160628125841234-1957108871.png" alt="" /></p>
-
-<p>我们打开<code class="highlighter-rouge">data.txt</code>文件，看看数据是否被写入了。</p>
-
-<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160628125956468-852736423.png" alt="" /></p>
-
-<p>的确按照我们规定的格式写入了数据，我来多登录几次试试：</p>
-
-<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160628130121765-751187831.png" alt="" /></p>
-
-<p>测试成功！</p>
-
-<p>希望大家跟着上面的代码敲一遍，你会发现挺有成就感的，至少我最初学习PHP完成这个Demo时，兴奋坏了我。</p>
-
-<p>当然，这只是PHP最简单的一些实例，过段时间再写篇如何用PHP操作MySQL读写数据的文章，希望大家对技术保持一颗好奇心，这样才能真正成长！</p>
-
-<p>最后附上项目源码:<a href="https://github.com/rockjins/firstPython/tree/gh-pages/test/easyPHP">EasyPHP</a>(还是希望大家能敲一下)</p>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Alias</th>
+      <th style="text-align: center">Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">ga</td>
+      <td style="text-align: center">git add</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">gcmsg</td>
+      <td style="text-align: center">git commit -m</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">gp</td>
+      <td style="text-align: center">git push</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">gl</td>
+      <td style="text-align: center">git pull</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">gst</td>
+      <td style="text-align: center">git status</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">gd</td>
+      <td style="text-align: center">git diff</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">gm</td>
+      <td style="text-align: center">git merge</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">gb</td>
+      <td style="text-align: center">git branch</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">gco</td>
+      <td style="text-align: center">git checkout</td>
+    </tr>
+  </tbody>
+</table>
 
 <blockquote>
   <p>本文出自<a href="https://rockjins.github.io">Rockjins Blog</a>，转载请与作者联系。否则将追究法律责任。</p>
@@ -331,15 +260,24 @@
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2016/06/28/php-demo"
-                    data-title=" 一起来花5分钟写一个PHP入门Demo "
-                    data-url="http://localhost:4000/2016/06/28/php-demo/"
-                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-89a10d6e30f41a6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+                    data-thread-key="/2017/01/04/zsh-git"
+                    data-title=" oh-my-zsh中git常用命令 "
+                    data-url="http://localhost:4000/2017/01/04/zsh-git/"
+                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-d7382a23565585e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
                     data-content="
-  你以为很难，只是因为你没有去行动。
+  自己常用的几个命令 希望能帮到你
 
 
-最近公司招了几个应届毕业生，他们对前端的了解还挺多，但是对后端的技术一无所知，我觉得，作为一个前端攻城狮，如... | 周神的博客 | Rockjins Blog " >
+
+  
+    
+      Alias
+      Command
+    
+  
+  
+    
+    ... | 周神的博客 | Rockjins Blog " >
                     <div class="ds-share-inline">
                       <style> 
                         .ds-share-icons-16 {display:none;} 
@@ -362,19 +300,12 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2016/06/22/music-cloud/" data-toggle="tooltip" data-placement="top" title=" 来自网易云的黑科技，带尖角的div...... ">
+                        <a href="/2017/01/02/tw-spaeak/" data-toggle="tooltip" data-placement="top" title=" 台湾和大陆不一样的术语称呼 ">
                         Previous<br>
-                        <span> 来自网易云的黑科技，带尖角的div...... </span>
+                        <span> 台湾和大陆不一样的术语称呼 </span>
                         </a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2016/07/01/baidu-keywords/" data-toggle="tooltip" data-placement="top" title=" 教你把百度的关键字搜索偷过来用用 ">
-                        Next<br>
-                        <span> 教你把百度的关键字搜索偷过来用用 </span>
-                        </a>
-                    </li>
                     
                 </ul>
 
@@ -383,9 +314,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2016/06/28/php-demo"
-                        data-title=" 一起来花5分钟写一个PHP入门Demo "
-                        data-url="http://localhost:4000/2016/06/28/php-demo/" >
+                        data-thread-key="/2017/01/04/zsh-git"
+                        data-title=" oh-my-zsh中git常用命令 "
+                        data-url="http://localhost:4000/2017/01/04/zsh-git/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->

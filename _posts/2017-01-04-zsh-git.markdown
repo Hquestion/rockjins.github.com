@@ -1,0 +1,28 @@
+---
+layout: post
+title: ' oh-my-zsh中git常用命令 '
+subtitle: ' oh-my-zsh Plugin:git '
+date: 2017-01-04T00:00:00.000Z
+author: Shock
+header-img: '/upload-images.jianshu.io/upload_images/2859850-d7382a23565585e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240'
+catalog: true
+tags:
+  - oh-my-zsh
+  - git
+---
+
+> 自己常用的几个命令 希望能帮到你
+
+Alias |    Command
+:---: | :-----------:
+ ga   |    git add
+gcmsg | git commit -m
+ gp   |   git push
+ gl   |   git pull
+ gst  |  git status
+ gd   |   git diff
+ gm   |   git merge
+ gb   |  git branch
+ gco  | git checkout
+
+> 本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

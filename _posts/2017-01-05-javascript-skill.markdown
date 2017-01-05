@@ -113,4 +113,29 @@ funcs.forEach(function(func) {
 })
 ```
 
+### 判断两个小数是否相等
+
+```javascript
+//因为javascript数字通常被输入为十进制的浮点数，但内部却被表示为二进制，所以计算结果会有偏差：
+
+0.1 + 0.2 //0.30000000000000004
+
+0.1 + 1 - 1 //0.10000000000000009
+
+0.1 + 0.2 === 0.3 //false
+
+//所以我们不应该直接比较非整数，而是取其上限，把误差计算进去
+//这样一个上限称为 machine epsilon，双精度的标准epsilon值是2^-53
+
+const EPSILON = Math.pow(2, -53); //1.1102230246251565e-16
+
+function epsEqu(x,y) {
+  return Math.abs(x - y) < EPSILON;
+}
+
+epsEqu(0.1+0.2, 0.3) //true
+```
+
+
+
 > 本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

@@ -302,6 +302,29 @@
 </code></pre>
 </div>
 
+<h3 id="判断两个小数是否相等">判断两个小数是否相等</h3>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">//因为javascript数字通常被输入为十进制的浮点数，但内部却被表示为二进制，所以计算结果会有偏差：</span>
+
+<span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="c1">//0.30000000000000004</span>
+
+<span class="mf">0.1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1">//0.10000000000000009</span>
+
+<span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">===</span> <span class="mf">0.3</span> <span class="c1">//false</span>
+
+<span class="c1">//所以我们不应该直接比较非整数，而是取其上限，把误差计算进去</span>
+<span class="c1">//这样一个上限称为 machine epsilon，双精度的标准epsilon值是2^-53</span>
+
+<span class="kr">const</span> <span class="nx">EPSILON</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">53</span><span class="p">);</span> <span class="c1">//1.1102230246251565e-16</span>
+
+<span class="kd">function</span> <span class="nx">epsEqu</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">x</span> <span class="o">-</span> <span class="nx">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nx">EPSILON</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">epsEqu</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span> <span class="c1">//true</span>
+</code></pre>
+</div>
+
 <blockquote>
   <p>本文出自<a href="https://rockjins.github.io">Rockjins Blog</a>，转载请与作者联系。否则将追究法律责任。</p>
 </blockquote>

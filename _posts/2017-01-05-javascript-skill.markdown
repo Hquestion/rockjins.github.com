@@ -99,6 +99,7 @@ funcs.forEach(function(func) {
 ### 使用let解决循环问题
 
 这是`let`独有的特性([参考](https://sagittarius-rev.gitbooks.io/understanding-ecmascript-6-zh-ver/content/chapter_1.html#let-declarations-in-loops))
+
 ```javascript
 var funcs = [];
 

@@ -3,10 +3,10 @@
   <channel>
     <title>Rockjins Blog</title>
     <description> 周神的个人博客，和你一起进步，一起探索更奥妙的知识，更新奇的技术。 </description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 05 Jan 2017 19:20:53 +0800</pubDate>
-    <lastBuildDate>Thu, 05 Jan 2017 19:20:53 +0800</lastBuildDate>
+    <link>https://rockjins.github.io/</link>
+    <atom:link href="https://rockjins.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Thu, 05 Jan 2017 19:22:32 +0800</pubDate>
+    <lastBuildDate>Thu, 05 Jan 2017 19:22:32 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -103,6 +103,7 @@
 &lt;h3 id=&quot;使用let解决循环问题&quot;&gt;使用let解决循环问题&lt;/h3&gt;
 
 &lt;p&gt;这是&lt;code class=&quot;highlighter-rouge&quot;&gt;let&lt;/code&gt;独有的特性(&lt;a href=&quot;https://sagittarius-rev.gitbooks.io/understanding-ecmascript-6-zh-ver/content/chapter_1.html#let-declarations-in-loops&quot;&gt;参考&lt;/a&gt;)&lt;/p&gt;
+
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;funcs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -145,8 +146,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Thu, 05 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/01/05/javascript-skill/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/05/javascript-skill/</guid>
+        <link>https://rockjins.github.io/2017/01/05/javascript-skill/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2017/01/05/javascript-skill/</guid>
         
         <category>JavaScript</category>
         
@@ -319,8 +320,8 @@
 &lt;p&gt;就这些，希望你喜欢。恐怕大都是无稽之谈。&lt;/p&gt;
 </description>
         <pubDate>Thu, 05 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/01/05/Hemingway-javascript/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/05/Hemingway-javascript/</guid>
+        <link>https://rockjins.github.io/2017/01/05/Hemingway-javascript/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2017/01/05/Hemingway-javascript/</guid>
         
         <category>translation</category>
         
@@ -385,8 +386,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Wed, 04 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/01/04/zsh-git/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/04/zsh-git/</guid>
+        <link>https://rockjins.github.io/2017/01/04/zsh-git/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2017/01/04/zsh-git/</guid>
         
         <category>oh-my-zsh</category>
         
@@ -547,8 +548,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 02 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/01/02/tw-spaeak/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/02/tw-spaeak/</guid>
+        <link>https://rockjins.github.io/2017/01/02/tw-spaeak/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2017/01/02/tw-spaeak/</guid>
         
         <category>Book</category>
         
@@ -642,8 +643,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Sun, 01 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/01/01/book-list/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/01/book-list/</guid>
+        <link>https://rockjins.github.io/2017/01/01/book-list/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2017/01/01/book-list/</guid>
         
         <category>Book</category>
         
@@ -971,8 +972,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 26 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/26/socket-io/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/26/socket-io/</guid>
+        <link>https://rockjins.github.io/2016/12/26/socket-io/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/12/26/socket-io/</guid>
         
         <category>JavaScript</category>
         
@@ -1082,8 +1083,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 19 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/19/inline-function/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/19/inline-function/</guid>
+        <link>https://rockjins.github.io/2016/12/19/inline-function/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/12/19/inline-function/</guid>
         
         <category>JavaScript</category>
         
@@ -1171,8 +1172,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Sat, 17 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/17/faith/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/17/faith/</guid>
+        <link>https://rockjins.github.io/2016/12/17/faith/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/12/17/faith/</guid>
         
         <category>信仰</category>
         
@@ -1216,8 +1217,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 12 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/12/evil/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/12/evil/</guid>
+        <link>https://rockjins.github.io/2016/12/12/evil/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/12/12/evil/</guid>
         
         <category>生活</category>
         
@@ -1296,8 +1297,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Thu, 01 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/01/vue-problem/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/01/vue-problem/</guid>
+        <link>https://rockjins.github.io/2016/12/01/vue-problem/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/12/01/vue-problem/</guid>
         
         <category>Vue</category>
         

@@ -2,7 +2,7 @@
 layout:     post
 title:      " 不定期更新 JavaScript技巧 "
 subtitle:   " Efficiency, is useful. "
-date:       2016-12-29
+date:       2017-01-05
 author:     "Shock"
 header-img: "/upload-images.jianshu.io/upload_images/2859850-13d53baf09a3de93.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
 catalog: true
@@ -61,4 +61,5 @@ var coder = {
   }
 }
 ```
+
 > 本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

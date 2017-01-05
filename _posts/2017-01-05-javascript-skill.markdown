@@ -137,6 +137,19 @@ function epsEqu(x,y) {
 epsEqu(0.1+0.2, 0.3) //true
 ```
 
+### Math.round函数的坑
+
+```javascript
+Math.round(-3.2) //-3
+
+Math.round(-3.5) //-3(这个就奇怪了)
+
+Math.round(-3.8) //-4
+
+//其实，Math.round(x)等同于：
+Math.floor(x + 0.5)
+```
+
 
 
 > 本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

@@ -13,7 +13,7 @@ tags:
 
 >  JavaScript技巧，偶尔更新。
 
-### 计算数组的极值：
+### 计算数组的极值
 
 ```javascript
 function smallest(array){                         
@@ -29,7 +29,7 @@ smallest([0, 1, 2.2, 3.3]); // 0
 largest([0, 1, 2.2, 3.3]); // 3.3
 ```
 
-### 迭代arguments：
+### 迭代arguments
 
 ```javascript
 function useCall() {
@@ -60,6 +60,57 @@ var coder = {
     },this)//注意这个this，如果不添加这个参数，你可以猜测会发生什么
   }
 }
+```
+
+### 使用IIFE解决循环问题
+
+*unexpected:*
+
+```javascript
+var funcs = [];
+
+for (var i = 0; i < 10; i++) {
+    funcs.push(function() { console.log(i); });
+}
+
+funcs.forEach(function(func) {
+    func();     // 输出数值 "10" 十次
+});
+```
+
+*expected:*
+
+```javascript
+var funcs = [];
+
+for (var i = 0; i < 10; i++) {
+    funcs.push((function(value) {
+        return function() {
+            console.log(value);
+        }
+    }(i)));
+}
+
+funcs.forEach(function(func) {
+    func();     // 从 0 到 9 依次输出
+});
+```
+
+### 使用let解决循环问题
+
+这是`let`独有的特性([参考](https://sagittarius-rev.gitbooks.io/understanding-ecmascript-6-zh-ver/content/chapter_1.html#let-declarations-in-loops))
+```javascript
+var funcs = [];
+
+for (let i = 0; i < 10; i++) {
+    funcs.push(function() {
+        console.log(i);
+    });
+}
+
+funcs.forEach(function(func) {
+    func();     // 从 0 到 9 依次输出
+})
 ```
 
 > 本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

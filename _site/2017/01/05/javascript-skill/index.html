@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://rockjins.github.io/2017/01/05/javascript-skill/">
+    <link rel="canonical" href="http://localhost:4000/2017/01/05/javascript-skill/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -200,7 +200,7 @@
   <p> JavaScript技巧，偶尔更新。</p>
 </blockquote>
 
-<h3 id="计算数组的极值">计算数组的极值：</h3>
+<h3 id="计算数组的极值">计算数组的极值</h3>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">smallest</span><span class="p">(</span><span class="nx">array</span><span class="p">){</span>                         
   <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nb">Math</span><span class="p">,</span> <span class="nx">array</span><span class="p">);</span>             
@@ -216,7 +216,7 @@
 </code></pre>
 </div>
 
-<h3 id="迭代arguments">迭代arguments：</h3>
+<h3 id="迭代arguments">迭代arguments</h3>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">useCall</span><span class="p">()</span> <span class="p">{</span>
     <span class="p">[].</span><span class="nx">forEach</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
@@ -251,6 +251,57 @@
 </code></pre>
 </div>
 
+<h3 id="使用iife解决循环问题">使用IIFE解决循环问题</h3>
+
+<p><em>unexpected:</em></p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">funcs</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">funcs</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span> <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="nx">funcs</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">func</span><span class="p">();</span>     <span class="c1">// 输出数值 "10" 十次</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p><em>expected:</em></p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">funcs</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">funcs</span><span class="p">.</span><span class="nx">push</span><span class="p">((</span><span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}(</span><span class="nx">i</span><span class="p">)));</span>
+<span class="p">}</span>
+
+<span class="nx">funcs</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">func</span><span class="p">();</span>     <span class="c1">// 从 0 到 9 依次输出</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<h3 id="使用let解决循环问题">使用let解决循环问题</h3>
+
+<p>这是<code class="highlighter-rouge">let</code>独有的特性(<a href="https://sagittarius-rev.gitbooks.io/understanding-ecmascript-6-zh-ver/content/chapter_1.html#let-declarations-in-loops">参考</a>)</p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">funcs</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">funcs</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="nx">funcs</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">func</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">func</span><span class="p">();</span>     <span class="c1">// 从 0 到 9 依次输出</span>
+<span class="p">})</span>
+</code></pre>
+</div>
+
 <blockquote>
   <p>本文出自<a href="https://rockjins.github.io">Rockjins Blog</a>，转载请与作者联系。否则将追究法律责任。</p>
 </blockquote>
@@ -264,15 +315,15 @@
                     style="text-align: right"
                     data-thread-key="/2017/01/05/javascript-skill"
                     data-title=" 不定期更新 JavaScript技巧 "
-                    data-url="https://rockjins.github.io/2017/01/05/javascript-skill/"
-                    data-images="https://rockjins.github.io//upload-images.jianshu.io/upload_images/2859850-13d53baf09a3de93.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+                    data-url="http://localhost:4000/2017/01/05/javascript-skill/"
+                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-13d53baf09a3de93.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
                     data-content="
    JavaScript技巧，偶尔更新。
 
 
-计算数组的极值：
+计算数组的极值
 
-function smallest(array){                 ... | 周神的博客 | Rockjins Blog " >
+function smallest(array){                  ... | 周神的博客 | Rockjins Blog " >
                     <div class="ds-share-inline">
                       <style> 
                         .ds-share-icons-16 {display:none;} 
@@ -311,7 +362,7 @@ function smallest(array){                 ... | 周神的博客 | Rockjins Blog 
                     <div class="ds-thread"
                         data-thread-key="/2017/01/05/javascript-skill"
                         data-title=" 不定期更新 JavaScript技巧 "
-                        data-url="https://rockjins.github.io/2017/01/05/javascript-skill/" >
+                        data-url="http://localhost:4000/2017/01/05/javascript-skill/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->

@@ -150,6 +150,14 @@ Math.round(-3.8) //-4
 Math.floor(x + 0.5)
 ```
 
+### 巧用||和&&
 
+```javascript
+var bar = $ || 233;
+//如果$存在，则把$赋值给bar；如果$不存在，则把233赋值给bar
+
+$ === undefined && (window.$ =  jQuery);  
+//如果$不存在,则把jQuery赋值给window.$；如果$存在，则不执行后面的表达式
+```
 
 > 本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

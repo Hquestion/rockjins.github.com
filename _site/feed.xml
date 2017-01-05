@@ -3,10 +3,10 @@
   <channel>
     <title>Rockjins Blog</title>
     <description> 周神的个人博客，和你一起进步，一起探索更奥妙的知识，更新奇的技术。 </description>
-    <link>https://rockjins.github.io/</link>
-    <atom:link href="https://rockjins.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 05 Jan 2017 19:52:13 +0800</pubDate>
-    <lastBuildDate>Thu, 05 Jan 2017 19:52:13 +0800</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Thu, 05 Jan 2017 21:39:17 +0800</pubDate>
+    <lastBuildDate>Thu, 05 Jan 2017 21:39:17 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -154,13 +154,23 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
+&lt;h3 id=&quot;巧用和&quot;&gt;巧用||和&amp;amp;&amp;amp;&lt;/h3&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;233&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//如果$存在，则把$赋值给bar；如果$不存在，则把233赋值给bar&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;jQuery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  
+&lt;span class=&quot;c1&quot;&gt;//如果$不存在,则把jQuery赋值给window.$；如果$存在，则不执行后面的表达式&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;blockquote&gt;
   &lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
         <pubDate>Thu, 05 Jan 2017 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2017/01/05/javascript-skill/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2017/01/05/javascript-skill/</guid>
+        <link>http://localhost:4000/2017/01/05/javascript-skill/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/05/javascript-skill/</guid>
         
         <category>JavaScript</category>
         
@@ -333,8 +343,8 @@
 &lt;p&gt;就这些，希望你喜欢。恐怕大都是无稽之谈。&lt;/p&gt;
 </description>
         <pubDate>Thu, 05 Jan 2017 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2017/01/05/Hemingway-javascript/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2017/01/05/Hemingway-javascript/</guid>
+        <link>http://localhost:4000/2017/01/05/Hemingway-javascript/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/05/Hemingway-javascript/</guid>
         
         <category>translation</category>
         
@@ -399,8 +409,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Wed, 04 Jan 2017 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2017/01/04/zsh-git/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2017/01/04/zsh-git/</guid>
+        <link>http://localhost:4000/2017/01/04/zsh-git/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/04/zsh-git/</guid>
         
         <category>oh-my-zsh</category>
         
@@ -561,8 +571,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 02 Jan 2017 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2017/01/02/tw-spaeak/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2017/01/02/tw-spaeak/</guid>
+        <link>http://localhost:4000/2017/01/02/tw-spaeak/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/02/tw-spaeak/</guid>
         
         <category>Book</category>
         
@@ -656,8 +666,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Sun, 01 Jan 2017 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2017/01/01/book-list/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2017/01/01/book-list/</guid>
+        <link>http://localhost:4000/2017/01/01/book-list/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/01/book-list/</guid>
         
         <category>Book</category>
         
@@ -985,8 +995,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 26 Dec 2016 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2016/12/26/socket-io/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2016/12/26/socket-io/</guid>
+        <link>http://localhost:4000/2016/12/26/socket-io/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/26/socket-io/</guid>
         
         <category>JavaScript</category>
         
@@ -1096,8 +1106,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 19 Dec 2016 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2016/12/19/inline-function/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2016/12/19/inline-function/</guid>
+        <link>http://localhost:4000/2016/12/19/inline-function/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/19/inline-function/</guid>
         
         <category>JavaScript</category>
         
@@ -1185,8 +1195,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Sat, 17 Dec 2016 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2016/12/17/faith/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2016/12/17/faith/</guid>
+        <link>http://localhost:4000/2016/12/17/faith/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/17/faith/</guid>
         
         <category>信仰</category>
         
@@ -1230,8 +1240,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 12 Dec 2016 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2016/12/12/evil/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2016/12/12/evil/</guid>
+        <link>http://localhost:4000/2016/12/12/evil/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/12/evil/</guid>
         
         <category>生活</category>
         
@@ -1310,8 +1320,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Thu, 01 Dec 2016 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2016/12/01/vue-problem/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2016/12/01/vue-problem/</guid>
+        <link>http://localhost:4000/2016/12/01/vue-problem/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/01/vue-problem/</guid>
         
         <category>Vue</category>
         

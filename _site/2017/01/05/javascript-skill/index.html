@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://rockjins.github.io/2017/01/05/javascript-skill/">
+    <link rel="canonical" href="http://localhost:4000/2017/01/05/javascript-skill/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -339,6 +339,16 @@
 </code></pre>
 </div>
 
+<h3 id="巧用和">巧用||和&amp;&amp;</h3>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="nx">$</span> <span class="o">||</span> <span class="mi">233</span><span class="p">;</span>
+<span class="c1">//如果$存在，则把$赋值给bar；如果$不存在，则把233赋值给bar</span>
+
+<span class="nx">$</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">$</span> <span class="o">=</span>  <span class="nx">jQuery</span><span class="p">);</span>  
+<span class="c1">//如果$不存在,则把jQuery赋值给window.$；如果$存在，则不执行后面的表达式</span>
+</code></pre>
+</div>
+
 <blockquote>
   <p>本文出自<a href="https://rockjins.github.io">Rockjins Blog</a>，转载请与作者联系。否则将追究法律责任。</p>
 </blockquote>
@@ -352,8 +362,8 @@
                     style="text-align: right"
                     data-thread-key="/2017/01/05/javascript-skill"
                     data-title=" 不定期更新 JavaScript技巧 "
-                    data-url="https://rockjins.github.io/2017/01/05/javascript-skill/"
-                    data-images="https://rockjins.github.io//upload-images.jianshu.io/upload_images/2859850-13d53baf09a3de93.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+                    data-url="http://localhost:4000/2017/01/05/javascript-skill/"
+                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-13d53baf09a3de93.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
                     data-content="
    JavaScript技巧，偶尔更新。
 
@@ -399,7 +409,7 @@ function smallest(array){                  ... | 周神的博客 | Rockjins Blog
                     <div class="ds-thread"
                         data-thread-key="/2017/01/05/javascript-skill"
                         data-title=" 不定期更新 JavaScript技巧 "
-                        data-url="https://rockjins.github.io/2017/01/05/javascript-skill/" >
+                        data-url="http://localhost:4000/2017/01/05/javascript-skill/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->

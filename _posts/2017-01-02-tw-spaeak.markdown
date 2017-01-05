@@ -2,7 +2,7 @@
 layout: post
 title: ' 台湾和大陆不一样的术语称呼 '
 subtitle: ' traditional speaking. '
-date: 2017-01-02T00:00:00.000Z
+date: 2017-01-02
 author: Shock
 header-img: '/upload-images.jianshu.io/upload_images/2859850-8028e58c68f7500f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240'
 catalog: true

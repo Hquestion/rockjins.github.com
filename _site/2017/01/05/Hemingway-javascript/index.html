@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content=" 周神的个人博客，和你一起进步，一起探索更奥妙的知识，更新奇的技术。 ">
+    <meta name="keywords"  content="周神, Shock, @rockjins, @chinajins, 周神的博客, Rockjins Blog, 博客, 个人网站, 互联网, 前端, 设计, 产品">
+    <meta name="theme-color" content="#000000">
+
+    <title> 『翻译』如果让海明威写JavaScript  - 周神的博客 | Rockjins Blog</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/2017/01/05/Hemingway-javascript/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Rockjins Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="//upload-images.jianshu.io/upload_images/2859850-0a0e4dc3cabc9214.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('//upload-images.jianshu.io/upload_images/2859850-0a0e4dc3cabc9214.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#translation" title="translation">translation</a>
+                        
+                    </div>
+                    <h1> 『翻译』如果让海明威写JavaScript </h1>
+                    
+                    
+                    <h2 class="subheading"> How amazing！ </h2>
+                    
+                    <span class="meta">Posted by Shock on January 5, 2017</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<blockquote>
+  <p>原文链接：<a href="http://byfat.xxx/if-hemingway-wrote-javascript">http://byfat.xxx/if-hemingway-wrote-javascript</a></p>
+</blockquote>
+
+<p>在写第一行代码很久以前，我就酷爱文学。现在，我写JavaScript，不计其数。我正在写一本关于JavaScript的书。</p>
+
+<p>JavaScript凭啥能吸引那么多文艺青年？说到它有限的语法所具备的表达潜能，我倒是有几点不成熟的想法，不过那是另外一个话题了。哎，如果那些大作家都喜欢上JavaScript，会咋样？你说他们会用JavaScript写出点什么东西来？作为海明威的十足拥趸，我的第一反应也是这老爷子不可能喜欢编程序（包括程序员）。话虽如此，我还是愿意相信在对它的各种非议中，其实潜藏着足以打动人心的一点：它是一门很文艺的语言，你说呢？它表面上简单粗陋、平淡无奇，而实质上却引人入胜、内涵十足。</p>
+
+<h2 id="代码审查之母">代码审查之母</h2>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/2859850-0ffb33a8d91775dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>前些天，我做了一个梦。梦见我让海明威还有其他四位作家给我写点JavaScript，特别是得写一个能返回<em>指定长度斐波纳契数列的函数</em>。我发现这些作家解决问题的方法各有千秋，很有意思。不过确实都写得不错，至少都实现了既定的功能（连安德烈·布勒东都写出来了）。下面就是他们交给我的作业。</p>
+
+<h3 id="欧内斯特海明威美国作家">欧内斯特·海明威（美国作家）</h3>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">size</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="kd">var</span> <span class="nx">first</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">second</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">next</span><span class="p">,</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">[</span><span class="nx">first</span><span class="p">,</span> <span class="nx">second</span><span class="p">];</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="nx">size</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">"the request was made but it was not good"</span>
+
+  <span class="k">while</span><span class="p">(</span><span class="nx">count</span><span class="o">++</span> <span class="o">&lt;</span> <span class="nx">size</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">next</span> <span class="o">=</span> <span class="nx">first</span> <span class="o">+</span> <span class="nx">second</span><span class="p">;</span>
+    <span class="nx">first</span> <span class="o">=</span> <span class="nx">second</span><span class="p">;</span>
+    <span class="nx">second</span> <span class="o">=</span> <span class="nx">next</span><span class="p">;</span>
+    <span class="nx">result</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">next</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>毫不奇怪。海明威的代码非常凝练，没有浪费一个词一个变量。代码没什么出奇之处，甚至显得有点迂腐，可这正是海明威作品的长处。没有烦琐的逻辑，也没有花里胡哨的变量名。就那么简单直白地把活儿干了，干完完事儿。</p>
+
+<p>海明威没心情跟傻瓜逗闷子，如果你想要的是一个长度小于2的数列，他根本不睬你：“我累啦，你的问题很白痴。”</p>
+
+<h3 id="威廉莎士比亚英国诗人作家">威廉·莎士比亚（英国诗人、作家）</h3>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">theSeriesOfFIBONACCI</span><span class="p">(</span><span class="nx">theSize</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="c1">//a CALCKULATION in two acts.</span>
+  <span class="c1">//employ'ng the humourous logick of JAVA-SCRIPTE</span>
+
+  <span class="c1">//Dramatis Personae</span>
+  <span class="kd">var</span> <span class="nx">theResult</span><span class="p">;</span> <span class="c1">//an ARRAY to contain THE NUMBERS</span>
+  <span class="kd">var</span> <span class="nx">theCounter</span><span class="p">;</span> <span class="c1">//a NUMBER, serv'nt to the FOR LOOP</span>
+
+  <span class="c1">//ACT I: in which a ZERO is added for INITIATION</span>
+
+  <span class="c1">//[ENTER: theResult]</span>
+
+  <span class="c1">//Upon the noble list bestow a zero</span>
+  <span class="kd">var</span> <span class="nx">theResult</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+  <span class="c1">//ACT II: a LOOP in which the final TWO NUMBERS are QUEREED and SUMM'D</span>
+
+  <span class="c1">//[ENTER: theCounter]</span>
+
+  <span class="c1">//Commence at one and venture o'er the numbers</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nx">theCounter</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">theCounter</span> <span class="o">&lt;</span> <span class="nx">theSize</span><span class="p">;</span> <span class="nx">theCounter</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//By divination set adjoining members</span>
+    <span class="nx">theResult</span><span class="p">[</span><span class="nx">theCounter</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="nx">theResult</span><span class="p">[</span><span class="nx">theCounter</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">||</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">theResult</span><span class="p">[</span><span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">theCounter</span><span class="o">-</span><span class="mi">2</span><span class="p">)];</span>
+  <span class="p">}</span>
+
+  <span class="c1">//'Tis done, and here's the answer.</span>
+  <span class="k">return</span> <span class="nx">theResult</span><span class="p">;</span>
+
+  <span class="c1">//[Exuent]</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>这位文豪啰嗦了点，可也是独树一帜了。注意他的注释（不算场名和台本），典型的英文抑扬格五音步格律——共十对音节，每音步（两个音节）的重音都落在第二个音节上。在他的戏剧中，莎士比亚经常会脱离严格的抑扬格五音步格律以示强调，比如增加一个音节，或者采用交替重音。在这个编程作业中，他好像也运用了同样的技巧。码如其文。</p>
+
+<h3 id="安德烈布勒东andre-breton法国诗人和评论家超现实主义创始人之一">安德烈·布勒东（Andre Breton，法国诗人和评论家，超现实主义创始人之一）</h3>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Colette</span><span class="p">(</span><span class="nx">umbrella</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">staircase</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">galleons</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">brigantines</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">armada</span> <span class="o">=</span> <span class="p">[</span><span class="nx">galleons</span><span class="p">,</span> <span class="nx">brigantines</span><span class="p">],</span> <span class="nx">bassoon</span><span class="p">;</span>
+  <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">embrace</span> <span class="o">=</span> <span class="p">[].</span><span class="nx">push</span><span class="p">;</span>
+
+  <span class="k">while</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="nx">staircase</span><span class="o">++</span> <span class="o">&lt;</span> <span class="nx">umbrella</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">bassoon</span> <span class="o">=</span> <span class="nx">galleons</span> <span class="o">+</span> <span class="nx">brigantines</span><span class="p">;</span>
+    <span class="nx">armada</span><span class="p">.</span><span class="nx">embrace</span><span class="p">(</span><span class="nx">brigantines</span> <span class="o">=</span> <span class="p">(</span><span class="nx">galleons</span> <span class="o">=</span> <span class="nx">brigantines</span><span class="p">,</span> <span class="nx">bassoon</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">armada</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>作为超现实主义运动的倡导者，布勒东主张梦想比现实更有趣，应该作为创作的出发点。他的变量命名颇具超现实主义色彩。尽管并非无可挑剔，但他的作品的确几近完美，真挚又美好。在他有意识的表达中，蕴含着一幅无意识的梦幻图景。可以把这个作业看成华美诗篇Facteur Cheval的再创作。</p>
+
+<p>布勒东在这个斐波纳契函数中总是喜欢使用老相好的名字，他把结果想象成了一个史前舰队。他的方案逻辑优雅，巧妙地采用了逗号运算符在galleons、brigantines和bassoons之间同时迁移元素。向安德烈致敬！</p>
+
+<h3 id="罗贝托波拉尼奥roberto-bolano智利诗人和小说家">罗贝托·波拉尼奥（Roberto Bolano，智利诗人和小说家）</h3>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">LeonardoPisanoBigollo</span><span class="p">(</span><span class="nx">l</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="nx">l</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">"I'd prefer not to respond. (Although several replies occur to me)"</span>
+  <span class="p">}</span>
+
+  <span class="cm">/**/</span>
+
+  <span class="c1">//Everything is getting complicated.</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="nx">r</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">].</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nx">l</span><span class="p">);</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">l</span><span class="p">;</span><span class="nx">r</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]),</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span>
+
+  <span class="cm">/**/</span>
+
+  <span class="c1">//Here are some other mathematicians. Mostly it's just nonsense.</span>
+
+  <span class="nx">rationalTheorists</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Archimedes of Syracuse"</span><span class="p">,</span> <span class="s2">"Pierre de Fermat (such margins, boys!)"</span><span class="p">,</span> <span class="s2">"Srinivasa Ramanujan"</span><span class="p">,</span> <span class="s2">"Rene Descartes"</span><span class="p">,</span> <span class="s2">"Leonhard Euler"</span><span class="p">,</span> <span class="s2">"Carl Gauss"</span><span class="p">,</span> <span class="s2">"Johann Bernoulli"</span><span class="p">,</span> <span class="s2">"Jacob Bernoulli"</span><span class="p">,</span> <span class="s2">"Aryabhata"</span><span class="p">,</span> <span class="s2">"Brahmagupta"</span><span class="p">,</span> <span class="s2">"Bhaskara II"</span><span class="p">,</span> <span class="s2">"Nilakantha Somayaji"</span><span class="p">,</span> <span class="s2">"Omar Khayyám"</span><span class="p">,</span> <span class="s2">"Muhammad ibn Mūsā al-Khwārizmī"</span><span class="p">,</span> <span class="s2">"Bernhard Riemann"</span><span class="p">,</span> <span class="s2">"Gottfried Leibniz"</span><span class="p">,</span> <span class="s2">"Andrey Kolmogorov"</span><span class="p">,</span> <span class="s2">"Euclid of Alexandria"</span><span class="p">,</span> <span class="s2">"Jules Henri Poincaré"</span><span class="p">,</span> <span class="s2">"Srinivasa Ramanujan"</span><span class="p">,</span> <span class="s2">"Alexander Grothendieck (who could forget?)"</span><span class="p">,</span> <span class="s2">"David Hilbert"</span><span class="p">,</span> <span class="s2">"Alan Turing"</span><span class="p">,</span> <span class="s2">"von Neumann"</span><span class="p">,</span> <span class="s2">"Kurt Gödel"</span><span class="p">,</span> <span class="s2">"Joseph-Louis Lagrange"</span><span class="p">,</span> <span class="s2">"Georg Cantor"</span><span class="p">,</span> <span class="s2">"William Rowan Hamilton"</span><span class="p">,</span> <span class="s2">"Carl Jacobi"</span><span class="p">,</span> <span class="s2">"Évariste Galois"</span><span class="p">,</span> <span class="s2">"Nikolay Lobachevsky"</span><span class="p">,</span> <span class="s2">"Rene Descartes"</span><span class="p">,</span> <span class="s2">"Joseph Fourier"</span><span class="p">,</span> <span class="s2">"Pierre-Simon Laplace"</span><span class="p">,</span> <span class="s2">"Alonzo Church"</span><span class="p">,</span> <span class="s2">"Nikolay Bogolyubov"</span><span class="p">]</span>
+
+  <span class="cm">/**/</span>
+
+  <span class="c1">//I didn't understand any of this, but here it is anyway.</span>
+  <span class="k">return</span> <span class="nx">r</span>
+
+  <span class="cm">/**/</span>
+
+  <span class="c1">//Nothing happens here and if it does I'd rather not talk about it.</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>如果这辈子没看过波拉尼奥的著作，那你的生命是不完整的。波拉尼奥的作品忽而精于事故，忽而憨态可掬，让人叹为观止。他的叙事风格以毫无悬念的坦诚见长。人类的弱点始终存在，但温暖幽默地传达出每一个弱点，却无不令人沉醉、催人振奋。</p>
+
+<p>一如既往，他的编程作业也流露出了一种不安、局促和无知。他给出的解答尽管颇显才情，可总让人觉得有几分累赘。偏执依旧，跑题依旧，他好像更愿意向我们展示似乎很有意思，但其实毫无用处的天才数学家名录。</p>
+
+<p>以下几方面也是波拉尼奥的特点，比如长短段并列、忘记加分号（对应着他小说中缺失的引号），以及隐含地使用全局变量——暗示每个变量注定会在后续章节中再次现身。</p>
+
+<h3 id="查尔斯狄更斯">查尔斯·狄更斯</h3>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">mrFibbowicksNumbers</span><span class="p">(</span><span class="nx">enormity</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">assortment</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="nx">tally</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">artfulRatio</span> <span class="o">=</span> <span class="mf">1.61803</span><span class="p">;</span>
+
+  <span class="k">while</span><span class="p">(</span><span class="nx">tally</span><span class="o">++</span> <span class="o">&lt;</span> <span class="nx">enormity</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//here is an exceedingly clever device</span>
+    <span class="nx">assortment</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">assortment</span><span class="p">[</span><span class="nx">tally</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="nx">artfulRatio</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="c1">//should there be an overabundance of elements, a remedy need be applied</span>
+  <span class="k">return</span> <span class="nx">assortment</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">enormity</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>我不是狄更斯的粉丝。我基本同意亨利·詹姆斯（美国著名小说家和批评家）的恶评：</p>
+
+<p>“要是让我们冒险评价一下他的文学成就，可以称他为最肤浅的小说家。没错，这么说等于把它归入了他所处的文学领域的低等行列，但我们愿意承认这一点。把狄更斯先生归入最伟大的小说家之列，我们是过意不去的。因为他除了人物角色，并没有创造其他任何东西。他没有对我们理解人物角色多给任何资料。”</p>
+
+<p>——亨利·詹姆斯谈查尔斯·狄更斯，评《我们共同的朋友》，1865年12月21日</p>
+
+<p>他的肤浅从他的斐波纳契作业中可见一斑。没错，变量名还算中规中矩，但却是他无法把握实质性内容和内心理解不到位的表现。他没有从实质上领会斐波纳契数列的含义，倒是一心想通过乘法解决问题。哎。</p>
+
+<h2 id="最终点评">最终点评</h2>
+
+<p>不管是老道（Crockford）的极力维护，还是干巴巴的计算机科学课，条条框框始终是JavaScript的敌人。有些开发者喜欢手册和样板，结果就是Java。JavaScript的趣味性源自它天性就不刻板，以及由此生发的无限可能。自然语言也具有相似的特点。最好的作者和最优秀的JavaScript开发者一定会对这门语言神魂颠倒，没有一天不在探索和实践它，从而塑造自己的风格、自己的习惯，还有自己的表达方式。</p>
+
+<p>就这些，希望你喜欢。恐怕大都是无稽之谈。</p>
+
+
+                <hr style="visibility: hidden;">
+
+                
+                <!-- 多说 Share start -->
+                <div class="ds-share"
+                    style="text-align: right"
+                    data-thread-key="/2017/01/05/Hemingway-javascript"
+                    data-title=" 『翻译』如果让海明威写JavaScript "
+                    data-url="http://localhost:4000/2017/01/05/Hemingway-javascript/"
+                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-0a0e4dc3cabc9214.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+                    data-content="
+  原文链接：http://byfat.xxx/if-hemingway-wrote-javascript
+
+
+在写第一行代码很久以前，我就酷爱文学。现... | 周神的博客 | Rockjins Blog " >
+                    <div class="ds-share-inline">
+                      <style> 
+                        .ds-share-icons-16 {display:none;} 
+                      </style>
+                      <ul class="ds-share-icons-16">
+                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                        <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                        <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                        <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                      </ul>
+                      <div class="ds-share-icons-more">
+                      </div>
+                    </div>
+                <hr>
+                </div>
+                <!-- 多说 Share end-->
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/01/04/zsh-git/" data-toggle="tooltip" data-placement="top" title=" oh-my-zsh中git常用命令 ">
+                        Previous<br>
+                        <span> oh-my-zsh中git常用命令 </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="/2017/01/05/Hemingway-javascript"
+                        data-title=" 『翻译』如果让海明威写JavaScript "
+                        data-url="http://localhost:4000/2017/01/05/Hemingway-javascript/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#JavaScript" title="JavaScript" rel="9">
+                                    JavaScript
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#Function" title="Function" rel="3">
+                                    Function
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#Vue" title="Vue" rel="2">
+                                    Vue
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#生活" title="生活" rel="2">
+                                    生活
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#translation" title="translation" rel="2">
+                                    translation
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#Book" title="Book" rel="2">
+                                    Book
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'huxblog';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/zhou-bao-bo-24">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://weibo.com/rockjins">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+
+                    
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/jins.chow">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/rockjins">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Rockjins Blog 2017
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+<script type="text/javascript">
+    if(navigator.serviceWorker){
+        // For security reasons, a service worker can only control the pages that are in the same directory level or below it. That's why we put sw.js at ROOT level.
+        navigator.serviceWorker
+            .register('/sw.js')
+            .then((registration) => {console.log('Service Worker Registered. ', registration)})
+            .catch((error) => {console.log('ServiceWorker registration failed: ', error)})
+    }
+</script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-49627206-1';
+    var _gaDomain = 'huangxuan.me';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+<!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0" /> -->
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

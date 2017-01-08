@@ -3,10 +3,10 @@
   <channel>
     <title>Rockjins Blog</title>
     <description> 周神的个人博客，和你一起进步，一起探索更奥妙的知识，更新奇的技术。 </description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 05 Jan 2017 21:39:17 +0800</pubDate>
-    <lastBuildDate>Thu, 05 Jan 2017 21:39:17 +0800</lastBuildDate>
+    <link>https://rockjins.github.io/</link>
+    <atom:link href="https://rockjins.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sun, 08 Jan 2017 22:28:41 +0800</pubDate>
+    <lastBuildDate>Sun, 08 Jan 2017 22:28:41 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -169,8 +169,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Thu, 05 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/01/05/javascript-skill/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/05/javascript-skill/</guid>
+        <link>https://rockjins.github.io/2017/01/05/javascript-skill/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2017/01/05/javascript-skill/</guid>
         
         <category>JavaScript</category>
         
@@ -343,8 +343,8 @@
 &lt;p&gt;就这些，希望你喜欢。恐怕大都是无稽之谈。&lt;/p&gt;
 </description>
         <pubDate>Thu, 05 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/01/05/Hemingway-javascript/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/05/Hemingway-javascript/</guid>
+        <link>https://rockjins.github.io/2017/01/05/Hemingway-javascript/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2017/01/05/Hemingway-javascript/</guid>
         
         <category>translation</category>
         
@@ -409,8 +409,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Wed, 04 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/01/04/zsh-git/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/04/zsh-git/</guid>
+        <link>https://rockjins.github.io/2017/01/04/zsh-git/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2017/01/04/zsh-git/</guid>
         
         <category>oh-my-zsh</category>
         
@@ -571,8 +571,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 02 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/01/02/tw-spaeak/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/02/tw-spaeak/</guid>
+        <link>https://rockjins.github.io/2017/01/02/tw-spaeak/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2017/01/02/tw-spaeak/</guid>
         
         <category>Book</category>
         
@@ -635,11 +635,11 @@
 
 &lt;h3 id=&quot;白夜行&quot;&gt;&lt;a href=&quot;https://book.douban.com/subject/10554308/&quot;&gt;白夜行&lt;/a&gt;&lt;/h3&gt;
 
-&lt;p&gt;一本悬疑推理犯罪小说，我理解的这本小说：环境可以决定一个人。&lt;/p&gt;
+&lt;p&gt;看到最后的结局，我控制不住的流泪了。&lt;/p&gt;
 
-&lt;p&gt;人之初，性本善。其实现在的我们都是环境的产物，不同的环境塑造了不同的人格。&lt;/p&gt;
+&lt;p&gt;人之初，性本善。可恨之人必有可怜之处，我一直都相信这句话。&lt;/p&gt;
 
-&lt;p&gt;也许我当初选择留在老家，现在的我会堕落的不成样子。&lt;/p&gt;
+&lt;p&gt;孩童时期一些经历可以决定一个人的一生。其实现在的我们都是环境的产物，不同的环境塑造了不同的人。&lt;/p&gt;
 
 &lt;h3 id=&quot;人类简史&quot;&gt;&lt;a href=&quot;https://book.douban.com/subject/25985021/&quot;&gt;人类简史&lt;/a&gt;&lt;/h3&gt;
 
@@ -666,8 +666,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Sun, 01 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/01/01/book-list/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/01/book-list/</guid>
+        <link>https://rockjins.github.io/2017/01/01/book-list/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2017/01/01/book-list/</guid>
         
         <category>Book</category>
         
@@ -995,8 +995,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 26 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/26/socket-io/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/26/socket-io/</guid>
+        <link>https://rockjins.github.io/2016/12/26/socket-io/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/12/26/socket-io/</guid>
         
         <category>JavaScript</category>
         
@@ -1106,8 +1106,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 19 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/19/inline-function/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/19/inline-function/</guid>
+        <link>https://rockjins.github.io/2016/12/19/inline-function/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/12/19/inline-function/</guid>
         
         <category>JavaScript</category>
         
@@ -1195,8 +1195,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Sat, 17 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/17/faith/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/17/faith/</guid>
+        <link>https://rockjins.github.io/2016/12/17/faith/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/12/17/faith/</guid>
         
         <category>信仰</category>
         
@@ -1240,8 +1240,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 12 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/12/evil/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/12/evil/</guid>
+        <link>https://rockjins.github.io/2016/12/12/evil/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/12/12/evil/</guid>
         
         <category>生活</category>
         
@@ -1320,8 +1320,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Thu, 01 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/01/vue-problem/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/01/vue-problem/</guid>
+        <link>https://rockjins.github.io/2016/12/01/vue-problem/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/12/01/vue-problem/</guid>
         
         <category>Vue</category>
         

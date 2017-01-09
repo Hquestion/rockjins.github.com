@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://rockjins.github.io/2017/01/05/javascript-skill/">
+    <link rel="canonical" href="https://rockjins.github.io/2017/01/09/javascript-skill/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -178,7 +178,7 @@
                     
                     <h2 class="subheading"> Efficiency, is useful. </h2>
                     
-                    <span class="meta">Posted by Shock on January 5, 2017</span>
+                    <span class="meta">Posted by Shock on January 9, 2017</span>
                 </div>
             </div>
         </div>
@@ -349,6 +349,23 @@
 </code></pre>
 </div>
 
+<h3 id="使用break--标签labels退出循环">使用break + 标签(labels)退出循环</h3>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">findNumber</span><span class="p">(</span><span class="nx">arr</span><span class="p">){</span>
+  <span class="nl">loop</span><span class="p">:{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="k">break</span> <span class="nx">loop</span><span class="p">;</span><span class="c1">//表示退出loop区块</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span><span class="c1">//这句代码是不会执行的，如果上面只是break，for循环之后的代码还是会执行</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">findNumber</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]);</span>
+</code></pre>
+</div>
+
 <blockquote>
   <p>本文出自<a href="https://rockjins.github.io">Rockjins Blog</a>，转载请与作者联系。否则将追究法律责任。</p>
 </blockquote>
@@ -360,9 +377,9 @@
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2017/01/05/javascript-skill"
+                    data-thread-key="/2017/01/09/javascript-skill"
                     data-title=" 不定期更新 JavaScript技巧 "
-                    data-url="https://rockjins.github.io/2017/01/05/javascript-skill/"
+                    data-url="https://rockjins.github.io/2017/01/09/javascript-skill/"
                     data-images="https://rockjins.github.io//upload-images.jianshu.io/upload_images/2859850-13d53baf09a3de93.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
                     data-content="
    JavaScript技巧，偶尔更新。
@@ -407,9 +424,9 @@ function smallest(array){                  ... | 周神的博客 | Rockjins Blog
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2017/01/05/javascript-skill"
+                        data-thread-key="/2017/01/09/javascript-skill"
                         data-title=" 不定期更新 JavaScript技巧 "
-                        data-url="https://rockjins.github.io/2017/01/05/javascript-skill/" >
+                        data-url="https://rockjins.github.io/2017/01/09/javascript-skill/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->

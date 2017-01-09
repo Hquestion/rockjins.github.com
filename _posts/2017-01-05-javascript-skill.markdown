@@ -2,7 +2,7 @@
 layout:     post
 title:      " 不定期更新 JavaScript技巧 "
 subtitle:   " Efficiency, is useful. "
-date:       2017-01-05
+date:       2017-01-09
 author:     "Shock"
 header-img: "/upload-images.jianshu.io/upload_images/2859850-13d53baf09a3de93.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
 catalog: true
@@ -158,6 +158,23 @@ var bar = $ || 233;
 
 $ === undefined && (window.$ =  jQuery);  
 //如果$不存在,则把jQuery赋值给window.$；如果$存在，则不执行后面的表达式
+```
+
+### 使用break + 标签(labels)退出循环
+
+```javascript
+function findNumber(arr){
+  loop:{
+    for (var i = 0; i < arr.length; i++) {
+      if(arr[i]%2 == 0){
+        break loop;//表示退出loop区块
+      }
+    }
+    console.log(arr);//这句代码是不会执行的，如果上面只是break，for循环之后的代码还是会执行
+  }
+}
+
+findNumber([1,3,5,6]);
 ```
 
 > 本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

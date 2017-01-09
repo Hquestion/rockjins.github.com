@@ -159,7 +159,7 @@ var bar = $ || 233;
 $ === undefined && (window.$ =  jQuery);  
 //如果$不存在,则把jQuery赋值给window.$；如果$存在，则不执行后面的表达式
 ```
-
+q
 ### 使用break + 标签(labels)退出循环
 
 ```javascript
@@ -175,6 +175,26 @@ function findNumber(arr){
 }
 
 findNumber([1,3,5,6]);
+```
+
+### 简单实现合并对象
+
+```javascript
+function merge(root){
+  for (var i = 1; i < arguments.length; i++) {
+    for (var key in arguments[i]) {
+      if (object.hasOwnProperty(key)) {
+        root[key] = arguments[i][key];
+      }
+    }
+  }
+  return root;
+}
+
+var merged = merge(
+  {name:'Shock'},
+  {city:'Shenzhen'}
+)//{name:'Shock',city:'Shenzhen'}
 ```
 
 > 本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

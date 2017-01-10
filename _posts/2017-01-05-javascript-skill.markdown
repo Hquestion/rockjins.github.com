@@ -202,6 +202,9 @@ var merged = merge(
 ```javascript
 ['1','2','3'].map(parseInt);
 //[1, NaN, NaN]
+
+['1','2','3'].map(function(x){return parseInt(x,10)});
+//[1, 2, 3]
 ```
 
 > 本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

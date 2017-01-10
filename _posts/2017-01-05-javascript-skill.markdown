@@ -197,4 +197,11 @@ var merged = merge(
 )//{name:'Shock',city:'Shenzhen'}
 ```
 
+### 理解map和parseInt
+
+```javascript
+['1','2','3'].map(parseInt);
+//[1, NaN, NaN]
+```
+
 > 本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

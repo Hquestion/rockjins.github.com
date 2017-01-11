@@ -207,4 +207,24 @@ var merged = merge(
 //[1, 2, 3]
 ```
 
+### 上传图片预览功能
+
+```html
+<input type="file" name="file" onchange="showPreview(this)" />
+<img id="portrait" src="" width="70" height="75">
+```
+
+```javascript
+function showPreview(source) {
+  var file = source.files[0];
+  if(window.FileReader) {
+      var fr = new FileReader();
+      fr.onloadend = function(e) {
+        document.getElementById("portrait").src = e.target.result;
+      };
+      fr.readAsDataURL(file);
+  }
+}
+```
+
 > 本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

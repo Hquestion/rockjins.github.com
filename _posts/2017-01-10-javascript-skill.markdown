@@ -160,7 +160,7 @@ $ === undefined && (window.$ =  jQuery);
 //如果$不存在,则把jQuery赋值给window.$；如果$存在，则不执行后面的表达式
 ```
 
-### 使用break + 标签(labels)退出循环
+### 使用break + labels退出循环
 
 ```javascript
 function findNumber(arr){

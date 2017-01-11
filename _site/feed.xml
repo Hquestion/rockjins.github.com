@@ -5,8 +5,8 @@
     <description> 周神的个人博客，和你一起进步，一起探索更奥妙的知识，更新奇的技术。 </description>
     <link>https://rockjins.github.io/</link>
     <atom:link href="https://rockjins.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 11 Jan 2017 13:09:33 +0800</pubDate>
-    <lastBuildDate>Wed, 11 Jan 2017 13:09:33 +0800</lastBuildDate>
+    <pubDate>Wed, 11 Jan 2017 13:11:12 +0800</pubDate>
+    <lastBuildDate>Wed, 11 Jan 2017 13:11:12 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -164,7 +164,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h3 id=&quot;使用break--标签labels退出循环&quot;&gt;使用break + 标签(labels)退出循环&lt;/h3&gt;
+&lt;h3 id=&quot;使用break--labels退出循环&quot;&gt;使用break + labels退出循环&lt;/h3&gt;
 
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;findNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
   &lt;span class=&quot;nl&quot;&gt;loop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;

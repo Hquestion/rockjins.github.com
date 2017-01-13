@@ -227,4 +227,25 @@ function showPreview(source) {
 }
 ```
 
+### 微信浏览器不支持直接修改document.title
+
+```javascript
+function setTitle(title) {
+  document.title = title;
+  if (/ip(hone|od|ad)/i.test(navigator.userAgent)) {
+    var i = document.createElement('iframe');
+    i.src = '/favicon.ico';
+    i.style.display = 'none';
+    i.onload = function() {
+      setTimeout(function(){
+        i.remove();
+      }, 9)
+    }
+    document.body.appendChild(i);
+  }
+}
+
+setTitle("要修改的标题");
+```
+
 > 本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

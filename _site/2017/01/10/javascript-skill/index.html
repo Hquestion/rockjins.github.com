@@ -416,6 +416,27 @@
 </code></pre>
 </div>
 
+<h3 id="微信浏览器不支持直接修改documenttitle">微信浏览器不支持直接修改document.title</h3>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">setTitle</span><span class="p">(</span><span class="nx">title</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">title</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="sr">/ip</span><span class="se">(</span><span class="sr">hone|od|ad</span><span class="se">)</span><span class="sr">/i</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">))</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'iframe'</span><span class="p">);</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">'/favicon.ico'</span><span class="p">;</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">'none'</span><span class="p">;</span>
+    <span class="nx">i</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+        <span class="nx">i</span><span class="p">.</span><span class="nx">remove</span><span class="p">();</span>
+      <span class="p">},</span> <span class="mi">9</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">setTitle</span><span class="p">(</span><span class="s2">"要修改的标题"</span><span class="p">);</span>
+</code></pre>
+</div>
+
 <blockquote>
   <p>本文出自<a href="https://rockjins.github.io">Rockjins Blog</a>，转载请与作者联系。否则将追究法律责任。</p>
 </blockquote>

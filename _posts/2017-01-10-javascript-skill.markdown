@@ -227,7 +227,7 @@ function showPreview(source) {
 }
 ```
 
-### 微信浏览器不支持直接修改document.title
+### 微信内部修改document.title
 
 ```javascript
 function setTitle(title) {

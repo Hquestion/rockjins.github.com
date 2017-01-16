@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      " 来自网易云的脑洞，带尖角的div...... "
+title:      " 来自网易云音乐的脑洞，带尖角的div...... "
 subtitle:   " How amazing!The programmer is a genius! "
 date:       2016-06-22
 author:     "Shock"

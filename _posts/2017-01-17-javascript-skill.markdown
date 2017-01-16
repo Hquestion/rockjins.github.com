@@ -2,7 +2,7 @@
 layout:     post
 title:      " 不定期更新 JavaScript技巧 "
 subtitle:   " Efficiency, is useful. "
-date:       2017-01-10
+date:       2017-01-17
 author:     "Shock"
 header-img: "/upload-images.jianshu.io/upload_images/2859850-13d53baf09a3de93.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
 catalog: true
@@ -246,6 +246,33 @@ function setTitle(title) {
 }
 
 setTitle("要修改的标题");
+```
+
+### 快速克隆一个对象
+
+```javascript
+var Rocker = function(name, age){
+  this.name = name,
+  this.age = age
+}
+
+var shock = new Rocker('Shock', 24);
+
+shock.age = 99;
+
+var cloneShock = Object.create(shock);
+
+cloneShock.name // "Shock"
+cloneShock.age // 99
+
+//在不支持ES5的浏览器下，实现create方法如下：
+
+Object.create = Object.create || function(obj){
+  var F = function(){};
+  F.prototype = obj;
+
+  return new F();
+}
 ```
 
 > 本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

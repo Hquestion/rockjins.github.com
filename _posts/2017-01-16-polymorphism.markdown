@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      " 几分钟帮你了解对象的基本特性之一：多态 "
+title:      " 几分钟帮你理解对象的基本特性之一：多态 "
 subtitle:   " Polymorphism is poly + morph + ism. "
 date:       2017-01-16
 author:     "Shock"

@@ -3,11 +3,122 @@
   <channel>
     <title>Rockjins Blog</title>
     <description> 周神的个人博客，和你一起进步，一起探索更奥妙的知识，更新奇的技术。 </description>
-    <link>https://rockjins.github.io/</link>
-    <atom:link href="https://rockjins.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 13 Jan 2017 17:53:38 +0800</pubDate>
-    <lastBuildDate>Fri, 13 Jan 2017 17:53:38 +0800</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 16 Jan 2017 15:13:25 +0800</pubDate>
+    <lastBuildDate>Mon, 16 Jan 2017 15:13:25 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title> 几分钟帮你了解对象的基本特性之一：多态 </title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt; 多态不是简单两句话可以讲清楚，但至少能让你明白它是什么。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;简单解释多态&quot;&gt;简单解释多态&lt;/h3&gt;
+
+&lt;p&gt;拆分一下多态的英文：Polymorphism 就是 poly(复数) + morph(形态) + ism，也就是多种形态。&lt;/p&gt;
+
+&lt;p&gt;在JavaScript中，我们可以这样去理解多态：同一操作作用在不同的对象上，可以产生不同的解释和不同的执行结果。&lt;/p&gt;
+
+&lt;p&gt;更简单一些说：给不同对象发送同一消息，可能会得到不同的反馈。&lt;/p&gt;
+
+&lt;h3 id=&quot;举个栗子&quot;&gt;举个🌰栗子&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;Shock是一位吉他手，Alex是一名主唱，当他们听到鼓点响起时，Shock会开始弹吉他，Alex会开始演唱。&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;同样一个鼓点，但Shock和Alex做的事是不同的。&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;代码实践&quot;&gt;代码实践&lt;/h3&gt;
+
+&lt;p&gt;下面几行代码简单的把上面的例子实现，说明了对象的多态特性：&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;playDrum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bandsman&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bandsman&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Guitarist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'哆啦咪嗦啦'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bandsman&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Singer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'We will rock u!'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Guitarist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){};&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Singer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){};&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;playDrum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Guitarist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//哆啦咪嗦啦&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;playDrum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Singer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//We will rock u!&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;上面代码虽然实现了”多态”的特性，但这种”多态”是不让人满意的，如果贝斯手来了，我们还得去修改&lt;code class=&quot;highlighter-rouge&quot;&gt;playDrum&lt;/code&gt;的代码，要知道，修改代码风险太大了，BUG往往就是那个时候出现的。&lt;/p&gt;
+
+&lt;p&gt;其实多态背后的核心思想是：将“做什么”和“谁去做以及怎样做”相分离，也就是将“不变的事物”和“可能改变的事物”相分离。&lt;/p&gt;
+
+&lt;p&gt;在上面这个例子中，鼓手打鼓是不会改变的，改变的是不同乐手的演奏方式，我们可以将不变的分离出来，把可变的封装起来。&lt;/p&gt;
+
+&lt;p&gt;这样我们的代码就是可扩展的，也符合&lt;code class=&quot;highlighter-rouge&quot;&gt;开放-封闭原则&lt;/code&gt;，这显得优雅和安全的多。&lt;/p&gt;
+
+&lt;h3 id=&quot;升级版栗子&quot;&gt;升级版🌰栗子&lt;/h3&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;playDrun&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bandsman&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;bandsman&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;play&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Guitarist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){};&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;Guitarist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;play&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'哆啦咪嗦啦'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Singer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){};&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;Singer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;play&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'We will rock u!'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;playDrum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Guitarist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//哆啦咪嗦啦&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;playDrum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Singer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//We will rock u!&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;现在，当吉他手和主唱听到鼓点，他们还是会做出不同的反应。&lt;/p&gt;
+
+&lt;p&gt;这时如果贝斯手来了，那很简单，加上贝斯手就行了：&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;BassPlayer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){};&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;BassPlayer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;play&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'嗡嗡嗡'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//真的不是在黑贝斯...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;playDrum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;BassPlayer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//嗡嗡嗡&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;以上只是最直观的多态理解方式，还有利用继承得到多态效果、如何利用多态特性进行面向对象编程、多态与设计模式等等。&lt;/p&gt;
+
+&lt;p&gt;希望这篇文章能帮到你更好的理解JavaScript中的多态特性。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Mon, 16 Jan 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/01/16/polymorphism/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/16/polymorphism/</guid>
+        
+        <category>JavaScript</category>
+        
+        <category>Object</category>
+        
+        <category>Polymorphism</category>
+        
+        
+      </item>
     
       <item>
         <title> 不定期更新 JavaScript技巧 </title>
@@ -257,8 +368,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Tue, 10 Jan 2017 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2017/01/10/javascript-skill/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2017/01/10/javascript-skill/</guid>
+        <link>http://localhost:4000/2017/01/10/javascript-skill/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/10/javascript-skill/</guid>
         
         <category>JavaScript</category>
         
@@ -431,8 +542,8 @@
 &lt;p&gt;就这些，希望你喜欢。恐怕大都是无稽之谈。&lt;/p&gt;
 </description>
         <pubDate>Thu, 05 Jan 2017 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2017/01/05/Hemingway-javascript/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2017/01/05/Hemingway-javascript/</guid>
+        <link>http://localhost:4000/2017/01/05/Hemingway-javascript/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/05/Hemingway-javascript/</guid>
         
         <category>translation</category>
         
@@ -497,8 +608,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Wed, 04 Jan 2017 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2017/01/04/zsh-git/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2017/01/04/zsh-git/</guid>
+        <link>http://localhost:4000/2017/01/04/zsh-git/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/04/zsh-git/</guid>
         
         <category>oh-my-zsh</category>
         
@@ -659,8 +770,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 02 Jan 2017 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2017/01/02/tw-spaeak/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2017/01/02/tw-spaeak/</guid>
+        <link>http://localhost:4000/2017/01/02/tw-spaeak/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/02/tw-spaeak/</guid>
         
         <category>Book</category>
         
@@ -754,8 +865,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Sun, 01 Jan 2017 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2017/01/01/book-list/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2017/01/01/book-list/</guid>
+        <link>http://localhost:4000/2017/01/01/book-list/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/01/book-list/</guid>
         
         <category>Book</category>
         
@@ -1083,8 +1194,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 26 Dec 2016 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2016/12/26/socket-io/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2016/12/26/socket-io/</guid>
+        <link>http://localhost:4000/2016/12/26/socket-io/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/26/socket-io/</guid>
         
         <category>JavaScript</category>
         
@@ -1194,8 +1305,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 19 Dec 2016 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2016/12/19/inline-function/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2016/12/19/inline-function/</guid>
+        <link>http://localhost:4000/2016/12/19/inline-function/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/19/inline-function/</guid>
         
         <category>JavaScript</category>
         
@@ -1283,8 +1394,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Sat, 17 Dec 2016 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2016/12/17/faith/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2016/12/17/faith/</guid>
+        <link>http://localhost:4000/2016/12/17/faith/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/17/faith/</guid>
         
         <category>信仰</category>
         
@@ -1328,92 +1439,12 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 12 Dec 2016 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2016/12/12/evil/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2016/12/12/evil/</guid>
+        <link>http://localhost:4000/2016/12/12/evil/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/12/evil/</guid>
         
         <category>生活</category>
         
         <category>心情</category>
-        
-        
-      </item>
-    
-      <item>
-        <title> Vue数据绑定隐藏的神坑.... </title>
-        <description>&lt;blockquote&gt;
-  &lt;p&gt;出现问题是好的，那说明你在行动。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;今天被Vue的一个坑给折磨了一天，终于发现是什么问题，我们先来模拟一个场景：
-代码如下：&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;vue&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;app&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;v-model=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'sendJson.name'&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;click=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'showName'&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;打印输入框的值&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'./vue.min.js'&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#app'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;na&quot;&gt;sendJson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{}&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;showName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-                &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sendJson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;我们进页面就点按钮，你猜会输出什么？&lt;/p&gt;
-
-&lt;p&gt;是undefined，不算奇怪，你什么都没输入，当然是undefined了。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201612/929120-20161201171421084-1001813606.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;OK，接下来刷新页面，进去多一步操作，先点击一下input输入框，在点击按钮，只是多做这一步操作：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201612/929120-20161201171437131-570191932.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;输出的是空白，在chrome中空白就代表空字符串，可以修改一下打印结果：&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;console.log(this.sendJson.name === &quot;&quot;)&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201612/929120-20161201171456443-1782238340.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;其实这看起来不是个大问题，但是在我的场景里问题就大了。&lt;/p&gt;
-
-&lt;p&gt;我要把输入框内的值作为一个对象的属性，问题就来了，看图：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://images2015.cnblogs.com/blog/929120/201612/929120-20161201171507646-1556743229.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;这个坑牛逼不，我真是个奇葩。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
-&lt;/blockquote&gt;
-</description>
-        <pubDate>Thu, 01 Dec 2016 00:00:00 +0800</pubDate>
-        <link>https://rockjins.github.io/2016/12/01/vue-problem/</link>
-        <guid isPermaLink="true">https://rockjins.github.io/2016/12/01/vue-problem/</guid>
-        
-        <category>Vue</category>
-        
-        <category>JavaScript</category>
         
         
       </item>

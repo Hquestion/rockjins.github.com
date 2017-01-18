@@ -4,7 +4,7 @@ title:      " 带你切身体验实例被new出来的过程 "
 subtitle:   " True feelings. "
 date:       2017-01-18
 author:     "Shock"
-header-img: "/upload-images.jianshu.io/upload_images/2859850-60f46a5f6bebfdb1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+header-img: "/upload-images.jianshu.io/upload_images/2859850-dd0abd9afc1ec5bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
 catalog: true
 tags:
     - JavaScript

@@ -10,7 +10,7 @@
     <meta name="keywords"  content="周神, Shock, @rockjins, @chinajins, 周神的博客, Rockjins Blog, 博客, 个人网站, 互联网, 前端, 设计, 产品">
     <meta name="theme-color" content="#000000">
 
-    <title> parseInt第二个参数详解  - 周神的博客 | Rockjins Blog</title>
+    <title> 带你切身体验实例被new出来的过程  - 周神的博客 | Rockjins Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2016/09/03/parseint/">
+    <link rel="canonical" href="http://localhost:4000/2017/01/18/new-object/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -151,13 +151,13 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="//upload-images.jianshu.io/upload_images/2859850-26be885cdea0958c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="0" height="0"> -->
+<!-- <img src="//upload-images.jianshu.io/upload_images/2859850-60f46a5f6bebfdb1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('//upload-images.jianshu.io/upload_images/2859850-26be885cdea0958c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')
+        background-image: url('//upload-images.jianshu.io/upload_images/2859850-60f46a5f6bebfdb1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')
     }
 
     
@@ -172,13 +172,15 @@
                         
                         <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
                         
+                        <a class="tag" href="/tags/#Object" title="Object">Object</a>
+                        
                     </div>
-                    <h1> parseInt第二个参数详解 </h1>
+                    <h1> 带你切身体验实例被new出来的过程 </h1>
                     
                     
-                    <h2 class="subheading"> The second no one will remember. </h2>
+                    <h2 class="subheading"> True feelings. </h2>
                     
-                    <span class="meta">Posted by Shock on September 3, 2016</span>
+                    <span class="meta">Posted by Shock on January 18, 2017</span>
                 </div>
             </div>
         </div>
@@ -197,64 +199,103 @@
                 post-container">
 
 				<blockquote>
-  <p>不常用不代表你不用去理解它，或许哪次装逼就用上了。</p>
+  <p> 其实费尽心力探寻底层实现就是为了用来装逼 😝</p>
 </blockquote>
 
-<p>前阵子在stackOverflow上看到两个这样的问题：</p>
+<h3 id="闲话">闲话</h3>
 
-<p><a href="http://stackoverflow.com/questions/39147108/why-is-it-that-parseint8-3-nan-and-parseint16-3-1">为什么parseInt(8,3) == NaN，parseInt(16,3) == 1？</a></p>
+<p>网上有很多帖子、文章介绍new操作符运行步骤的文章，但我感觉读者看完之后还是会很模糊，知其然，不知其所以然。</p>
 
-<p><a href="http://stackoverflow.com/questions/26017371/why-does-parseintdsff66-16-return-13?rq=1">为什么parseInt(‘dsff66’,16) == 13？</a></p>
+<p>好，轮到我装逼了！</p>
 
-<p>parseInt大家应该都很熟悉了，我们一般用他来把一个小数或字符串转换为整数，正常情况下我们都是这样做的:</p>
+<p>首先，读这篇文章，你得对原型链和构造函数有个基本的认识，否则收益不会很大，反而会更懵逼。</p>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nb">parseInt</span><span class="p">(</span><span class="mf">11.2</span><span class="p">)</span><span class="c1">//返回11</span>
+<h3 id="正文">正文</h3>
 
-<span class="nb">parseInt</span><span class="p">(</span><span class="s2">"13"</span><span class="p">)</span><span class="c1">//返回Number类型的13</span>
+<p>我们先创建一个简单的构造函数：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Rocker</span><span class="p">(</span><span class="nx">name</span><span class="p">){</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Rocker</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre>
 </div>
 
-<p>函数会尝试逐个解析字符串中的字符，直到遇上一个无法被解析成数字的字符，然后返回该字符前所有数字字符组成的数字。</p>
+<p>这是最简单不过的构造函数了，正常情况下，我们要生成他的一个实例，只需要：</p>
 
-<p>但是parseInt的第二个参数很多朋友就不太清楚了，因为本身就很少使用第二个参数，我们看看MDN上对第二个参数的解释：</p>
+<p><code class="highlighter-rouge">var someOne = new Rocker('Max')</code></p>
+
+<p>这样就实例化了一个对象，但是，实例化的过程是怎样的呢？</p>
+
+<p>可能很多朋友在网上也看了很多文章，new的过程不就是三步吗？</p>
 
 <blockquote>
-  <p>一个2到36之间的整数值，用于指定转换中采用的基数。比如参数”10”表示使用我们通常使用的十进制数值系统。总是指定该参数可以消除阅读该代码时的困惑并且保证转换结果可预测。当忽略该参数时，不同的实现环境可能产生不同的结果。</p>
+  <ol>
+    <li>
+      <p>开辟一个块内存，创建一个空对象</p>
+    </li>
+    <li>
+      <p>执行构造函数，对这个空对象进行构造</p>
+    </li>
+    <li>
+      <p>给这个空对象添加__proto__属性</p>
+    </li>
+  </ol>
 </blockquote>
 
-<p>最后说到如果忽略的话，不同环境会有不同结果，大家不用担心，ES5已经规定了如果省略就代表用十进制解析。</p>
+<p>没错，是这三步，但是你真的理解了吗？至少我第一次看挺懵逼的。</p>
 
-<p>第二个参数是2~36之间的整数值，这个值其实就是我们说的进制，比如，我们用二进制去解析第一个参数，那么就这么做：</p>
+<p>好吧，最直观的方法就是，把创建一个对象的过程用代码体现出来，这样才能装逼嘛…</p>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nb">parseInt</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="c1">//返回5</span>
+<h4 id="体验">体验</h4>
+
+<p>让我们创建一个函数，来实现上面new操作符的功能：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">createObject</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">(),</span>   <span class="c1">//(1)</span>
+      <span class="nx">Constructor</span> <span class="o">=</span> <span class="p">[].</span><span class="nx">shift</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);</span>   <span class="c1">//(2)</span>
+
+  <span class="nx">obj</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">=</span> <span class="nx">Constructor</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>    <span class="c1">//(3)</span>
+
+  <span class="kd">var</span> <span class="nx">ret</span> <span class="o">=</span> <span class="nx">Constructor</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>    <span class="c1">//(4)</span>
+
+  <span class="k">return</span> <span class="k">typeof</span> <span class="nx">ret</span> <span class="o">===</span> <span class="s1">'object'</span> <span class="p">?</span> <span class="nx">ret</span> <span class="p">:</span> <span class="nx">obj</span><span class="p">;</span>   <span class="c1">//(5)</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">shock</span> <span class="o">=</span> <span class="nx">createObject</span><span class="p">(</span><span class="nx">Rocker</span><span class="p">,</span> <span class="s1">'Shock'</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">shock</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>  <span class="c1">//Shock</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">shock</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span>  <span class="c1">//Shock</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span><span class="nx">shock</span><span class="p">)</span> <span class="o">===</span> <span class="nx">Rocker</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span> <span class="c1">//true</span>
 </code></pre>
 </div>
 
-<p>下面我们来分析一下上面的两个问题，相信大家对这第二个参数就能有个透彻的认识了。</p>
+<p>就是上面这几句代码，向你展现了一个实例被new出来的过程。</p>
 
-<blockquote>
-  <p><em>为什么parseInt(8,3) == NaN，parseInt(16,3) == 1？</em></p>
-</blockquote>
+<p>我们来简单分析一下吧，其实很清晰明了了。</p>
 
-<p>先来看第一个parseInt(8,3) ，这里的意思就是用,三进制去解析8，我们知道二进制是遇2进1，三进制同样，遇3进1，比如我要用三进表示十进制中的5，那么就是12，也就是(2<em>(3^0))+(1</em>(3^1))=5；</p>
+<p>在<code class="highlighter-rouge">(1)</code>处，我们创建了一个空对象（准确的说是克隆了Object.prototype对象）</p>
 
-<p>所以在三进制中，出现的最大的数字也就是2，8这个数字不可能出现在三进制中，所以返回NaN。</p>
+<p>接下来<code class="highlighter-rouge">(2)</code>取到构造函数，赋值给Constructor变量，也就是说Rocker构造函数变成Constructor的一个引用了</p>
 
-<p>parseInt(16,3)同样，出现最大的数字是2，那么6就是被自动忽略掉，所以parseInt是直接用三进制去解析1，得到的当然是1了。</p>
+<p>接着<code class="highlighter-rouge">(3)</code>把Constructor.prototype（也就是Rocker.prototype）赋值给(1)刚刚创建的obj的原型链，或者这么说，把obj的原型链指向Constructor的原型</p>
 
-<blockquote>
-  <p><em>为什么parseInt(‘dsff66’，16) == 13？</em></p>
-</blockquote>
+<p><code class="highlighter-rouge">(4)</code>我们用apply改变this的指向，用obj代替Constructor构造函数内部的this，并把arguments作为参数传入（在第2步时已经用shift把第一个参数去除了），此时的ret已经是一个合格的实例了！</p>
 
-<p>我们知道，平时使用parseInt，它会忽略到除数字之外的字符，但是这里不一样，因为十进制最大的数字是9，但是到了十一进制往上，最大的数字是两位数了，这当然不行，所以从10开始往上，就用字母代替，a==10,b==11……z==35；所以你知道为什么parseInt的第二个参数要规定在2~36了吗？</p>
+<p>保险起见，我们<code class="highlighter-rouge">(5)</code>返回时判断ret是否是对象，如果不是就返回一个空对象（因为很多人真的不会按照规矩传参！！！）</p>
 
-<p>再看看上面这道问题，在16进制中，最大的数字是15，对应字母也就是f，超过f的字母也就超出了16进制的解析范围。</p>
+<p>这时候我们再外部调用这个函数试试，实时证明确实能达到new的效果。</p>
 
-<p>‘dsff66’的第一个字符是d，也就是十进制中的13，第二个字符s，代表十进制中的28，这显然超出了16进制的解析范围，所以s和它之后的字符都会被parseInt自动忽略，所以我们得到13。</p>
+<p>再用getPrototypeOf方法测试一下，shock的原型链真的指向Rocker的原型！</p>
 
-<p>相信看到这里，你对parseInt的第二个参数已经完全了解了，如果你对进制之间的转换不太了解的话，可以多去网上学习学习进制之间的转换，就算平时用不着，还是可能拿来装X嘛。</p>
+<p>这就是实例被new出来的过程，你明了吗？</p>
 
-<p>另外补充一下，另一个函数parseFloat只接受一个参数，只能使用十进制去解析。</p>
+<p>其实上面代码有很多小技巧，可以细细咀嚼。</p>
 
 <blockquote>
   <p>本文出自<a href="https://rockjins.github.io">Rockjins Blog</a>，转载请与作者联系。否则将追究法律责任。</p>
@@ -267,17 +308,17 @@
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2016/09/03/parseint"
-                    data-title=" parseInt第二个参数详解 "
-                    data-url="http://localhost:4000/2016/09/03/parseint/"
-                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-26be885cdea0958c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+                    data-thread-key="/2017/01/18/new-object"
+                    data-title=" 带你切身体验实例被new出来的过程 "
+                    data-url="http://localhost:4000/2017/01/18/new-object/"
+                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-60f46a5f6bebfdb1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
                     data-content="
-  不常用不代表你不用去理解它，或许哪次装逼就用上了。
+   其实费尽心力探寻底层实现就是为了用来装逼 😝
 
 
-前阵子在stackOverflow上看到两个这样的问题：
+闲话
 
-为什么parseInt(8,3)... | 周神的博客 | Rockjins Blog " >
+网上有很多帖子、文章介绍new操作符运行步骤的文章，但我感觉读者看完之后还是会很模糊，知... | 周神的博客 | Rockjins Blog " >
                     <div class="ds-share-inline">
                       <style> 
                         .ds-share-icons-16 {display:none;} 
@@ -300,19 +341,12 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2016/08/12/fake-array/" data-toggle="tooltip" data-placement="top" title=" 如何伪造数组？ ">
+                        <a href="/2017/01/17/javascript-skill/" data-toggle="tooltip" data-placement="top" title=" 不定期更新 JavaScript技巧 ">
                         Previous<br>
-                        <span> 如何伪造数组？ </span>
+                        <span> 不定期更新 JavaScript技巧 </span>
                         </a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2016/10/25/vue-getter-setter/" data-toggle="tooltip" data-placement="top" title=" 由Vue引发的getter和setter思考 ">
-                        Next<br>
-                        <span> 由Vue引发的getter和setter思考 </span>
-                        </a>
-                    </li>
                     
                 </ul>
 
@@ -321,9 +355,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2016/09/03/parseint"
-                        data-title=" parseInt第二个参数详解 "
-                        data-url="http://localhost:4000/2016/09/03/parseint/" >
+                        data-thread-key="/2017/01/18/new-object"
+                        data-title=" 带你切身体验实例被new出来的过程 "
+                        data-url="http://localhost:4000/2017/01/18/new-object/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->

@@ -81,6 +81,8 @@ console.log(Object.getPrototypeOf(shock) === Rocker.prototype); //true
 
 就是上面这几句代码，向你展现了一个实例被new出来的过程。
 
+#### 分析一下
+
 我们来简单分析一下吧，其实很清晰明了了。
 
 在`(1)`处，我们创建了一个空对象（准确的说是克隆了Object.prototype对象）

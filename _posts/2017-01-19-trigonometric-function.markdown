@@ -14,6 +14,8 @@ tags:
 
 >  是时候捡起来了 别那么在乎别人的眼光
 
+素材来自：[LZRspace](http://liuzirui1122.coreanimation.cn/)
+
 ### 1.已知斜边为20，邻边为10，求角x.
 
 ![](http://upload-images.jianshu.io/upload_images/2859850-d8ba565406f20742.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)

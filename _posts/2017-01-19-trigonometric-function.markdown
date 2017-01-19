@@ -68,4 +68,12 @@ Tips :因为sin(C) = sin(180° - C)，所以有两个解，60°和120°。
 
 学生时代考试就经常忘记有多个解，有木有！！！
 
+---
+
+### 7.已知AB=5,BC=8,角B=60°，求x.
+
+![](http://upload-images.jianshu.io/upload_images/2859850-e2a1a7ae297353c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+答：`Math.sqrt(Math.pow(5,2)+Math.pow(8,2)-(2*5*8*Math.cos(60*(Math.PI/180))));`
+
 > 本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

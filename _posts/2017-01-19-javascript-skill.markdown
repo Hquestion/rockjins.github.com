@@ -296,4 +296,27 @@ var func =function(){
 func(); //Shock
 ```
 
+### 升级版bind
+
+```javascript
+Function.prototype.bind = function(){
+  var self = this,
+      context = [].shift.call(arguments),
+      args = [].slice.call(arguments);
+  return function(){
+    return self.apply(context, [].concat.call(args, [].slice.call(arguments)));
+  }
+}
+
+var obj = {
+  name: "Shock"
+};
+
+var func =function(a, b, c, d){
+  alert(this.name); //Shock
+  alert([a, b, c, d]);  //[1, 2, 3, 4]
+}.bind(obj, 1, 2);
+
+func(3, 4);
+```
 > 本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

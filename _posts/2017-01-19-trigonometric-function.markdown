@@ -36,4 +36,36 @@ tags:
 
 答：`20/Math.tan(55*(Math.PI/180));`
 
+---
+
+### 4.已知角B为60°，AC长为8，AB长为5，求角C的正弦.
+
+![](http://upload-images.jianshu.io/upload_images/2859850-4f1e642f69ad1d8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+答：`5/(8/Math.sin(60*(Math.PI/180)));`
+
+---
+
+### 5.已知C大小为120°,B大小为30°,AC=6,求AB长x.
+
+![](http://upload-images.jianshu.io/upload_images/2859850-52b7cc219653f989.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+答：`(6/Math.sin(30*(Math.PI/180)))*Math.sin((180-120)*(Math.PI/180));`
+
+---
+
+### 6.△ABC中，A,B,C所对的边为a,b,c。角B=30°，AB=9，AC=3√3，求角C的大小.
+
+![](http://upload-images.jianshu.io/upload_images/2859850-2b54e1a28ac19b84.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+答：`Math.asin(9/((3*Math.sqrt(3))/Math.sin(30*(Math.PI/180))))/(Math.PI/180);`
+
+Tips :因为sin(C) = sin(180° - C)，所以有两个解，60°和120°。
+
+当然也不是一定就有两个解，如果B+C>180°那肯定是不行的，就像这种题：
+
+![](http://upload-images.jianshu.io/upload_images/2859850-0ab1ee7e8cec9b21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+学生时代考试就经常忘记有多个解，有木有！！！
+
 > 本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

@@ -76,4 +76,12 @@ Tips :因为sin(C) = sin(180° - C)，所以有两个解，60°和120°。
 
 答：`Math.sqrt(Math.pow(5,2)+Math.pow(8,2)-(2*5*8*Math.cos(60*(Math.PI/180))));`
 
+---
+
+### 8.已知三边长为3,7,8，求边长为7的AC边所对的角B大小.
+
+![](http://upload-images.jianshu.io/upload_images/2859850-1831f6002ad1b20a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+答：`Math.acos((Math.pow(3,2)+Math.pow(8,2)-Math.pow(7,2))/(2*3*8))/(Math.PI/180);`
+
 > 本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

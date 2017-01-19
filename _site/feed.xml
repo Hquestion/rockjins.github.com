@@ -3,10 +3,10 @@
   <channel>
     <title>Rockjins Blog</title>
     <description> 周神的个人博客，和你一起进步，一起探索更奥妙的知识，更新奇的技术。 </description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 19 Jan 2017 16:30:52 +0800</pubDate>
-    <lastBuildDate>Thu, 19 Jan 2017 16:30:52 +0800</lastBuildDate>
+    <link>https://rockjins.github.io/</link>
+    <atom:link href="https://rockjins.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Thu, 19 Jan 2017 16:31:46 +0800</pubDate>
+    <lastBuildDate>Thu, 19 Jan 2017 16:31:46 +0800</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -77,13 +77,21 @@
 
 &lt;p&gt;答：&lt;code class=&quot;highlighter-rouge&quot;&gt;Math.sqrt(Math.pow(5,2)+Math.pow(8,2)-(2*5*8*Math.cos(60*(Math.PI/180))));&lt;/code&gt;&lt;/p&gt;
 
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;8已知三边长为378求边长为7的ac边所对的角b大小&quot;&gt;8.已知三边长为3,7,8，求边长为7的AC边所对的角B大小.&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2859850-1831f6002ad1b20a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;答：&lt;code class=&quot;highlighter-rouge&quot;&gt;Math.acos((Math.pow(3,2)+Math.pow(8,2)-Math.pow(7,2))/(2*3*8))/(Math.PI/180);&lt;/code&gt;&lt;/p&gt;
+
 &lt;blockquote&gt;
   &lt;p&gt;本文出自&lt;a href=&quot;https://rockjins.github.io&quot;&gt;Rockjins Blog&lt;/a&gt;，转载请与作者联系。否则将追究法律责任。&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
         <pubDate>Thu, 19 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/01/19/trigonometric-function/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/19/trigonometric-function/</guid>
+        <link>https://rockjins.github.io/2017/01/19/trigonometric-function/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2017/01/19/trigonometric-function/</guid>
         
         <category>JavaScript</category>
         
@@ -200,8 +208,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Wed, 18 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/01/18/new-object/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/18/new-object/</guid>
+        <link>https://rockjins.github.io/2017/01/18/new-object/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2017/01/18/new-object/</guid>
         
         <category>JavaScript</category>
         
@@ -485,8 +493,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Tue, 17 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/01/17/javascript-skill/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/17/javascript-skill/</guid>
+        <link>https://rockjins.github.io/2017/01/17/javascript-skill/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2017/01/17/javascript-skill/</guid>
         
         <category>JavaScript</category>
         
@@ -592,8 +600,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 16 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/01/16/polymorphism/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/16/polymorphism/</guid>
+        <link>https://rockjins.github.io/2017/01/16/polymorphism/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2017/01/16/polymorphism/</guid>
         
         <category>JavaScript</category>
         
@@ -770,8 +778,8 @@
 &lt;p&gt;就这些，希望你喜欢。恐怕大都是无稽之谈。&lt;/p&gt;
 </description>
         <pubDate>Thu, 05 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/01/05/Hemingway-javascript/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/05/Hemingway-javascript/</guid>
+        <link>https://rockjins.github.io/2017/01/05/Hemingway-javascript/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2017/01/05/Hemingway-javascript/</guid>
         
         <category>translation</category>
         
@@ -836,8 +844,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Wed, 04 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/01/04/zsh-git/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/04/zsh-git/</guid>
+        <link>https://rockjins.github.io/2017/01/04/zsh-git/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2017/01/04/zsh-git/</guid>
         
         <category>oh-my-zsh</category>
         
@@ -998,8 +1006,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 02 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/01/02/tw-spaeak/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/02/tw-spaeak/</guid>
+        <link>https://rockjins.github.io/2017/01/02/tw-spaeak/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2017/01/02/tw-spaeak/</guid>
         
         <category>Book</category>
         
@@ -1093,8 +1101,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Sun, 01 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/01/01/book-list/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/01/book-list/</guid>
+        <link>https://rockjins.github.io/2017/01/01/book-list/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2017/01/01/book-list/</guid>
         
         <category>Book</category>
         
@@ -1422,8 +1430,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 26 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/26/socket-io/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/26/socket-io/</guid>
+        <link>https://rockjins.github.io/2016/12/26/socket-io/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/12/26/socket-io/</guid>
         
         <category>JavaScript</category>
         
@@ -1533,8 +1541,8 @@
 &lt;/blockquote&gt;
 </description>
         <pubDate>Mon, 19 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/19/inline-function/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/19/inline-function/</guid>
+        <link>https://rockjins.github.io/2016/12/19/inline-function/</link>
+        <guid isPermaLink="true">https://rockjins.github.io/2016/12/19/inline-function/</guid>
         
         <category>JavaScript</category>
         

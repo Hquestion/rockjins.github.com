@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      " 三角函数练习 "
+title:      " 三角函数学习历程记录 "
 subtitle:   " trigonometric function. "
 date:       2017-01-19
 author:     "Shock"
@@ -12,7 +12,7 @@ tags:
 
 ---
 
->  是该捡起来了 慢慢来
+>  是时候捡起来了 别那么在乎别人的眼光
 
 ### 1.已知斜边为20，邻边为10，求角x.
 

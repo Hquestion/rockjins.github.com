@@ -10,7 +10,7 @@
     <meta name="keywords"  content="周神, Shock, @rockjins, @chinajins, 周神的博客, Rockjins Blog, 博客, 个人网站, 互联网, 前端, 设计, 产品">
     <meta name="theme-color" content="#000000">
 
-    <title> 教你把百度的关键字搜索偷过来用用  - 周神的博客 | Rockjins Blog</title>
+    <title> 三角函数练习  - 周神的博客 | Rockjins Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2016/07/01/baidu-keywords/">
+    <link rel="canonical" href="http://localhost:4000/2017/01/19/trigonometric-function/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -151,13 +151,13 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="//upload-images.jianshu.io/upload_images/2859850-fb3408173cb6cdd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="0" height="0"> -->
+<!-- <img src="//upload-images.jianshu.io/upload_images/2859850-e7dfe46f2c5c5d87.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('//upload-images.jianshu.io/upload_images/2859850-fb3408173cb6cdd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')
+        background-image: url('//upload-images.jianshu.io/upload_images/2859850-e7dfe46f2c5c5d87.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')
     }
 
     
@@ -170,17 +170,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#JSONP" title="JSONP">JSONP</a>
-                        
                         <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
                         
+                        <a class="tag" href="/tags/#Math" title="Math">Math</a>
+                        
                     </div>
-                    <h1> 教你把百度的关键字搜索偷过来用用 </h1>
+                    <h1> 三角函数练习 </h1>
                     
                     
-                    <h2 class="subheading"> Stealing is a kind of virtue, right? </h2>
+                    <h2 class="subheading"> trigonometric function. </h2>
                     
-                    <span class="meta">Posted by Shock on July 1, 2016</span>
+                    <span class="meta">Posted by Shock on January 19, 2017</span>
                 </div>
             </div>
         </div>
@@ -199,114 +199,24 @@
                 post-container">
 
 				<blockquote>
-  <p>你真以为我偷东西啊！对啊，我就是偷东西。</p>
+  <p> 是该捡起来了 慢慢来</p>
 </blockquote>
 
-<p>话不多说，先上效果图。</p>
+<h3 id="1已知斜边为20邻边为10求角x">1.已知斜边为20，邻边为10，求角x.</h3>
 
-<p><img src="http://images2015.cnblogs.com/blog/929120/201607/929120-20160701151650890-1741841284.gif" alt="" /></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2859850-d8ba565406f20742.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
 
-<p>怎么样，是不是和在用百度一下时，关键字搜索补全一样一样的。</p>
+<p>答：<code class="highlighter-rouge">Math.acos(10/20)/(Math.PI/180);</code></p>
 
-<p>今天下午没什么事，打开百度首页的Newwork看了一下，发现我每次输入内容后，它都会把我们输入的内容发送到后台，后台返回这些关键字的联想条目，我们只需要把这些条目放到页面中，就可以实现上图所示的demo了。</p>
+<hr />
 
-<p>下面我们就来看看怎么获取这些内容。</p>
+<h3 id="2已知c是45斜边为20求其邻边x">2.已知C是45°，斜边为20，求其邻边x.</h3>
 
-<p>先打开百度首页，我是用的chrome浏览器，F12，选到Network（你可能发现Network中是空的，刷新一下页面就好了）：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2859850-13de06296d5a1fc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
 
-<p><img src="http://images2015.cnblogs.com/blog/929120/201607/929120-20160701154248640-1892689881.png" alt="" /></p>
+<p>答：<code class="highlighter-rouge">Math.cos(45*Math.PI/180)*20;</code></p>
 
-<p>看到一大堆请求过来的文件，下面我们要找到关键的文件，也就是我们输入时，百度返回的文件，最快速的方法就是输入一大堆的字母，这样可以很方便的找到,我输入了一大堆的ssssss…..：</p>
-
-<p><img src="http://images2015.cnblogs.com/blog/929120/201607/929120-20160701154606359-1163344681.png" alt="" /></p>
-
-<p>看到这些返回的文件吗，wd=ssssssssssss….，我们随便双击一条，把弹出窗口中的Request URL里的网址复制下来，这个就是我们完成关键字搜索的请求路径。</p>
-
-<p>我们可以把网址直接复制到浏览器地址栏，看看得到的是个什么东西:</p>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">jQuery110204129574971066774_1467359127325</span><span class="p">({</span>
-<span class="s2">"q"</span><span class="p">:</span> <span class="s2">"哈哈是什么yisi"</span><span class="p">,</span>
-<span class="s2">"p"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-<span class="s2">"bs"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
-<span class="s2">"csor"</span><span class="p">:</span> <span class="s2">"9"</span><span class="p">,</span>
-<span class="s2">"g"</span><span class="p">:</span> <span class="p">[</span>
-<span class="p">{</span>
-<span class="s2">"q"</span><span class="p">:</span> <span class="s2">"哈哈是什么意思"</span><span class="p">,</span>
-<span class="s2">"t"</span><span class="p">:</span> <span class="s2">"n"</span><span class="p">,</span>
-<span class="s2">"st"</span><span class="p">:</span> <span class="p">{</span>
-<span class="s2">"q"</span><span class="p">:</span> <span class="s2">"哈哈是什么意思"</span><span class="p">,</span>
-<span class="s2">"new"</span><span class="p">:</span> <span class="mi">0</span>
-<span class="p">}</span>
-<span class="p">},</span>
-<span class="p">{</span>
-<span class="s2">"q"</span><span class="p">:</span> <span class="s2">"哈哈哈哈是什么意思"</span><span class="p">,</span>
-<span class="s2">"t"</span><span class="p">:</span> <span class="s2">"n"</span><span class="p">,</span>
-<span class="s2">"st"</span><span class="p">:</span> <span class="p">{</span>
-<span class="s2">"q"</span><span class="p">:</span> <span class="s2">"哈哈哈哈是什么意思"</span><span class="p">,</span>
-<span class="s2">"new"</span><span class="p">:</span> <span class="mi">0</span>
-<span class="p">}</span>
-<span class="p">}</span>
-<span class="p">],</span>
-<span class="s2">"s"</span><span class="p">:</span> <span class="p">[</span>
-<span class="s2">"哈哈是什么意思"</span><span class="p">,</span>
-<span class="s2">"哈哈哈哈是什么意思"</span>
-<span class="p">]</span>
-<span class="p">});</span>
-</code></pre>
-</div>
-
-<p>得到的数据是一个对象，不过对象被包裹在一个函数内，这个格式是不是很熟悉啊，对，就是jsonp！分析完这个数据格式，发现我们需要的是这个对象下的s数组里的数据，那我们就把s里的数据拿出来插入到页面中就行了，开始吧！</p>
-
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-    <span class="nt">&lt;head&gt;</span>
-        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;title&gt;&lt;/title&gt;</span>
-        <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"js/jquery-2.1.0.js"</span> <span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;/head&gt;</span>
-    <span class="nt">&lt;body&gt;</span>
-        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">onkeyup=</span><span class="s">"require()"</span> <span class="na">id=</span><span class="s">"search"</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"show"</span><span class="nt">&gt;&lt;/div&gt;</span>
-                <span class="nt">&lt;script&gt;</span>
-                        <span class="c1">//do something......</span>
-                <span class="nt">&lt;/script&gt;</span>
-    <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre>
-</div>
-
-<p>这段html代码很简单，引入了jQuery，一个输入框，一个承载返回内容的div，我么直接把script写在body的最下面，当我么输入时手指抬起，就去调用require函数，这个函数里就是我们的关键代码。（大家可以想想为什么要用onkeyup，这是个坑）</p>
-
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">require</span><span class="p">(){</span>
-    <span class="kd">var</span> <span class="nx">search</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">"#search"</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-    <span class="kd">var</span> <span class="nx">_url</span> <span class="o">=</span> <span class="s1">'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='</span><span class="o">+</span><span class="nx">search</span><span class="o">+</span><span class="s1">'&amp;json=1&amp;p=3&amp;sid=20144_1467_19033_20515_18240_17949_20388_20456_18133_17001_15202_11615&amp;req=2&amp;csor=2&amp;pwd=s&amp;cb=jQuery110207612423721154653_1467355506619&amp;_=1467355506623'</span><span class="p">;</span>
-    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-        <span class="na">type</span><span class="p">:</span><span class="s2">"get"</span><span class="p">,</span>
-        <span class="na">url</span><span class="p">:</span><span class="nx">_url</span><span class="p">,</span>
-        <span class="na">async</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
-        <span class="na">dataType</span><span class="p">:</span><span class="s1">'jsonp'</span><span class="p">,</span>
-        <span class="na">jsonpCallback</span><span class="p">:</span><span class="s1">'jQuery110207612423721154653_1467355506619'</span><span class="p">,</span>
-        <span class="na">success</span><span class="p">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-            <span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">s</span><span class="p">;</span>
-            <span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span><span class="s2">""</span><span class="p">;</span>
-            <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">list</span><span class="p">){</span>
-                <span class="nx">str</span><span class="o">+=</span><span class="s1">'&lt;p&gt;'</span><span class="o">+</span><span class="nx">list</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">+</span><span class="s1">'&lt;/p&gt;'</span><span class="p">;</span>
-            <span class="p">}</span>
-            <span class="nx">$</span><span class="p">(</span><span class="s2">"#show"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">});</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<p>当require函数被触发时，执行以上代码，我们来分析一下上面的代码。</p>
-
-<p>先获取到输入框的内容，再定义一个_url，把我们之前得到的url地址附给这个变量，但是注意要把关键字的值改成输入框内的值，这样才能动态获取，不然你一直都在请求一个固定的关键字（上面把_url中的search标红加粗了）。</p>
-
-<p>准备工作做好，可以发起ajax请求了，因为是jsonp的格式，所以要设置dataType:’jsonp’，并告诉jQuery回调函数的名称，这个名称可以在浏览器中得到（之前在浏览器地址栏输入url，得到的数据被包含在一个函数里，这里的jsonpCallback就写那个函数的名称，每个人的都不一样）。</p>
-
-<p>现在我们只需要把数据console.log出来，并解析到页面上，就可以实现文章开头的效果了，简单吧！(记得放在服务器环境运行哦！)</p>
+<hr />
 
 <blockquote>
   <p>本文出自<a href="https://rockjins.github.io">Rockjins Blog</a>，转载请与作者联系。否则将追究法律责任。</p>
@@ -319,21 +229,22 @@
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2016/07/01/baidu-keywords"
-                    data-title=" 教你把百度的关键字搜索偷过来用用 "
-                    data-url="http://localhost:4000/2016/07/01/baidu-keywords/"
-                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-fb3408173cb6cdd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+                    data-thread-key="/2017/01/19/trigonometric-function"
+                    data-title=" 三角函数练习 "
+                    data-url="http://localhost:4000/2017/01/19/trigonometric-function/"
+                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-e7dfe46f2c5c5d87.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
                     data-content="
-  你真以为我偷东西啊！对啊，我就是偷东西。
+   是该捡起来了 慢慢来
 
 
-话不多说，先上效果图。
+1.已知斜边为20，邻边为10，求角x.
 
 
 
-怎么样，是不是和在用百度一下时，关键字搜索补全一样一样的。
+答：Math.acos(10/20)/(Math.PI/180);
 
-今天下午没... | 周神的博客 | Rockjins Blog " >
+
+... | 周神的博客 | Rockjins Blog " >
                     <div class="ds-share-inline">
                       <style> 
                         .ds-share-icons-16 {display:none;} 
@@ -356,19 +267,12 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2016/06/28/php-demo/" data-toggle="tooltip" data-placement="top" title=" 一起来花5分钟写一个PHP入门Demo ">
+                        <a href="/2017/01/18/new-object/" data-toggle="tooltip" data-placement="top" title=" 带你切身体验实例被new出来的过程 ">
                         Previous<br>
-                        <span> 一起来花5分钟写一个PHP入门Demo </span>
+                        <span> 带你切身体验实例被new出来的过程 </span>
                         </a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2016/08/12/fake-array/" data-toggle="tooltip" data-placement="top" title=" 如何伪造数组？ ">
-                        Next<br>
-                        <span> 如何伪造数组？ </span>
-                        </a>
-                    </li>
                     
                 </ul>
 
@@ -377,9 +281,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2016/07/01/baidu-keywords"
-                        data-title=" 教你把百度的关键字搜索偷过来用用 "
-                        data-url="http://localhost:4000/2016/07/01/baidu-keywords/" >
+                        data-thread-key="/2017/01/19/trigonometric-function"
+                        data-title=" 三角函数练习 "
+                        data-url="http://localhost:4000/2017/01/19/trigonometric-function/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->

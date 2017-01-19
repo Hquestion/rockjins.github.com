@@ -30,4 +30,10 @@ tags:
 
 ---
 
+### 3.已知A是55°，对边为20，求其邻边x.
+
+![](http://upload-images.jianshu.io/upload_images/2859850-d51b786e69a9e791.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+答：`20/Math.tan(55*(Math.PI/180));`
+
 > 本文出自[Rockjins Blog](https://rockjins.github.io)，转载请与作者联系。否则将追究法律责任。

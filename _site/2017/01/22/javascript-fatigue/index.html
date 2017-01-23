@@ -10,7 +10,7 @@
     <meta name="keywords"  content="周神, Shock, @rockjins, @chinajins, 周神的博客, Rockjins Blog, 博客, 个人网站, 互联网, 前端, 设计, 产品">
     <meta name="theme-color" content="#000000">
 
-    <title> 来自网易云音乐的脑洞，带尖角的div......  - 周神的博客 | Rockjins Blog</title>
+    <title> JavaScript疲劳症  - 周神的博客 | Rockjins Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2016/06/22/music-cloud/">
+    <link rel="canonical" href="http://localhost:4000/2017/01/22/javascript-fatigue/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -151,13 +151,13 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="//upload-images.jianshu.io/upload_images/2859850-a995adb879946d2d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="0" height="0"> -->
+<!-- <img src="//upload-images.jianshu.io/upload_images/2859850-450109aa296ccc3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('//upload-images.jianshu.io/upload_images/2859850-a995adb879946d2d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')
+        background-image: url('//upload-images.jianshu.io/upload_images/2859850-450109aa296ccc3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')
     }
 
     
@@ -170,15 +170,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#CSS" title="CSS">CSS</a>
+                        <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                        
+                        <a class="tag" href="/tags/#translation" title="translation">translation</a>
                         
                     </div>
-                    <h1> 来自网易云音乐的脑洞，带尖角的div...... </h1>
+                    <h1> JavaScript疲劳症 </h1>
                     
                     
-                    <h2 class="subheading"> How amazing!The programmer is a genius! </h2>
+                    <h2 class="subheading"> JavaScript Fatigue Fatigue </h2>
                     
-                    <span class="meta">Posted by Shock on June 22, 2016</span>
+                    <span class="meta">Posted by Shock on January 22, 2017</span>
                 </div>
             </div>
         </div>
@@ -197,46 +199,87 @@
                 post-container">
 
 				<blockquote>
-  <p>很多时候最不能相信的就是你的眼睛。</p>
+  <p> 原文链接：<a href="https://medium.freecodecamp.com/javascript-fatigue-fatigue-66ffb619f6ce#.khis636n3">https://medium.freecodecamp.com/javascript-fatigue-fatigue-66ffb619f6ce#.khis636n3</a></p>
 </blockquote>
 
-<p>今天在网易云的网页版听歌，话说Steve Vai的曲子永远是这么让人揣摩不透，不过我还时更喜欢老Joe，咦，跑题了···</p>
-
-<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160622141525235-1632127211.png" alt="" /></p>
-
-<p>大家可以看到评论输入框和回复框，上面都有个小尖角，实现的方式有很多，我一般是用border来做，只要给一个元素加上这四条属性就行了：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>border-top: 400px solid red;
-border-right: 400px solid transparent;
-border-bottom: 400px solid transparent;
-border-left: 400px solid transparent;
-</code></pre>
-</div>
-
-<p>下面要讲的是网易云上面的黑科技，我看完真的是服···</p>
-
-<p>作为一个程序猿，看网页总喜欢手贱的审查元素…</p>
-
-<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160622142259547-420713142.png" alt="" /></p>
-
-<p>咦？这两个小黑块是啥？稍微一想，原来是这样….</p>
-
-<p>顶层的小方块颜色是白色背景颜色，下面还层叠了一个背景颜色为边框颜色的小方块，还是上图比较直观：</p>
-
-<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160622145114469-397586137.png" alt="" /></p>
-
-<p>这里有两个小方块，我们两个小方块都position:absolute;把右边的小方块向左移，移到马上覆盖左边方块为止：</p>
-
-<p><img src="http://images2015.cnblogs.com/blog/929120/201606/929120-20160622145402953-873575.png" alt="" /></p>
-
-<p>OK，就像这个样子，聪明的你可能已经知道这个是什么了，假定背景颜色是白色的，边框是红色的，那我们只需要改变着两个元素的color属性即可：</p>
-
-<p><img src="http://upload-images.jianshu.io/upload_images/2859850-aae2fc70b22d91c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
-
-<p>我们只需给父元素position:relative;把这两个小方块定位到相应的地方就OK啦，感觉能想到这种方法的人也挺牛的，啊哈。</p>
+<hr />
 
 <blockquote>
-  <p>本文出自<a href="https://rockjins.github.io">Rockjins Blog</a>，转载请与作者联系。否则将追究法律责任。</p>
+  <p>宇宙没有义务让你觉得它对你有意义。 – Neil deGrasse Tyson</p>
+</blockquote>
+
+<p>是的，JavaScript的开发越来越复杂了。</p>
+
+<p>是的，JavaScript将会继续变得越来越复杂。</p>
+
+<p>互联网是一个复杂的领域。我们最终没有去做我们本应该去做的那些事情。</p>
+
+<p>结果就是，JavaScript工具和许多和它有关的，都在迅速的发展。</p>
+
+<p>如果它的发展过程让你感到压力倍增，阅读下面这篇文章让你放松一下吧：</p>
+
+<p><a href="https://kknews.cc/tech/zl9q93.html">在 2016 年学 JavaScript 是一种什么样的体验</a></p>
+
+<p>下面这篇文章模仿上面的文章的风格，讲述开发环境配置是一件多么复杂的事：</p>
+
+<p><a href="https://linux.cn/article-5896-1.html">容器时代，难道这就是我们想要的未来？</a></p>
+
+<p>但是不要忽略一个显而易见的问题，为什么JavaScript开发会如此复杂？因为web开发其本身就是复杂的。</p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/2859850-09edccfb538365e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p><em>(上图为：CSS滤镜效果浏览器兼容性 来自<a href="caniuse.com">caniuse.com</a>)</em></p>
+
+<p>我们尝试去构建一个web应用，让它在不同的浏览器上都能正确的运行，在上千个不同的设备上看上去还不错，为了满足那些缺乏耐心的乘地铁的上班族，它加载必须足够快，它还要尽可能的让盲人能使用它。</p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/2859850-9406f49c178d188d.gif?imageMogr2/auto-orient/strip" alt="" /></p>
+
+<p>与此同时，web开发者在处理无处不在的安全漏洞。</p>
+
+<p>我们在游说管理人员放弃糟糕的实现方式。(<a href="https://www.wired.com/2016/04/average-webpage-now-size-original-doom/">现在常见的网页体积大小都大于1993年的游戏DOOM。</a>)</p>
+
+<p>我们去适应基于浏览器的广告屏蔽插件，因为它很多时候阻拦的并不是广告。</p>
+
+<p>这里有很多可行的方案去达成我们所有的目的。这时，巨大的生态圈工具开始出现，它从不同的方面去解决不同的问题。</p>
+
+<p>Extreme Programming（极限编程）的作者早在1983年说过：</p>
+
+<blockquote>
+  <p>让它工作，让它正确，让它快速。 – Kent Beck</p>
+</blockquote>
+
+<p>好吧，在过去的20多年里，我们关注web开发中遇到各种问题的解决办法。</p>
+
+<p>最后，JavaScript开发者终于有了自己的生态圈，还不止于此，对此我们感到高兴。</p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/2859850-2227e5cb3ab703f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p><em>上图来自：<a href="http://stateofjs.com/2016/features/">2016年优秀的javascript站点截图</a></em></p>
+
+<p>开发工具还一个快速的发展就是，它不再受控于Apple或Microsoft操作系统。</p>
+
+<p>大家共同的努力让它突然之间变得正确和迅速。</p>
+
+<p>这个漫画完美的诠释了存在于我们身上的”JavaScript疲劳症”,Dr. Axel Rauschmayer(Speaking JavaScript的作者) <a href="http://www.2ality.com/2016/02/js-fatigue-fatigue.html">让”JavaScript疲劳症”更早的到来了</a>。</p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/2859850-da3286bc3b83f5bf.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p>当在各种各样的工具中进行选择时，我们尽可能的提出建设性的意见。我们告诉新人远离那些未经验证的工具。我们告诫他们，<a href="https://medium.freecodecamp.com/one-does-not-simply-learn-to-code-f25bacdc5b62#.8bdmlejfu">成为一个开发人员很难，</a>而且工作很大部分时间是在学习使用新的工具。</p>
+
+<p>如果你是个JavaScript新手，记住，所有这些新工具都是好的东西。开源的npm生态圈也是一个非常好的东西。</p>
+
+<p>他们会让你更幸福，成为一个更强大的开发者。</p>
+
+<p>他们会帮助你更好的服务你的终端用户。</p>
+
+<p>如果你也是许多”JavaScript疲劳症”患者中的一员，你担心自己可能会坚持不下去，那么就想想下面这句话：</p>
+
+<blockquote>
+  <p>如果你正在走向地狱，那就继续前进。 – Winston Churchill</p>
+</blockquote>
+
+<blockquote>
+  <p>本文由<a href="https://rockjins.github.io">Rockjins Blog</a>翻译，转载请与译者联系。否则将追究法律责任。</p>
 </blockquote>
 
 
@@ -246,15 +289,12 @@ border-left: 400px solid transparent;
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2016/06/22/music-cloud"
-                    data-title=" 来自网易云音乐的脑洞，带尖角的div...... "
-                    data-url="http://localhost:4000/2016/06/22/music-cloud/"
-                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-a995adb879946d2d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+                    data-thread-key="/2017/01/22/javascript-fatigue"
+                    data-title=" JavaScript疲劳症 "
+                    data-url="http://localhost:4000/2017/01/22/javascript-fatigue/"
+                    data-images="http://localhost:4000//upload-images.jianshu.io/upload_images/2859850-450109aa296ccc3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
                     data-content="
-  很多时候最不能相信的就是你的眼睛。
-
-
-今天在网易云的网页版听歌，话说Steve Vai的曲子永远是这么让人揣摩不透，不过我还时更喜欢老Joe，咦，... | 周神的博客 | Rockjins Blog " >
+   原文链接：https://medium.freecodecamp.com/javascript-fatigue-fatigue-66ffb619f... | 周神的博客 | Rockjins Blog " >
                     <div class="ds-share-inline">
                       <style> 
                         .ds-share-icons-16 {display:none;} 
@@ -276,13 +316,13 @@ border-left: 400px solid transparent;
 
                 <ul class="pager">
                     
-                    
-                    <li class="next">
-                        <a href="/2016/06/28/php-demo/" data-toggle="tooltip" data-placement="top" title=" 一起来花5分钟写一个PHP入门Demo ">
-                        Next<br>
-                        <span> 一起来花5分钟写一个PHP入门Demo </span>
+                    <li class="previous">
+                        <a href="/2017/01/19/trigonometric-function/" data-toggle="tooltip" data-placement="top" title=" 三角函数学习历程记录 ">
+                        Previous<br>
+                        <span> 三角函数学习历程记录 </span>
                         </a>
                     </li>
+                    
                     
                 </ul>
 
@@ -291,9 +331,9 @@ border-left: 400px solid transparent;
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2016/06/22/music-cloud"
-                        data-title=" 来自网易云音乐的脑洞，带尖角的div...... "
-                        data-url="http://localhost:4000/2016/06/22/music-cloud/" >
+                        data-thread-key="/2017/01/22/javascript-fatigue"
+                        data-title=" JavaScript疲劳症 "
+                        data-url="http://localhost:4000/2017/01/22/javascript-fatigue/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->

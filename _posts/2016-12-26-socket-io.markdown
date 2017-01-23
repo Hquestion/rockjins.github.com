@@ -298,4 +298,4 @@ io.on('connection', function(socket){
 
 *完*
 
-> 本文由[Rockjins Blog](https://rockjins.github.io)翻译，转载请与作者联系。否则将追究法律责任。
+> 本文由[Rockjins Blog](https://rockjins.github.io)翻译，转载请与译者联系。否则将追究法律责任。

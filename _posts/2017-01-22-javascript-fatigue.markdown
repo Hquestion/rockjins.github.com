@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      " JavaScript疲劳症 "
+title:      " 『翻译』JavaScript疲劳症 "
 subtitle:   " JavaScript Fatigue Fatigue "
 date:       2017-01-22
 author:     "Shock"
